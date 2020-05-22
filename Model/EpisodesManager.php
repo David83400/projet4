@@ -11,10 +11,10 @@ class EpisodesManager extends Manager
         return $episodes;
     }
 
-    public function getEpisode($episodesId)
+    public function getEpisode($episodeId)
     {
-        $sql = 'SELECT id, author, title, content, creationDate, modificationDate FROM posts WHERE id=?';
-        $episode = $this->executeRequest($sql, array($episodesId));
+        $sql = 'SELECT id, author, title, content, creationDate, modificationDate FROM posts WHERE id = ?';
+        $episode = $this->executeRequest($sql, array($episodeId));
         if ($episode->rowCount() > 0)
         {
             return $episodes->fetch();
@@ -23,5 +23,12 @@ class EpisodesManager extends Manager
         {
             throw new exception ("Aucun épisode ne correspond à l'identifiant '$episodeId'");
         }
+    }
+
+    public function getLastEpisode()
+    {
+        $sql = 'SELECT id, author, title, content, creationDate, modificationDate FROM posts WHERE id = MAX(id)';
+        $lastEpisode = $this->executeRequest($sql);
+        return $lastEpisode;
     }
 }
