@@ -1,5 +1,7 @@
 <?php
 
+namespace David\Projet4\View;
+
 class ControllerViews
 {
     // nom du fichier associé à la vue
@@ -13,7 +15,12 @@ class ControllerViews
         $this->file = "View/" . $action . "View.php";
     }
 
-    // Génère et affiche la vue
+    /**
+     * Generate and display views
+     *
+     * @param [mixed] $data
+     * @return void
+     */
     public function generate($data)
     {
         //génération de la partie spécifique de la vue
@@ -24,7 +31,13 @@ class ControllerViews
         echo $view;
     }
 
-    // génère un fichier view et renvoie le résultat produit
+    /**
+     * Generate a view file and return the result
+     *
+     * @param [string] $file
+     * @param [mixed] $data
+     * @return void
+     */
     private function generateFile($file, $data)
     {
         if (file_exists($file))

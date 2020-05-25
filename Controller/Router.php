@@ -1,9 +1,15 @@
 <?php
 
-require_once 'Controller/HomeController.php';
-require_once 'Controller/EpisodesController.php';
-require_once 'Controller/EpisodeController.php';
+namespace David\Projet4\Controller;
+
+require_once 'Controller/Frontend/HomeController.php';
+require_once 'Controller/Frontend/EpisodesController.php';
+require_once 'Controller/Frontend/EpisodeController.php';
 require_once 'View/ControllerViews.php';
+
+use David\Projet4\Controller\Frontend\HomeController;
+use David\Projet4\Controller\Frontend\EpisodesController;
+use David\Projet4\Controller\Frontend\EpisodeController;
 
 class Router
 {
@@ -17,8 +23,9 @@ class Router
         $this->episodesControl = new EpisodesController();
         $this->episodeControl = new EpisodeController();
     }
+    
     /**
-     * Route la requète entrante et exécute l'action associée
+     * Route the incoming request and execute the associated action
      *
      * @return void
      */
@@ -43,6 +50,13 @@ class Router
                         throw new Exception('Identifiant d\'épisode invalide');
                     }
                 }
+                elseif ($_GET['action'] == 'comment')
+                {
+                    $author = $this->getParameter($_POST, 'author');
+                    $comment = $this->getParameter($_POST, 'comment');
+                    $episodeId = $this->getParameter($_POST, 'id');
+                    $this->episodeControl->addComment($author, $comment, $episodeId);
+                }
                 else
                 {
                     throw new Exception('Action non valide');
@@ -59,7 +73,7 @@ class Router
     }
 
     /**
-     * affiche le message d'erreur
+     * display error message
      *
      * @param [string] $errorMessage
      * @return void
@@ -71,7 +85,7 @@ class Router
     }
 
     /**
-     * Recherche le paramètre demandé dans un tableau
+     *Find the requested parameter in an array
      *
      * @param [array] $array
      * @param [string] $name
@@ -85,7 +99,7 @@ class Router
         }
         else
         {
-            throw new Exception('Paramètre' . $name . 'absent');
+            throw new Exception("Paramètre '$name' absent");
         }
     }
 }

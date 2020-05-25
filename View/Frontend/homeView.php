@@ -6,7 +6,7 @@
     <a href="<?= "index.php?action=episode&id=" . htmlspecialchars($lastEpisode['id']) ?>">
       <h1><?= htmlspecialchars($lastEpisode['title']) ?></h1>
     </a>
-    <time><?= htmlspecialchars($lastEpisode['creationDate']) ?></time>
+    <p>Publié par Jean Forteroche le : <?= htmlspecialchars($lastEpisode['creationFrDate']) ?></p>
   </header>
   <p><?= htmlspecialchars($lastEpisode['content']) ?></p>
 </article>

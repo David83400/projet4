@@ -1,19 +1,32 @@
 <?php
 
+namespace David\Projet4\Model;
+
 require_once 'Model/Manager.php';
 
 class EpisodesManager extends Manager
 {
+    /**
+     * Return the list episodes list
+     *
+     * @return void
+     */
     public function getEpisodes()
     {
-        $sql = 'SELECT id, author, title, content, creationDate, modificationDate FROM episodes ORDER BY id DESC';
+        $sql = 'SELECT id, author, title, content, DATE_FORMAT(creationDate, \'%W %d %M %Y\') AS creationFrDate, DATE_FORMAT(modificationDate, \'%d/%m/%y\') AS modificationFrdate FROM episodes ORDER BY id DESC';
         $episodes = $this->executeRequest($sql);
         return $episodes;
     }
 
+    /**
+     * Return the requested episode
+     *
+     * @param [int] $episodeId
+     * @return void
+     */
     public function getEpisode($episodeId)
     {
-        $sql = 'SELECT id, author, title, content, creationDate, modificationDate FROM episodes WHERE id = ?';
+        $sql = 'SELECT id, author, title, content, DATE_FORMAT(creationDate, \'%W %d %M %Y\') AS creationFrDate, DATE_FORMAT(modificationDate, \'%d/%m/%y\') AS modificationFrDate FROM episodes WHERE id = ?';
         $episode = $this->executeRequest($sql, array($episodeId));
         if ($episode->rowCount() > 0)
         {
@@ -25,9 +38,12 @@ class EpisodesManager extends Manager
         }
     }
 
+    /**
+     * Return the last episode
+     */
     public function getLastEpisode()
     {
-        $sql = 'SELECT id, author, title, content, creationDate, modificationDate FROM episodes ORDER BY id DESC LIMIT 1';
+        $sql = 'SELECT id, author, title, content, DATE_FORMAT(creationDate, \'%W %d %M %Y\') AS creationFrDate, DATE_FORMAT(modificationDate, \'%d/%m/%y\') AS modificationFrDate FROM episodes ORDER BY id DESC LIMIT 1';
         $lastEpisode = $this->executeRequest($sql);
         return $lastEpisode;
     }
