@@ -1,8 +1,9 @@
 <?php
 
-require_once 'Controller/EpisodesController';
-require_once 'Controller/EpisodeController';
-require_once 'View/ControllerViews';
+require_once 'Controller/HomeController.php';
+require_once 'Controller/EpisodesController.php';
+require_once 'Controller/EpisodeController.php';
+require_once 'View/ControllerViews.php';
 
 class Router
 {
@@ -12,9 +13,9 @@ class Router
 
     public function __construct()
     {
-        $this->homeControl = new HomeController;
-        $this->episodesControl = new EpisodesController;
-        $this->episodeControl = new EpisodeController;
+        $this->homeControl = new HomeController();
+        $this->episodesControl = new EpisodesController();
+        $this->episodeControl = new EpisodeController();
     }
     /**
      * Route la requète entrante et exécute l'action associée
@@ -33,7 +34,7 @@ class Router
                 elseif ($_GET['action'] == 'episode')
                 {
                     $episodeId = intval($this->getParameter($_GET, 'id'));
-                    if (episodeId > 0)
+                    if ($episodeId > 0)
                     {
                         $this->episodeControl->displayEpisode($episodeId);
                     }
@@ -46,13 +47,11 @@ class Router
                 {
                     throw new Exception('Action non valide');
                 }
-
             }
             else
             {
                 $this->homeControl->displayHome();
             }
-
         }
         catch (Exception $e) {
             $this->error($e->getMessage());
@@ -65,10 +64,10 @@ class Router
      * @param [string] $errorMessage
      * @return void
      */
-    public function error($errorMessage)
+    private function error($errorMessage)
     {
-        $view = new ControllerViews("Error");
-        $view->generate(array('errorMessage' => $erreorMessage));
+        $view = new ControllerViews("error");
+        $view->generate(array('errorMessage' => $errorMessage));
     }
 
     /**
@@ -78,7 +77,7 @@ class Router
      * @param [string] $name
      * @return void
      */
-    public function getParameter($array, $name)
+    private function getParameter($array, $name)
     {
         if (isset($array[$name]))
         {

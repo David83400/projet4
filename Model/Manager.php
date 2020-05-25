@@ -8,21 +8,22 @@ class Manager
     {
         if ($params == null)
         {
-            $result = $this->getDb()->query($sql);
+            $result = $this->getDb()->query($sql); // exécution directe
         }
         else
         {
-            $result = $this->getDb()->prepare($sql);
+            $result = $this->getDb()->prepare($sql); // requête préparée
             $result->execute($params);
         }
         return $result;
     }
 
-    private function getDb()
+    protected function getDb()
     {
-        if ($this->$db == null)
-        {
+        if ($this->db == null)
+        {  // Création de la connexion
             $this->db = new PDO('mysql:host=localhost;dbname=blogforteroche;charset=utf8', 'David', 'introuvable1967', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
+        return $this->db;
     }
 }

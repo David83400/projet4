@@ -6,18 +6,18 @@ class EpisodesManager extends Manager
 {
     public function getEpisodes()
     {
-        $sql = 'SELECT id, author, title, content, creationDate, modificationDate FROM posts ORDER BY id DESC';
+        $sql = 'SELECT id, author, title, content, creationDate, modificationDate FROM episodes ORDER BY id DESC';
         $episodes = $this->executeRequest($sql);
         return $episodes;
     }
 
     public function getEpisode($episodeId)
     {
-        $sql = 'SELECT id, author, title, content, creationDate, modificationDate FROM posts WHERE id = ?';
+        $sql = 'SELECT id, author, title, content, creationDate, modificationDate FROM episodes WHERE id = ?';
         $episode = $this->executeRequest($sql, array($episodeId));
         if ($episode->rowCount() > 0)
         {
-            return $episodes->fetch();
+            return $episode->fetch(); // Accès à la première ligne de résultat
         }
         else
         {
@@ -27,7 +27,7 @@ class EpisodesManager extends Manager
 
     public function getLastEpisode()
     {
-        $sql = 'SELECT id, author, title, content, creationDate, modificationDate FROM posts WHERE id = MAX(id)';
+        $sql = 'SELECT id, author, title, content, creationDate, modificationDate FROM episodes ORDER BY id DESC LIMIT 1';
         $lastEpisode = $this->executeRequest($sql);
         return $lastEpisode;
     }

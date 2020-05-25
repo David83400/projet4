@@ -1,3 +1,6 @@
 <?php
 
-echo 'salut';
+require 'Controller/Router.php';
+
+$router = new Router();
+$router->routerRequest();

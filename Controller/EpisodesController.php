@@ -23,7 +23,7 @@ class EpisodesController
     public function displayEpisodes()
     {
         $episodes = $this->episodes->getEpisodes();
-        $view = new ControllerViews("Episodes");
+        $view = new ControllerViews("episodes");
         $view->generate(array('episodes' => $episodes));
     }
 }

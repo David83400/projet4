@@ -1,5 +1,8 @@
 <?php
 
+require_once 'Model/EpisodesManager.php';
+require_once 'View/ControllerViews.php';
+
 class HomeController
 {
     private $lastEpisode;
@@ -12,7 +15,7 @@ class HomeController
     public function displayHome()
     {
         $lastEpisode = $this->lastEpisode->getLastEpisode();
-        $view = new ControllerViews("Home");
+        $view = new ControllerViews("home");
         $view->generate(array('lastEpisode' => $lastEpisode));
     }
 }

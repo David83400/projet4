@@ -1,11 +1,13 @@
 <?php
 
-require_once 'Model/EpisodesManager';
-require_once 'View/ControllerViews';
+require_once 'Model/EpisodesManager.php';
+require_once 'Model/CommentsManager.php';
+require_once 'View/ControllerViews.php';
 
-class EpisodesManager
+class EpisodeController
 {
     private $episode;
+    private $comments;
 
     /**
      * Undocumented function
@@ -13,6 +15,7 @@ class EpisodesManager
     public function __construct()
     {
         $this->episode = new EpisodesManager();
+        $this->comments = new CommentsManager();
     }
 
     /**
@@ -24,7 +27,8 @@ class EpisodesManager
     public function displayEpisode($episodeId)
     {
         $episode = $this->episode->getEpisode($episodeId);
-        $View = new ControllerView("Episode");
+        $comments = $this->comments->getComments($episodeId);
+        $view = new ControllerViews("episode");
         $view->generate(array('episode' => $episode));
     }
 }
