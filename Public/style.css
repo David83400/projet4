@@ -1,0 +1,621 @@
+/*  main styles */
+body
+{
+    background-color: #fff7ef;
+    margin: 0;
+    color: #272727;
+}
+
+h2
+{
+    font-size: 3em;
+}
+
+h3
+{
+    font-size: 2.2em;
+}
+
+p, a
+{
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    color: #272727;
+}
+
+a:hover
+{
+    text-decoration: none;
+    color: #FF5483 !important;
+}
+
+li
+{
+    list-style-type: none;
+}
+
+/*  header */
+.mainHeader
+{
+    background-color: #FFE0BF;
+    margin: 0;
+}
+
+.logo h1
+{
+    font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    color: #FF5483;
+}
+
+.logo, .socialIcons
+{
+    padding: 55px 0;
+}
+
+.socialIcons ul
+{
+    display: flex;
+    padding-top: 13px;
+}
+
+.socialIcons li
+{
+    margin-right: 35px;
+}
+
+.fab
+{
+    font-size: 1.7em;
+    color:  #688dd8;
+}
+
+.fab:hover
+{
+    color: #FF5483;
+}
+
+/*  nav */
+.navbar
+{
+    background-color: #5477bc;
+}
+
+.navbar a
+{
+    color: #ffffff !important;
+    margin-right: 5px;
+}
+
+.navbar a:hover, .navbar a:focus
+{
+    text-decoration: underline !important;
+}
+
+.navbar-collapse
+{
+    justify-content: center;
+    flex-grow: 0.7;
+}
+
+/*  slider */
+.slider
+{
+    padding-top: 40px;
+    background: radial-gradient(rgb(183, 183, 183), rgb(108 ,108, 108));
+    flex-wrap: wrap-reverse;
+}
+
+.blocImgAuthor
+{
+    margin-left: 35px;
+}
+
+.imgAuthor
+{
+    width: 349px;
+    height: 435px;
+}
+
+.quoteNews
+{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 0 35px;
+}
+
+.imgBilletSimple
+{
+    width: 320px;
+    height: 435px;
+}
+
+
+blockquote .fas
+{
+    color: #FF5483;
+}
+
+blockquote h2
+{
+    font-size: 2.1em;
+    line-height: 1.4em;
+}
+
+/*  first section */
+.presentation 
+{
+    background-color:#8ba9e5;
+    padding: 60px 0;
+}
+
+.introduction
+{
+    background-color: #FFE0BF;
+    border-radius: 20px;
+    box-shadow: 4px 4px 8px #272727;
+}
+
+.introduction p
+{
+    font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
+    font-size: 1.7em;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* section last episode */
+#lastEpisode
+{
+    background-color: #fff7ef;
+    margin: 80px 0;
+}
+.book
+{
+    position: relative;
+    display: flex;
+    height: 500px;
+    transform-style: preserve-3d;
+    perspective: 4000px;
+    perspective-origin: 0% 50%;
+    cursor: pointer;
+}
+
+.front
+{
+    background: #4e2802;
+    z-index: 1;
+}
+
+.back
+{
+    background: rgb(66, 66, 117);
+}
+
+.title
+{
+    width: 100%;
+    position: relative;
+    top: 40%;
+}
+
+.title h2
+{
+    font-size: 3em;
+    text-align: center;
+    color: white;
+}
+
+.front, .back, .layer1, .layer2, .layer3, .layer4, .layer-text, .layer-text-2, .layer5, .layer6, .layer7, .layer8
+{
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 400px;
+    height: 100%;
+    top: 0; 
+    left: 0;
+    transform-origin: left center;
+    transition: transform 1s ease-in-out, box-shadow .85s ease-in-out;
+}
+
+.front, .back, .layer1, .layer2, .layer3, .layer4, .layer-text, .layer-text-2, .layer5, .layer6, .layer7, .layer8
+{
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.layer1, .layer2, .layer3, .layer4, .layer-text, .layer-text-2, .layer5, .layer6, .layer7, .layer8
+{ 
+    background: #efefef;
+}
+
+.layer-text-2
+{
+    border-left: 2px solid rgba(0, 0, 0, .1);
+}
+
+.book .page-text
+{
+    transform: rotateY(180deg);
+    box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+}
+
+.book:hover .front
+{
+    transform: rotateY(-180deg) scale(1.1);
+    box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+}
+
+.book:hover .layer1
+{
+    transform: rotateY(-175deg) scale(1.1);
+    box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+}
+
+.book:hover .layer2
+{
+    transform: rotateY(-170deg) scale(1.1);
+    box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+}
+
+.book:hover .layer3
+{
+    transform: rotateY(-165deg) scale(1.1);
+    box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+}
+
+.book:hover .layer4
+{
+    transform: rotateY(-160deg) scale(1.1);
+    box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+}
+
+.book:hover .layer-text
+{
+    transform: rotateY(-160deg) scale(1.1);
+    box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+}
+
+.book:hover .layer-text-2
+{
+    transform: rotateY(-25deg) scale(1.1);
+    box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+}
+
+.book:hover .layer5
+{
+    transform: rotateY(-20deg) scale(1.1);
+    box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+}
+
+.book:hover .layer6
+{
+    transform: rotateY(-15deg) scale(1.1);
+    box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+}
+
+.book:hover .layer7
+{
+    transform: rotateY(-10deg) scale(1.1);
+    box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+}
+
+.book:hover .layer8
+{
+    transform: rotateY(-5deg) scale(1.1);
+    box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+}
+
+.book:hover .back
+{
+    transform: rotateY(0deg) scale(1.1);
+}
+
+.page-text, .page-text-2
+{
+    width: 100%;
+    height: 100%;
+    padding: 25px 10px;
+}
+
+.page-text
+{
+    text-align: center;
+}
+
+.page-text h3
+{
+    font-size: 3em;
+    margin-top: 60px;
+}
+
+.page-text p
+{
+    padding: 60px;
+    line-height: 2em;
+}
+
+.page-text-2
+{
+    text-align: justify;
+}
+
+.page-text-2 a
+{
+    color: #FF5483;
+}
+
+.page-text-2 a:hover
+{
+    color: blue;
+}
+
+#lastEpisodeResponsive
+{
+    display: none;
+}
+
+#lastEpisodeResponsive .couverture
+{
+    padding-top: 60px;
+}
+
+#lastEpisodeResponsive .no-gutters
+{
+    background-color: #fff7ef;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+#lastEpisodeResponsive .card-title
+{
+    margin: 15px 0 30px 0;
+    text-align: justify;
+}
+
+#lastEpisodeResponsive .card-text
+{
+    text-align: justify;
+}
+
+/* section last novels*/
+#lastNovels
+{
+    background-color: #8ba9e5;
+    padding: 40px 0 0 0;
+}
+
+#lastNovels h2
+{
+    text-align: center;
+}
+
+#lastNovels .col
+{
+    margin: 40px 0;
+}
+
+#lastNovels .row
+{
+    padding: 0 5px;
+    justify-content: center;
+}
+
+#lastNovels .card
+{
+    align-items: center;
+    background-color: #8ba9e5;
+    border: 1px #8ba9e5 solid;
+}
+
+#lastNovels img
+{
+    width: 300px;
+    height: 375px;
+}
+
+#lastNovels .card-body
+{
+    background-color: white;
+    margin-top: 15px;
+    border-radius: 10px;
+    box-shadow:  0 1em 3em 0 rgba(0, 0, 0, .6);
+}
+
+#lastNovels .imageResponsive
+{
+    display: none;
+}
+
+/* social icons bottom */
+.socialIconsBottom, footer
+{
+    background-color: #FFE0BF;
+}
+
+.socialIconsBottom
+{
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.socialIconsBottom li
+{
+    margin-right: 35px;
+    cursor: pointer;
+}
+
+.socialIconsBottom, footer ul
+{
+    margin: 0;
+}
+
+footer
+{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+footer ul
+{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+footer li
+{
+    margin-right: 30px;
+}
+
+footer p
+{
+    padding: 10px 0;
+}
+
+/* section episodes list */
+#episodesList
+{
+    margin-top: 40px;
+}
+
+#episodesList a
+{
+    color: #FF5483;
+}
+
+#episodesList img
+{
+    margin: 20px 0;
+    width: 300px;
+    height: 375px;
+}
+
+@media all and (max-width: 1199px)
+{
+    #lastNovels .imageResponsive
+    {
+        display: initial;
+    }
+}
+
+@media all and (max-width: 991px)
+{
+    .logo
+    {
+        padding-bottom: 10px;
+    }
+
+    .socialIcons
+    {
+        padding-top: 10px;
+    }
+
+    .slider{
+        padding-bottom: 40px;
+    }
+
+    .blocImgAuthor
+    {
+        display: none;
+    }
+
+    .book
+    {
+        height: 400px;
+    }
+
+    .front, .back, .layer1, .layer2, .layer3, .layer4, .layer-text, .layer-text-2, .layer5, .layer6, .layer7, .layer8
+    {
+        width: 300px;
+        height: 100%;
+    }
+
+    .page-text, .page-text-2
+    {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    }
+
+    .page-text h3
+    {
+        font-size: 2em;
+        margin-top: 50px;
+    }
+
+    .page-text p, .page-text-2 p
+    {
+        font-size: 1em;
+        line-height: 1.4em;
+    }
+}
+
+@media all and (max-width: 767px)
+{
+    .quoteNews
+    {
+        padding: 55px 0;
+    }
+
+    #lastEpisode
+    {
+        display: none;
+    }
+
+    #lastEpisodeResponsive
+    {
+        display: initial;
+    }
+
+    #lastNovels .imageResponsive
+    {
+        display: none;
+    }
+}
+
+@media all and (max-width: 576px)
+{
+    .logo h1 
+    {
+        text-align: center;
+    }
+
+    footer ul
+    {
+        justify-content: center;
+    }
+
+    footer p{
+        text-align: center;
+    }
+}
+
+@media all and (max-width: 480px)
+{
+    .blocBilletSimple
+    {
+        margin-left: 10px;
+        padding-right: 0;
+    }
+
+    .imgBilletSimple
+    {
+        width: 300px;
+        height: 375px;
+    }
+
+    #episodesList img
+{
+    margin: 20px 0;
+    width: 280px;
+    height: 349px;
+}
+}
