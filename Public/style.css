@@ -498,6 +498,49 @@ footer p
     height: 375px;
 }
 
+/* section episode */
+#episode
+{
+    margin-top: 15px;
+}
+
+#episode header
+{
+    margin: 10px 0 40px;
+}
+
+#episode .rounded-circle
+{
+    margin: 8px 20px 20px 0;
+}
+
+#episode .content
+{
+    text-align: justify;
+}
+
+/* section commentaires */
+#comments
+{
+    margin-bottom: 40px;
+}
+
+#comments h4
+{
+    margin: 10px 0 20px 0;
+}
+
+#comments span
+{
+    font-weight: bold;
+}
+
+#comments #textComment
+{
+    width: 350px;
+    height: 250px;
+}
+
 @media all and (max-width: 1199px)
 {
     #lastNovels .imageResponsive
@@ -613,9 +656,15 @@ footer p
     }
 
     #episodesList img
-{
-    margin: 20px 0;
-    width: 280px;
-    height: 349px;
-}
+    {
+        margin: 20px 0;
+        width: 280px;
+        height: 349px;
+    }
+
+    #comments #textComment
+    {
+        width: 280px;
+        height: 200px;
+    }
 }
