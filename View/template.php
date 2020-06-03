@@ -35,7 +35,7 @@
                         <a class="nav-link" href="http://localhost/blogJeanForteroche/projet4/index.php"><i class="fas fa-home"></i><span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">L'auteur</a>
+                        <a class="nav-link" href="http://localhost/blogJeanForteroche/projet4/index.php?action=author">L'auteur</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Les romans</a>

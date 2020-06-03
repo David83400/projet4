@@ -498,25 +498,31 @@ footer p
     height: 375px;
 }
 
-/* section episode */
-#episode
+/* section episode et author */
+#episode, #author
 {
     margin-top: 15px;
 }
 
-#episode header
+#episode header, #author header
 {
     margin: 10px 0 40px;
 }
 
-#episode .rounded-circle
+#episode .rounded-circle,
+#author .rounded-circle 
 {
     margin: 8px 20px 20px 0;
 }
 
-#episode .content
+#episode .content, #author .content
 {
     text-align: justify;
+}
+
+#author
+{
+    margin-bottom: 40px;
 }
 
 /* section commentaires */

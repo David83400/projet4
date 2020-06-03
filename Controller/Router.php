@@ -5,23 +5,27 @@ namespace David\Projet4\Controller;
 require_once 'Controller/Frontend/HomeController.php';
 require_once 'Controller/Frontend/EpisodesController.php';
 require_once 'Controller/Frontend/EpisodeController.php';
+require_once 'Controller/Frontend/AuthorController.php';
 require_once 'View/ControllerViews.php';
 
 use David\Projet4\Controller\Frontend\HomeController;
 use David\Projet4\Controller\Frontend\EpisodesController;
 use David\Projet4\Controller\Frontend\EpisodeController;
+use David\Projet4\Controller\Frontend\AuthorController;
 
 class Router
 {
     private $homeControl;
     private $episodesControl;
     private $episodeControl;
+    private $authorControl;
 
     public function __construct()
     {
         $this->homeControl = new HomeController();
         $this->episodesControl = new EpisodesController();
         $this->episodeControl = new EpisodeController();
+        $this->authorControl = new AuthorController();
     }
     
     /**
@@ -34,7 +38,11 @@ class Router
         try {
             if (isset($_GET['action']))
             {
-                if ($_GET['action'] == 'episodes')
+                if ($_GET['action'] == 'author')
+                {
+                    $this->authorControl->displayAuthor();
+                }
+                elseif ($_GET['action'] == 'episodes')
                 {
                     $this->episodesControl->displayEpisodes();
                 }
