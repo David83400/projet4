@@ -37,7 +37,7 @@ abstract class Manager
     {
         if ($this->db == null)
         {  // Création de la connexion
-            $this->db = new \PDO('mysql:host=localhost;dbname=blogforteroche;charset=utf8', 'David', 'introuvable1967');
+            $this->db = new \PDO('mysql:host=localhost;dbname=blogforteroche;charset=utf8', 'David', 'introuvable1967', array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
         }
         return $this->db;
     }

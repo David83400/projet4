@@ -7,7 +7,7 @@ require_once 'Model/Manager.php';
 class EpisodesManager extends Manager
 {
     /**
-     * Return the list episodes list
+     * Return the episodes list
      *
      * @return void
      */
@@ -34,7 +34,7 @@ class EpisodesManager extends Manager
         }
         else
         {
-            throw new exception ("Aucun épisode ne correspond à l'identifiant '$episodeId'");
+            throw new \exception ("Aucun épisode ne correspond à l'identifiant '$episodeId'");
         }
     }
 

@@ -12,16 +12,16 @@ class CommentsManager extends Manager
      * @param [int] $episodeId
      * @return void
      */
-    public function getComments($episodeId)
+    public function getEpisodeComments($episodeId)
     {
-        $sql = 'SELECT id, author, comment, DATE_FORMAT(commentDate, \'%W %d %M %Y à %H h %i min %s s\') AS commentFrDate FROM comments WHERE episodeId=? ORDER BY id DESC';
+        $sql = 'SELECT id, author, comment, episodeId, DATE_FORMAT(commentDate, \'%W %d %M %Y à %H h %i min %s s\') AS commentFrDate FROM episodeComments WHERE episodeId=? ORDER BY id DESC';
         $comments = $this->executeRequest($sql, array($episodeId));
         return $comments;
     }
 
-    public function postComment($author, $comment, $episodeId)
+    public function postEpisodeComment($author, $comment, $episodeId)
     {
-        $sql = 'INSERT INTO comments(author, comment, episodeId, commentDate) VALUES(?, ?, ?, NOW())';
+        $sql = 'INSERT INTO episodeComments(author, comment, episodeId, commentDate) VALUES(?, ?, ?, NOW())';
         
         $this->executeRequest($sql, array($author, $comment, $episodeId));
     }

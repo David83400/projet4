@@ -16,6 +16,11 @@ h3
     font-size: 2.2em;
 }
 
+h4
+{
+    font-size: 1.7em;
+}
+
 p, a
 {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
@@ -26,7 +31,7 @@ p, a
 a:hover
 {
     text-decoration: none;
-    color: #FF5483 !important;
+    color: #FF5483;
 }
 
 li
@@ -351,7 +356,7 @@ blockquote h2
 
 .page-text-2 a:hover
 {
-    color: blue;
+    text-decoration: underline;
 }
 
 #lastEpisodeResponsive
@@ -426,6 +431,16 @@ blockquote h2
     box-shadow:  0 1em 3em 0 rgba(0, 0, 0, .6);
 }
 
+#lastNovels a
+{
+    color: #FF5483;
+}
+
+#lastNovels a:hover
+{
+    text-decoration: underline;
+}
+
 #lastNovels .imageResponsive
 {
     display: none;
@@ -480,6 +495,33 @@ footer p
     padding: 10px 0;
 }
 
+/* section books */
+#booksList
+{
+    margin: 60px 0 20px 0;
+}
+
+#booksList .card
+{
+    padding-top: 20px;
+}
+
+#booksList img
+{
+    width: 300px;
+    height: 375px;
+}
+
+#booksList .card-body a
+{
+    color: #FF5483;
+}
+
+#booksList .card-body a:hover
+{
+    text-decoration: underline;
+}
+
 /* section episodes list */
 #episodesList
 {
@@ -525,7 +567,7 @@ footer p
     margin-bottom: 40px;
 }
 
-/* section commentaires */
+/* section commentaires episodes*/
 #comments
 {
     margin-bottom: 40px;
@@ -545,6 +587,13 @@ footer p
 {
     width: 350px;
     height: 250px;
+}
+
+/* error page */
+#error
+{
+    height: 500px;
+    padding: 220px 20px;
 }
 
 @media all and (max-width: 1199px)

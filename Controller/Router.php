@@ -3,19 +3,23 @@
 namespace David\Projet4\Controller;
 
 require_once 'Controller/Frontend/HomeController.php';
+require_once 'Controller/Frontend/BooksController.php';
 require_once 'Controller/Frontend/EpisodesController.php';
 require_once 'Controller/Frontend/EpisodeController.php';
 require_once 'Controller/Frontend/AuthorController.php';
 require_once 'View/ControllerViews.php';
 
 use David\Projet4\Controller\Frontend\HomeController;
+use David\Projet4\Controller\Frontend\BooksController;
 use David\Projet4\Controller\Frontend\EpisodesController;
 use David\Projet4\Controller\Frontend\EpisodeController;
 use David\Projet4\Controller\Frontend\AuthorController;
+use David\Projet4\View\ControllerViews;
 
 class Router
 {
     private $homeControl;
+    private $booksControl;
     private $episodesControl;
     private $episodeControl;
     private $authorControl;
@@ -23,6 +27,7 @@ class Router
     public function __construct()
     {
         $this->homeControl = new HomeController();
+        $this->booksControl = new BooksController();
         $this->episodesControl = new EpisodesController();
         $this->episodeControl = new EpisodeController();
         $this->authorControl = new AuthorController();
@@ -35,12 +40,17 @@ class Router
      */
     public function routerRequest()
     {
-        try {
+        try 
+        {
             if (isset($_GET['action']))
             {
                 if ($_GET['action'] == 'author')
                 {
                     $this->authorControl->displayAuthor();
+                }
+                elseif ($_GET['action'] == 'books')
+                {
+                    $this->booksControl->displayBooks();
                 }
                 elseif ($_GET['action'] == 'episodes')
                 {
@@ -55,7 +65,7 @@ class Router
                     }
                     else
                     {
-                        throw new Exception('Identifiant d\'épisode invalide');
+                        throw new \Exception('Identifiant d\'épisode invalide');
                     }
                 }
                 elseif ($_GET['action'] == 'comment')
@@ -63,11 +73,11 @@ class Router
                     $author = $this->getParameter($_POST, 'author');
                     $comment = $this->getParameter($_POST, 'comment');
                     $episodeId = $this->getParameter($_POST, 'id');
-                    $this->episodeControl->addComment($author, $comment, $episodeId);
+                    $this->episodeControl->addEpisodeComment($author, $comment, $episodeId);
                 }
                 else
                 {
-                    throw new Exception('Action non valide');
+                    throw new \Exception('Action non valide');
                 }
             }
             else
@@ -75,7 +85,8 @@ class Router
                 $this->homeControl->displayHome();
             }
         }
-        catch (Exception $e) {
+        catch (\Exception $e)
+        {
             $this->error($e->getMessage());
         }
     }
@@ -107,7 +118,7 @@ class Router
         }
         else
         {
-            throw new Exception("Paramètre '$name' absent");
-        }
+            throw new \Exception("Paramètre '$name' absent");
+        }  
     }
 }

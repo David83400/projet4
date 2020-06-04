@@ -10,6 +10,11 @@ class AuthorController
 {
     private $author;
 
+    /**
+     * display the author page
+     *
+     * @return void
+     */
     public function displayAuthor()
     {
         $view = new ControllerViews("Frontend/author");

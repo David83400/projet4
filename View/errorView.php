@@ -1,3 +1,5 @@
-<?php $title = 'Jean Forteroche | Blog officiel' ?>
+<?php $this->title = 'Jean Forteroche | Blog officiel'; ?>
 
-<p>Une erreur est survenue : <?= $errorMessage ?></p>
+<section id="error">
+    <h1>Une erreur est survenue : <?= $errorMessage ?></h1>
+</section>

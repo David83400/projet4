@@ -39,7 +39,7 @@
           <div class="col-12">
             <form method="post" action="index.php?action=comment">
               <div class="form-group">
-                <input id="pseudo" name="pseudo" type="text" placeholder="Votre pseudo" required />
+                <input id="pseudo" name="author" type="text" placeholder="Votre pseudo" required />
               </div>
               <div class="form-group">
                 <textarea id="textComment" name="comment" placeholder="Votre commentaire" required></textarea>

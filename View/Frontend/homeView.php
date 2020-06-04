@@ -80,59 +80,16 @@
 <section id="lastNovels">
   <h2>Mes derniers récits</h2>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+    <?php foreach ($lastBooks as $lastBook): ?>
     <div class="col">
       <div class="card h-100">
-        <img src="Public/images/aLaRechercheDuBonheur.png" class="card-img-top" alt="livre de Jean Forteroche">
+        <img src="<?= htmlspecialchars($lastBook['bookImage']) ?>" class="card-img-top" alt="livre de Jean Forteroche">
         <div class="card-body">
-          <h5 class="card-title">A la Recherche du bonheur</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <h4 class="card-title"><?= htmlspecialchars($lastBook['title']) ?></h4>
+          <p class="card-text"><?= htmlspecialchars(substr($lastBook['content'], 0, 100)) ?> ... <a href="<?= 'index.php?action=episode&id=' . htmlspecialchars($lastBook['id']) ?>">découvrir</a></p>
         </div>
       </div>
     </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="Public/images/elleALaPecheMamie.png" class="card-img-top" alt="livre de Jean Forteroche">
-        <div class="card-body">
-          <h5 class="card-title">Elle a la pêche mamie</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="Public/images/elleEstDailleurs.png" class="card-img-top" alt="livre de Jean Forteroche">
-        <div class="card-body">
-          <h5 class="card-title">Elle est d'ailleurs</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="Public/images/jeLaimeAMourir.png" class="card-img-top" alt="livre de Jean Forteroche">
-        <div class="card-body">
-          <h5 class="card-title">Je l'aime à mourir</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col imageResponsive">
-      <div class="card h-100">
-        <img src="Public/images/jeLuiDiraiDesMotsBleus.png" class="card-img-top" alt="livre de Jean Forteroche">
-        <div class="card-body">
-          <h5 class="card-title">Elle est d'ailleurs</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col imageResponsive">
-      <div class="card h-100">
-        <img src="Public/images/jiraiTeDecrocherLaLune.png" class="card-img-top" alt="livre de Jean Forteroche">
-        <div class="card-body">
-          <h5 class="card-title">Je l'aime à mourir</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
+    <?php endforeach; ?>
   </div>
 </section>
