@@ -34,7 +34,7 @@ class BooksManager extends Manager
         }
         else
         {
-            throw new \exception ("Aucun épisode ne correspond à l'identifiant '$bookId'");
+            throw new \exception ("Aucun roman ne correspond à l'identifiant '$bookId'");
         }
     }
 

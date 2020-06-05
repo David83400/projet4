@@ -13,12 +13,12 @@ use David\Projet4\View\ControllerViews;
 class EpisodeController
 {
     private $episode;
-    private $comments;
+    private $episodeComments;
 
     public function __construct()
     {
         $this->episode = new EpisodesManager();
-        $this->comments = new CommentsManager();
+        $this->episodeComments = new CommentsManager();
     }
 
     /**
@@ -30,23 +30,23 @@ class EpisodeController
     public function displayEpisode($episodeId)
     {
         $episode = $this->episode->getEpisode($episodeId);
-        $comments = $this->comments->getEpisodeComments($episodeId);
+        $episodeComments = $this->episodeComments->getEpisodeComments($episodeId);
         $view = new ControllerViews("Frontend/episode");
-        $view->generate(array('episode' => $episode, 'comments' => $comments));
+        $view->generate(array('episode' => $episode, 'episodeComments' => $episodeComments));
     }
 
     /**
-     * Add a comment in an episode
+     * Add a comment associated with an episode
      *
      * @param [string] $author
-     * @param [string] $comment
+     * @param [string] $episodeComment
      * @param [int] $episodeId
      * @return void
      */
-    public function addEpisodeComment($author, $comment, $episodeId)
+    public function addEpisodeComment($author, $episodeComment, $episodeId)
     {
         // Sauvegarde du commentaire
-        $this->comments->postEpisodeComment($author, $comment, $episodeId);
+        $this->episodeComments->postEpisodeComment($author, $episodeComment, $episodeId);
         // Actualisation de l'affichage du billet
         $this->displayEpisode($episodeId);
     }

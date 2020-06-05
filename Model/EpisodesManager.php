@@ -13,7 +13,7 @@ class EpisodesManager extends Manager
      */
     public function getEpisodes()
     {
-        $sql = 'SELECT id, author, title, content, DATE_FORMAT(creationDate, \'%W %d %M %Y\') AS creationFrDate, DATE_FORMAT(modificationDate, \'%d/%m/%y\') AS modificationFrdate FROM episodes ORDER BY id DESC';
+        $sql = 'SELECT id, author, episodeImage, title, content, DATE_FORMAT(creationDate, \'%W %d %M %Y\') AS creationFrDate, DATE_FORMAT(modificationDate, \'%d/%m/%y\') AS modificationFrdate FROM episodes ORDER BY id DESC';
         $episodes = $this->executeRequest($sql);
         return $episodes;
     }
@@ -26,7 +26,7 @@ class EpisodesManager extends Manager
      */
     public function getEpisode($episodeId)
     {
-        $sql = 'SELECT id, author, title, content, DATE_FORMAT(creationDate, \'%W %d %M %Y\') AS creationFrDate, DATE_FORMAT(modificationDate, \'%d/%m/%y\') AS modificationFrDate FROM episodes WHERE id = ?';
+        $sql = 'SELECT id, author, episodeImage, title, content, DATE_FORMAT(creationDate, \'%W %d %M %Y\') AS creationFrDate, DATE_FORMAT(modificationDate, \'%d/%m/%y\') AS modificationFrDate FROM episodes WHERE id = ?';
         $episode = $this->executeRequest($sql, array($episodeId));
         if ($episode->rowCount() > 0)
         {

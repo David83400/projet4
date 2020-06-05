@@ -86,7 +86,7 @@
         <img src="<?= htmlspecialchars($lastBook['bookImage']) ?>" class="card-img-top" alt="livre de Jean Forteroche">
         <div class="card-body">
           <h4 class="card-title"><?= htmlspecialchars($lastBook['title']) ?></h4>
-          <p class="card-text"><?= htmlspecialchars(substr($lastBook['content'], 0, 100)) ?> ... <a href="<?= 'index.php?action=episode&id=' . htmlspecialchars($lastBook['id']) ?>">découvrir</a></p>
+          <p class="card-text"><?= htmlspecialchars(substr($lastBook['content'], 0, 100)) ?> ... <a href="<?= 'index.php?action=book&id=' . htmlspecialchars($lastBook['id']) ?>">découvrir</a></p>
         </div>
       </div>
     </div>

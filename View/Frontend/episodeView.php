@@ -37,16 +37,16 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <form method="post" action="index.php?action=comment">
+            <form method="post" action="index.php?action=episodeComment">
               <div class="form-group">
                 <input id="pseudo" name="author" type="text" placeholder="Votre pseudo" required />
               </div>
               <div class="form-group">
-                <textarea id="textComment" name="comment" placeholder="Votre commentaire" required></textarea>
+                <textarea id="textComment" name="episodeComment" placeholder="Votre commentaire" required></textarea>
               </div>
               <div class="form-group">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($episode['id']) ?>" />
-                <input type="submit" class="btn btn-primary" value="Commenter" />
+                <input type="submit" class="btn btn-outline-primary" value="Commenter" />
               </div>
             </form>
           </div>
@@ -64,9 +64,9 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <?php foreach ($comments as $comment): ?>
-              <p><span><?= htmlspecialchars($comment['author']) ?> :</span> Le <?= htmlspecialchars($comment['commentFrDate']) ?></p>
-              <p><?= htmlspecialchars($comment['comment']) ?></p>
+            <?php foreach ($episodeComments as $episodeComment): ?>
+              <p><span><?= htmlspecialchars($episodeComment['author']) ?> :</span> Le <?= htmlspecialchars($episodeComment['commentFrDate']) ?></p>
+              <p><?= htmlspecialchars($episodeComment['episodeComment']) ?></p>
             <?php endforeach; ?>
           </div>
         </div>

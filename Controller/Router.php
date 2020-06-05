@@ -4,6 +4,7 @@ namespace David\Projet4\Controller;
 
 require_once 'Controller/Frontend/HomeController.php';
 require_once 'Controller/Frontend/BooksController.php';
+require_once 'Controller/Frontend/BookController.php';
 require_once 'Controller/Frontend/EpisodesController.php';
 require_once 'Controller/Frontend/EpisodeController.php';
 require_once 'Controller/Frontend/AuthorController.php';
@@ -11,6 +12,7 @@ require_once 'View/ControllerViews.php';
 
 use David\Projet4\Controller\Frontend\HomeController;
 use David\Projet4\Controller\Frontend\BooksController;
+use David\Projet4\Controller\Frontend\BookController;
 use David\Projet4\Controller\Frontend\EpisodesController;
 use David\Projet4\Controller\Frontend\EpisodeController;
 use David\Projet4\Controller\Frontend\AuthorController;
@@ -20,6 +22,7 @@ class Router
 {
     private $homeControl;
     private $booksControl;
+    private $bookControl;
     private $episodesControl;
     private $episodeControl;
     private $authorControl;
@@ -28,6 +31,7 @@ class Router
     {
         $this->homeControl = new HomeController();
         $this->booksControl = new BooksController();
+        $this->bookControl = new BookController();
         $this->episodesControl = new EpisodesController();
         $this->episodeControl = new EpisodeController();
         $this->authorControl = new AuthorController();
@@ -52,6 +56,25 @@ class Router
                 {
                     $this->booksControl->displayBooks();
                 }
+                elseif ($_GET['action'] == 'book')
+                {
+                    $bookId = intval($this->getParameter($_GET, 'id'));
+                    if ($bookId > 0)
+                    {
+                        $this->bookControl->displayBook($bookId);
+                    }
+                    else
+                    {
+                        throw new \Exception('Identifiant de roman invalide');
+                    }
+                }
+                elseif ($_GET['action'] == 'bookComment')
+                {
+                    $author = $this->getParameter($_POST, 'author');
+                    $bookComment = $this->getParameter($_POST, 'bookComment');
+                    $bookId = $this->getParameter($_POST, 'id');
+                    $this->bookControl->addBookComment($author, $bookComment, $bookId);
+                }
                 elseif ($_GET['action'] == 'episodes')
                 {
                     $this->episodesControl->displayEpisodes();
@@ -68,12 +91,12 @@ class Router
                         throw new \Exception('Identifiant d\'épisode invalide');
                     }
                 }
-                elseif ($_GET['action'] == 'comment')
+                elseif ($_GET['action'] == 'episodeComment')
                 {
                     $author = $this->getParameter($_POST, 'author');
-                    $comment = $this->getParameter($_POST, 'comment');
+                    $episodeComment = $this->getParameter($_POST, 'episodeComment');
                     $episodeId = $this->getParameter($_POST, 'id');
-                    $this->episodeControl->addEpisodeComment($author, $comment, $episodeId);
+                    $this->episodeControl->addEpisodeComment($author, $episodeComment, $episodeId);
                 }
                 else
                 {
