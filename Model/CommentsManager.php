@@ -30,7 +30,6 @@ class CommentsManager extends Manager
     public function postEpisodeComment($author, $episodeComment, $episodeId)
     {
         $sql = 'INSERT INTO episodeComments(author, episodeComment, episodeId, commentDate) VALUES(?, ?, ?, NOW())';
-        
         $this->executeRequest($sql, array($author, $episodeComment, $episodeId));
     }
 
@@ -58,7 +57,6 @@ class CommentsManager extends Manager
     public function postBookComment($author, $bookComment, $bookId)
     {
         $sql = 'INSERT INTO bookComments(author, bookComment, bookId, commentDate) VALUES(?, ?, ?, NOW())';
-        
         $this->executeRequest($sql, array($author, $bookComment, $bookId));
     }
 }

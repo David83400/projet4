@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php $this->title = 'Jean Forteroche | Les romans' ?>
 
 <section id="booksList">

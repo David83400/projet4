@@ -559,6 +559,13 @@ footer p
     margin: 40px 15px 20px 0;
 }
 
+/* section comments books */
+#commentsBooks #textCommentBook
+{
+    width: 350px;
+    height: 250px;
+}
+
 /* section episodes list */
 #episodesList
 {
@@ -622,10 +629,38 @@ footer p
     font-weight: bold;
 }
 
-#comments #textComment
+#commentsEpisodes #textCommentEpisode
 {
     width: 350px;
     height: 250px;
+}
+
+/* connexion page */
+#connexion
+{
+    margin: 80px 0;
+}
+
+#connexion .connect, #connexion .create
+{
+    border: 1px rgba(0, 0, 0, .2) solid;
+    border-radius: 8px;
+    box-shadow:  0 1em 3em 0 rgba(0, 0, 0, .1);
+}
+
+#connexion .connect
+{
+    margin-right: 20px;
+}
+
+#connexion .create
+{
+    margin-left: 20px;
+}
+
+#connexion h3
+{
+    margin: 20px 0;
 }
 
 /* error page */
@@ -692,6 +727,16 @@ footer p
     {
         font-size: 1em;
         line-height: 1.4em;
+    }
+
+    #connexion .connect
+    {
+        margin-bottom: 60px;
+    }
+
+    #connexion .create
+    {
+        margin: auto;
     }
 }
 

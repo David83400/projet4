@@ -25,8 +25,10 @@ class ControllerViews
     {
         //génération de la partie spécifique de la vue
         $content = $this->generateFile($this->file, $data);
+        $navbar = $this->generateFile("View/Frontend/navbar.php", $data);
+        $footer = $this->generateFile("View/Frontend/footer.php", $data);
         // génération du template commun utilisant la partie spécifique
-        $view = $this->generateFile('View/template.php', array('title' => $this->title, 'content' => $content));
+        $view = $this->generateFile('View/Frontend/template.php', array('title' => $this->title, 'navbar' => $navbar, 'content' => $content, 'footer' => $footer));
         // renvoi de la view au navigateur
         echo $view;
     }

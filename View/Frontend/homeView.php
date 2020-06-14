@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php $this->title = 'Jean Forteroche | Blog officiel' ?>
 
 <section>
@@ -93,3 +95,4 @@
     <?php endforeach; ?>
   </div>
 </section>
+

@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php $this->title = 'Jean Forteroche | ' . htmlspecialchars($episode['title']) ?>
 
 <div class="container">
@@ -25,32 +27,52 @@
     </article>
   </section>
   <hr />
-  <section id="comments">
+  <section id="commentsEpisodes">
     <div class="row">
       <div class="col-12">
         <div class="row">
           <div class="col-12">
             <header>
               <h4>Laissez votre commentaire.</h4>
-            </header>
+              <?php
+                if (isset($_SESSION['userPseudo'])) {
+              ?>
+                </header>
+              <?php
+              }
+              else
+              {
+              ?>
+                <p>Pour laisser un commentaire, connectez vous à votre compte ou créez en un : <a href="index.php?action=connexion">Je crée mon compte.</a></p>
+                </header>
+              <?php
+              }
+              ?>
           </div>
         </div>
-        <div class="row">
-          <div class="col-12">
-            <form method="post" action="index.php?action=episodeComment">
-              <div class="form-group">
-                <input id="pseudo" name="author" type="text" placeholder="Votre pseudo" required />
-              </div>
-              <div class="form-group">
-                <textarea id="textComment" name="episodeComment" placeholder="Votre commentaire" required></textarea>
-              </div>
-              <div class="form-group">
-                <input type="hidden" name="id" value="<?= htmlspecialchars($episode['id']) ?>" />
-                <input type="submit" class="btn btn-outline-primary" value="Commenter" />
-              </div>
-            </form>
+        <?php
+        if (isset($_SESSION['userPseudo']))
+        {
+        ?>
+          <div class="row">
+            <div class="col-12">
+              <form method="post" action="index.php?action=episodeComment">
+                <div class="form-group">
+                  <input id="pseudoEpisode" name="author" type="text" placeholder="Votre pseudo" required />
+                </div>
+                <div class="form-group">
+                  <textarea id="textCommentEpisode" name="episodeComment" placeholder="Votre commentaire" required></textarea>
+                </div>
+                <div class="form-group">
+                  <input type="hidden" name="id" value="<?= htmlspecialchars($episode['id']) ?>" />
+                  <input type="submit" class="btn btn-outline-primary" value="Commenter" />
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
+        <?php
+        }
+        ?>
       </div>
     </div>
     <div class="row">
