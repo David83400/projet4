@@ -43,7 +43,7 @@ class ConnexionManager extends Manager
      */
     public function compareUser($pseudo, $pass)
     {
-        $sql = 'SELECT id, pseudo, email, isAdmin, inscriptionDate FROM users WHERE pseudo = ? AND pass = ?';
+        $sql = 'SELECT id, pseudo, email, pass, isAdmin, DATE_FORMAT(inscriptionDate, \'%W %d %M %Y\') AS inscriptionFrDate FROM users WHERE pseudo = ? AND pass = ?';
         $req = $this->executeRequest($sql, array($pseudo, $pass));
         $userInfo = $req->fetch();
         return $userInfo;

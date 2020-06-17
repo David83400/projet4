@@ -87,15 +87,27 @@ li
     background-color: #5477bc;
 }
 
-.navbar a
+.navbar .nav-item a,.navbar .connexion a, .navbar .dropdown .btn
 {
     color: #ffffff !important;
     margin-right: 5px;
 }
 
-.navbar a:hover, .navbar a:focus
+.navbar a:hover, .navbar .dropdown .btn:hover
 {
     text-decoration: underline !important;
+}
+
+.navbar .btn, .navbar .dropdown .btn
+{
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+}
+
+.navbar .dropdown-item
+{
+    font-size: 1.1em;
+    color: #272727;
 }
 
 .navbar-collapse
@@ -663,6 +675,34 @@ footer p
     margin: 20px 0;
 }
 
+/* profil page */
+#infos
+{
+    margin-top: 60px;
+    height: 1200px;
+}
+
+.textInfos
+{
+    height: 400px;
+}
+
+.changeMdp
+{
+    margin-bottom: 60px;
+    height: 400px;
+}
+
+.changeMdp h4
+{
+    padding-bottom: 20px;
+}
+
+.changeMdp label, .changeMdp .btn
+{
+    margin: 10px 0;
+}
+
 /* error page */
 #error
 {
@@ -807,7 +847,7 @@ footer p
         height: 349px;
     }
 
-    #comments #textComment
+    #commentsBooks #textCommentBook, #commentsEpisodes #textCommentEpisode
     {
         width: 280px;
         height: 200px;

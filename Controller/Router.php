@@ -4,6 +4,7 @@ namespace David\Projet4\Controller;
 
 require_once 'Controller/Frontend/HomeController.php';
 require_once 'Controller/Frontend/ConnexionController.php';
+require_once 'Controller/Frontend/ProfilController.php';
 require_once 'Controller/Frontend/BooksController.php';
 require_once 'Controller/Frontend/BookController.php';
 require_once 'Controller/Frontend/EpisodesController.php';
@@ -14,6 +15,7 @@ require_once 'View/ControllerViews.php';
 
 use David\Projet4\Controller\Frontend\HomeController;
 use David\Projet4\Controller\Frontend\ConnexionController;
+use David\Projet4\Controller\Frontend\ProfilController;
 use David\Projet4\Controller\Frontend\BooksController;
 use David\Projet4\Controller\Frontend\BookController;
 use David\Projet4\Controller\Frontend\EpisodesController;
@@ -26,6 +28,7 @@ class Router
 {
     private $homeControl;
     private $connexionControl;
+    private $profilControl;
     private $booksControl;
     private $bookControl;
     private $episodesControl;
@@ -37,6 +40,7 @@ class Router
     {
         $this->homeControl = new HomeController();
         $this->connexionControl = new ConnexionController();
+        $this->profilControl = new ProfilController();
         $this->booksControl = new BooksController();
         $this->bookControl = new BookController();
         $this->episodesControl = new EpisodesController();
@@ -56,12 +60,12 @@ class Router
         {
             if (isset($_GET['action']))
             {
+                $errors = [];
+                $successMessage = array();
+                
                 if ($_GET['action'] == 'connexion')
                 {
                     $this->connexionControl->displayConnexion();
-
-                    $errors = array();
-                    $successMessage = array();
 
                     if (isset($_POST['formCreate']))
                     {
@@ -95,15 +99,16 @@ class Router
                                                             $_SESSION['userId'] = $userInfo['id'];
                                                             $_SESSION['userPseudo'] = $userInfo['pseudo'];
                                                             $_SESSION['userEmail'] = $userInfo['email'];
+                                                            $_SESSION['userPass'] = $userInfo['pass'];
                                                             $_SESSION['userAdmin'] = $userInfo['isAdmin'];
-                                                            $_SESSION['userInscriptionDate'] = $userInfo['inscriptionDate'];
+                                                            $_SESSION['userInscriptionDate'] = $userInfo['inscriptionFrDate'];
                                                             $successMessage['message'] = 'Votre compte a bien été créé !';
                                                             var_dump($successMessage);
-                                                            /*header('location:index.php');*/
+                                                            //header('location:index.php');
                                                         }
                                                         else
                                                         {
-                                                            $errors['message'] = "Un problème est survenu, veuillez réessayer !";
+                                                           $errors['message'] = "Un problème est survenu, veuillez réessayer !";
                                                         }
                                                     }
                                                 }
@@ -139,7 +144,7 @@ class Router
                         }
                         else
                         {
-                            $errors['message'] = "Veuillez remplir tous les champs !";
+                            $errors['message'] = "Veuillez remplir tous les champs !"; 
                         }
                         var_dump($errors);
                     }
@@ -156,9 +161,11 @@ class Router
                                 $_SESSION['userId'] = $userInfo['id'];
                                 $_SESSION['userPseudo'] = $userInfo['pseudo'];
                                 $_SESSION['userEmail'] = $userInfo['email'];
+                                $_SESSION['userPass'] = $userInfo['pass'];
                                 $_SESSION['userAdmin'] = $userInfo['isAdmin'];
-                                $_SESSION['userInscriptionDate'] = $userInfo['inscriptionDate'];
+                                $_SESSION['userInscriptionDate'] = $userInfo['inscriptionFrDate'];
                                 $successMessage['message'] = 'Vous êtes maintenant connecté !';
+                                //header('location:index.php');
                                 var_dump($successMessage);
                                 var_dump($_SESSION);
                             }
@@ -169,11 +176,47 @@ class Router
                         }
                         else
                         {
-                            $errors['message'] = "Veuillez remplir tous les champs !";
-                            
+                            $errors['message'] = "Veuillez remplir tous les champs !";  
                         }
                         var_dump($errors);
                     }
+                }
+                elseif ($_GET['action'] == 'profil')
+                {
+                    $this->profilControl->displayProfil();
+                    if (isset($_POST['formChangeMdp']))
+                    {
+                        $pseudo = $_SESSION['userPseudo'];
+                        $oldPass = sha1($_POST['oldPass']);
+                        $pass = sha1($_POST['newPass']);
+                        $newPassConfirm = sha1($_POST['newPassConfirm']);
+                        
+                        if($_SESSION['userPass'] == $oldPass)
+                        {
+                            if($pass == $newPassConfirm)
+                            {
+                                $this->profilControl->changeMdp($pseudo, $pass);
+                                $_SESSION['userPass'] = $pass;
+                                $successMessage['message'] = 'Le mot de passe a bien été modifié !';
+                                var_dump($successMessage);
+                            }
+                            else
+                            {
+                                $errors['message'] = "Les mots de passe ne sont pas identiques !";
+                            }
+                        }
+                        else
+                        {
+                            $errors['message'] = "L'ancien mot de passe est incorrect !";
+                        }
+                       var_dump($errors);     
+                    }
+                }
+                elseif ($_GET['action'] == 'deconnect')
+                {
+                    session_start();
+                    session_destroy();
+                    header('Location:index.php');
                 }
                 elseif ($_GET['action'] == 'author')
                 {

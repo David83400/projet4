@@ -9,7 +9,7 @@
     </div>
     <div class="col-6 offset-3 col-sm-6 offset-sm-3 col-md-5 offset-md-1 col-lg-3 offset-lg-0 quoteNews">
       <blockquote>
-        <h2><i class="fas fa-quote-left"></i><a href="#"><span> Un récit jubilatoire rempli d'amour et de partage </span></a><i class="fas fa-quote-right"></i></h2>
+        <h2><i class="fas fa-quote-left"></i><a href="http://localhost/blogJeanForteroche/projet4/index.php?action=episodes"><span> Un récit jubilatoire rempli d'amour et de partage </span></a><i class="fas fa-quote-right"></i></h2>
       </blockquote>
     </div>
     <div class="col-6 offset-2 col-sm-4 offset-sm-3 col-md-4 offset-md-1 col-lg-4 offset-lg-0 blocBilletSimple">

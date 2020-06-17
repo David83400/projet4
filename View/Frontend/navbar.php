@@ -24,15 +24,21 @@
 if (isset($_SESSION['userPseudo']))
 {
 ?>
-    <div>
-    <a href="index.php?action=connexion">Se déconnecter</a>
-    </div>
+<div class="dropdown">
+  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <?= $_SESSION['userPseudo'] ?>
+  </button>
+  <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="index.php?action=profil">Mon profil</a>
+    <a class="dropdown-item" href="index.php?action=deconnect">Se déconnecter</a>
+  </div>
+</div>
 <?php
 }
 else
 {
 ?>
-    <div>
+    <div class="connexion">
     <a href="index.php?action=connexion">Se connecter</a>
     </div>
 <?php
