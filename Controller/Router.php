@@ -5,6 +5,9 @@ namespace David\Projet4\Controller;
 require_once 'Controller/Frontend/HomeController.php';
 require_once 'Controller/Frontend/ConnexionController.php';
 require_once 'Controller/Frontend/ProfilController.php';
+require_once 'Controller/Backend/AdminIndexController.php';
+require_once 'Controller/Backend/modifyController.php';
+require_once 'Controller/Backend/ProfilAdminController.php';
 require_once 'Controller/Frontend/BooksController.php';
 require_once 'Controller/Frontend/BookController.php';
 require_once 'Controller/Frontend/EpisodesController.php';
@@ -16,6 +19,9 @@ require_once 'View/ControllerViews.php';
 use David\Projet4\Controller\Frontend\HomeController;
 use David\Projet4\Controller\Frontend\ConnexionController;
 use David\Projet4\Controller\Frontend\ProfilController;
+use David\Projet4\Controller\Backend\AdminIndexController;
+use David\Projet4\Controller\Backend\modifyController;
+use David\Projet4\Controller\Backend\ProfilAdminController;
 use David\Projet4\Controller\Frontend\BooksController;
 use David\Projet4\Controller\Frontend\BookController;
 use David\Projet4\Controller\Frontend\EpisodesController;
@@ -29,6 +35,9 @@ class Router
     private $homeControl;
     private $connexionControl;
     private $profilControl;
+    private $adminIndexControl;
+    private $modifyControl;
+    private $profilAdminControl;
     private $booksControl;
     private $bookControl;
     private $episodesControl;
@@ -41,6 +50,9 @@ class Router
         $this->homeControl = new HomeController();
         $this->connexionControl = new ConnexionController();
         $this->profilControl = new ProfilController();
+        $this->adminIndexControl = new AdminIndexController();
+        $this->modifyControl = new ModifyController();
+        $this->profilAdminControl = new ProfilAdminController();
         $this->booksControl = new BooksController();
         $this->bookControl = new BookController();
         $this->episodesControl = new EpisodesController();
@@ -60,6 +72,7 @@ class Router
         {
             if (isset($_GET['action']))
             {
+                session_start();
                 $errors = [];
                 $successMessage = array();
                 
@@ -103,8 +116,7 @@ class Router
                                                             $_SESSION['userAdmin'] = $userInfo['isAdmin'];
                                                             $_SESSION['userInscriptionDate'] = $userInfo['inscriptionFrDate'];
                                                             $successMessage['message'] = 'Votre compte a bien été créé !';
-                                                            var_dump($successMessage);
-                                                            //header('location:index.php');
+                                                            header('location:index.php');
                                                         }
                                                         else
                                                         {
@@ -165,9 +177,14 @@ class Router
                                 $_SESSION['userAdmin'] = $userInfo['isAdmin'];
                                 $_SESSION['userInscriptionDate'] = $userInfo['inscriptionFrDate'];
                                 $successMessage['message'] = 'Vous êtes maintenant connecté !';
-                                //header('location:index.php');
-                                var_dump($successMessage);
-                                var_dump($_SESSION);
+                                if($_SESSION['userAdmin'] == 1)
+                                {
+                                    header('Location:index.php?action=admin');
+                                }
+                                else
+                                {
+                                    header('location:index.php');
+                                }
                             }
                             else
                             {
@@ -185,6 +202,79 @@ class Router
                 {
                     $this->profilControl->displayProfil();
                     if (isset($_POST['formChangeMdp']))
+                    {
+                        $pseudo = $_SESSION['userPseudo'];
+                        $oldPass = sha1($_POST['oldPass']);
+                        $pass = sha1($_POST['newPass']);
+                        $newPassConfirm = sha1($_POST['newPassConfirm']);
+                        
+                        if($_SESSION['userPass'] == $oldPass)
+                        {
+                            if($pass == $newPassConfirm)
+                            {
+                                $this->profilControl->changeMdp($pseudo, $pass);
+                                $_SESSION['userPass'] = $pass;
+                                $successMessage['message'] = 'Le mot de passe a bien été modifié !';
+                                var_dump($successMessage);
+                            }
+                            else
+                            {
+                                $errors['message'] = "Les mots de passe ne sont pas identiques !";
+                            }
+                        }
+                        else
+                        {
+                            $errors['message'] = "L'ancien mot de passe est incorrect !";
+                        }
+                       var_dump($errors);     
+                    }
+                }
+                elseif (($_GET['action'] == 'admin') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
+                {
+                    $this->adminIndexControl->displayAdminIndex();
+                }
+                elseif (($_GET['action'] == 'modify') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
+                {
+                    $episodeId = intval($this->getParameter($_GET, 'id'));
+                    if ($episodeId > 0)
+                    {
+                        $this->modifyControl->displayAdminEpisode($episodeId);
+                        if (isset($_POST['formModifyEpisode']))
+                        {
+                            if ((!empty($_POST['title'])) && (!empty($_POST['slug'])) && (!empty($_POST['content'])))
+                            {
+                                $title = $this->getParameter($_POST, 'title');
+                                $slug = $this->getParameter($_POST, 'slug');
+                                $content = $this->getParameter($_POST, 'content');
+                                $this->modifyControl->modifyEpisode($title, $slug, $content, $episodeId);
+                                header('Location:index.php?action=admin');
+                                $successMessage['message'] = 'L\'épisode a bien été modifié !';
+                                var_dump($successMessage);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        throw new \Exception('Identifiant d\'épisode invalide');
+                    }
+                }
+                elseif ($_GET['action'] == 'deleteEpisode')
+                {
+                    $id = intval($this->getParameter($_GET, 'id'));
+                    if ($id > 0)
+                    {
+                        $this->adminIndexControl->removeEpisode($id);
+                        header('Location:index.php?action=admin');
+                    }
+                    else
+                    {
+                        throw new \Exception('Identifiant d\'épisode invalide');
+                    }
+                }
+                elseif (($_GET['action'] == 'profilAdmin') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
+                {
+                    $this->profilAdminControl->displayProfilAdmin();
+                    if (isset($_POST['formAdminChangeMdp']))
                     {
                         $pseudo = $_SESSION['userPseudo'];
                         $oldPass = sha1($_POST['oldPass']);
@@ -279,6 +369,7 @@ class Router
             }
             else
             {
+                session_start();
                 $this->homeControl->displayHome();
             }
         }
@@ -297,7 +388,7 @@ class Router
     private function error($errorMessage)
     {
         $view = new ControllerViews("error");
-        $view->generate(array('errorMessage' => $errorMessage));
+        $view->generateFrontendViews(array('errorMessage' => $errorMessage));
     }
 
     /**

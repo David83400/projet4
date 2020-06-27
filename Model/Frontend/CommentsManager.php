@@ -1,8 +1,10 @@
 <?php
 
-namespace David\Projet4\Model;
+namespace David\Projet4\Model\Frontend;
 
 require_once 'Model/Manager.php';
+
+use David\Projet4\Model\Manager;
 
 class CommentsManager extends Manager
 {

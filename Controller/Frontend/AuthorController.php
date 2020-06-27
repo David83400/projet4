@@ -18,6 +18,6 @@ class AuthorController
     public function displayAuthor()
     {
         $view = new ControllerViews("Frontend/author");
-        $view->generate(array('author' => $this->author));
+        $view->generateFrontendViews(array('author' => $this->author));
     }
 }

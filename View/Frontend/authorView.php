@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php $this->title = 'Jean Forteroche | Ecrivain et acteur' ?>
 <div class="container">
   <section id="author">

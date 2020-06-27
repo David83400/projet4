@@ -1,7 +1,4 @@
-<?php session_start(); ?>
-
 <?php $this->title = 'Jean Forteroche | ' . htmlspecialchars($book['title']) ?>
-
 <div class="container">
     <section id="book">
         <p><a href="index.php?action=books">Retour à la liste des romans</a></p>

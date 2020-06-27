@@ -16,12 +16,12 @@ class ControllerViews
     }
 
     /**
-     * Generate and display views
+     * Generate and display Frontend views
      *
      * @param [mixed] $data
      * @return void
      */
-    public function generate($data)
+    public function generateFrontendViews($data)
     {
         //génération de la partie spécifique de la vue
         $content = $this->generateFile($this->file, $data);
@@ -29,7 +29,24 @@ class ControllerViews
         $footer = $this->generateFile("View/Frontend/footer.php", $data);
         // génération du template commun utilisant la partie spécifique
         $view = $this->generateFile('View/Frontend/template.php', array('title' => $this->title, 'navbar' => $navbar, 'content' => $content, 'footer' => $footer));
-        // renvoi de la view au navigateur
+
+        echo $view;
+    }
+
+    /**
+     * Generate and display Backend views
+     *
+     * @param [mixed] $data
+     * @return void
+     */
+    public function generateBackendViews($data)
+    {
+        //génération de la partie spécifique de la vue
+        $content = $this->generateFile($this->file, $data);
+        $navbar = $this->generateFile("View/Backend/navbarAdmin.php", $data);
+        // génération du template commun utilisant la partie spécifique
+        $view = $this->generateFile('View/Backend/template.php', array('title' => $this->title, 'navbar' => $navbar, 'content' => $content));
+
         echo $view;
     }
 

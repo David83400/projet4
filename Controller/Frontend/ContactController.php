@@ -18,6 +18,6 @@ class ContactController
     public function displayContact()
     {
         $view = new ControllerViews('Frontend/contact');
-        $view->generate(array('contact' => $this->contact));
+        $view->generateFrontendViews(array('contact' => $this->contact));
     }
 }

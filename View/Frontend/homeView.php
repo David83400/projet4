@@ -1,7 +1,5 @@
-<?php session_start(); ?>
-
+<?php ob_start() ?>
 <?php $this->title = 'Jean Forteroche | Blog officiel' ?>
-
 <section>
   <div class="row slider">
     <div class="col-lg-4 blocImgAuthor">

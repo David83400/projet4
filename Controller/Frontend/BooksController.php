@@ -2,10 +2,10 @@
 
 namespace David\Projet4\Controller\Frontend;
 
-require_once 'Model/BooksManager.php';
+require_once 'Model/Frontend/BooksManager.php';
 require_once 'View/ControllerViews.php';
 
-use David\Projet4\Model\BooksManager;
+use David\Projet4\Model\Frontend\BooksManager;
 use David\Projet4\View\ControllerViews;
 
 class BooksController
@@ -26,6 +26,6 @@ class BooksController
     {
         $books = $this->books->getBooks();
         $view = new ControllerViews("Frontend/books");
-        $view->generate(array('books' => $books));
+        $view->generateFrontendViews(array('books' => $books));
     }
 }

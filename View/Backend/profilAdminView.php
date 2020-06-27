@@ -1,4 +1,4 @@
-<?php $this->title = 'Jean Forteroche | Profil membre' ?>
+<?php $this->title = 'Jean Forteroche | Profil Administrateur' ?>
 <div class="d-flex flex-column justify-content-around" id="infos">
     <div class="row">
         <div class="col-8 offset-2">
@@ -27,7 +27,7 @@
                         <label for="newPassConfirm">Confirmez votre nouveau mot de passe</label><input id="newPassConfirm" name="newPassConfirm" type="password" />
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-outline-primary" name="formChangeMdp" value="Confirmer" />
+                        <input type="submit" class="btn btn-outline-primary" name="formAdminChangeMdp" value="Confirmer" />
                     </div>
                 </form>
             </div>

@@ -1,7 +1,4 @@
-<?php session_start(); ?>
-
 <?php $this->title = 'Jean Forteroche | Billet simple pour l\'Alaska' ?>
-
 <?php foreach ($episodes as $episode): ?>
 <section id="episodesList">
     <div class="card mb-3">

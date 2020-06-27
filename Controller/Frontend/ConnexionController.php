@@ -2,10 +2,10 @@
 
 namespace David\Projet4\Controller\Frontend;
 
-require_once 'Model/ConnexionManager.php';
+require_once 'Model/Frontend/ConnexionManager.php';
 require_once 'View/ControllerViews.php';
 
-use David\Projet4\Model\ConnexionManager;
+use David\Projet4\Model\Frontend\ConnexionManager;
 use David\Projet4\View\ControllerViews;
 
 class ConnexionController
@@ -26,7 +26,7 @@ class ConnexionController
     public function displayConnexion()
     {
         $view = new ControllerViews("Frontend/connexion");
-        $view->generate(array('connexion' => $this->connexion));
+        $view->generateFrontendViews(array('connexion' => $this->connexion));
     }
 
     /**

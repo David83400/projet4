@@ -2,10 +2,10 @@
 
 namespace David\Projet4\Controller\Frontend;
 
-require_once 'Model/EpisodesManager.php';
+require_once 'Model/Frontend/EpisodesManager.php';
 require_once 'View/ControllerViews.php';
 
-use David\Projet4\Model\EpisodesManager;
+use David\Projet4\Model\Frontend\EpisodesManager;
 use David\Projet4\View\ControllerViews;
 
 class EpisodesController
@@ -26,6 +26,6 @@ class EpisodesController
     {
         $episodes = $this->episodes->getEpisodes();
         $view = new ControllerViews("Frontend/episodes");
-        $view->generate(array('episodes' => $episodes));
+        $view->generateFrontendViews(array('episodes' => $episodes));
     }
 }

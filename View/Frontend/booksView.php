@@ -1,6 +1,4 @@
-<?php session_start(); ?>
 <?php $this->title = 'Jean Forteroche | Les romans' ?>
-
 <section id="booksList">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">      
     <?php foreach ($books as $book): ?>

@@ -2,12 +2,12 @@
 
 namespace David\Projet4\Controller\Frontend;
 
-require_once 'Model/EpisodesManager.php';
-require_once 'Model/CommentsManager.php';
+require_once 'Model/Frontend/EpisodesManager.php';
+require_once 'Model/Frontend/CommentsManager.php';
 require_once 'View/ControllerViews.php';
 
-use David\Projet4\Model\EpisodesManager;
-use David\Projet4\Model\CommentsManager;
+use David\Projet4\Model\Frontend\EpisodesManager;
+use David\Projet4\Model\Frontend\CommentsManager;
 use David\Projet4\View\ControllerViews;
 
 class EpisodeController
@@ -32,7 +32,7 @@ class EpisodeController
         $episode = $this->episode->getEpisode($episodeId);
         $episodeComments = $this->episodeComments->getEpisodeComments($episodeId);
         $view = new ControllerViews("Frontend/episode");
-        $view->generate(array('episode' => $episode, 'episodeComments' => $episodeComments));
+        $view->generateFrontendViews(array('episode' => $episode, 'episodeComments' => $episodeComments));
     }
 
     /**

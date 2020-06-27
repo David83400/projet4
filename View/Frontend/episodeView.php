@@ -1,7 +1,4 @@
-<?php session_start(); ?>
-
 <?php $this->title = 'Jean Forteroche | ' . htmlspecialchars($episode['title']) ?>
-
 <div class="container">
     <section id="episode">
         <p><a href="index.php?action=episodes">Retour à la liste des billets</a></p>

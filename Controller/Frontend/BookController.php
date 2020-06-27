@@ -2,12 +2,12 @@
 
 namespace David\projet4\Controller\Frontend;
 
-require_once 'Model/BooksManager.php';
-require_once 'Model/CommentsManager.php';
+require_once 'Model/Frontend/BooksManager.php';
+require_once 'Model/Frontend/CommentsManager.php';
 require_once 'View/ControllerViews.php';
 
-use David\projet4\Model\BooksManager;
-use David\projet4\Model\CommentsManager;
+use David\projet4\Model\Frontend\BooksManager;
+use David\projet4\Model\Frontend\CommentsManager;
 use David\projet4\View\ControllerViews;
 
 class BookController
@@ -32,7 +32,7 @@ class BookController
         $book = $this->book->getBook($bookId);
         $bookComments = $this->bookComments->getBookComments($bookId);
         $view = new ControllerViews("Frontend/book");
-        $view->generate(array('book' => $book, 'bookComments' => $bookComments));
+        $view->generateFrontendViews(array('book' => $book, 'bookComments' => $bookComments));
     }
 
     /**

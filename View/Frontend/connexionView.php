@@ -1,7 +1,5 @@
-<?php session_start(); ?>
-
+<?php ob_start(); ?>
 <?php $this->title = 'Jean Forteroche | Se connecter' ?>
-
 <section id="connexion">
     <div class="row">
         <div class="connect col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-2">

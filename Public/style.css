@@ -3,12 +3,13 @@ body
 {
     background-color: #fff7ef;
     margin: 0;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     color: #272727;
 }
 
 h2
 {
-    font-size: 3em;
+    font-size: 2.5em;
 }
 
 h3
@@ -23,7 +24,6 @@ h4
 
 p, a
 {
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 1.1em;
     color: #272727;
 }
@@ -701,6 +701,48 @@ footer p
 .changeMdp label, .changeMdp .btn
 {
     margin: 10px 0;
+}
+
+/* admin */
+#admin
+{
+    padding-bottom: 80px;
+}
+
+#admin .listEpisodes h1
+{
+    margin: 40px 0;
+}
+
+#admin a
+{
+    margin-right: 10px;
+}
+
+#admin .listComments h2
+{
+    margin: 40px 0;
+}
+
+/* modify page */
+#modify
+{
+    margin: 25px 0 80px;
+}
+
+#modify h1
+{
+    margin: 50px 0;
+}
+
+#modify header
+{
+    margin: 60px 0;
+}
+
+#modify label
+{
+    font-weight: bold;
 }
 
 /* error page */

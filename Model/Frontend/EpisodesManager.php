@@ -1,8 +1,10 @@
 <?php
 
-namespace David\Projet4\Model;
+namespace David\Projet4\Model\Frontend;
 
 require_once 'Model/Manager.php';
+
+use David\Projet4\Model\Manager;
 
 class EpisodesManager extends Manager
 {
@@ -13,7 +15,7 @@ class EpisodesManager extends Manager
      */
     public function getEpisodes()
     {
-        $sql = 'SELECT id, author, episodeImage, title, content, DATE_FORMAT(creationDate, \'%W %d %M %Y\') AS creationFrDate, DATE_FORMAT(modificationDate, \'%d/%m/%y\') AS modificationFrdate FROM episodes ORDER BY id DESC';
+        $sql = 'SELECT id, author, episodeImage, title, content, DATE_FORMAT(creationDate, \'%W %d %M %Y\') AS creationFrDate, DATE_FORMAT(modificationDate, \'%d/%m/%y\') AS modificationFrDate FROM episodes ORDER BY id DESC';
         $episodes = $this->executeRequest($sql);
         return $episodes;
     }

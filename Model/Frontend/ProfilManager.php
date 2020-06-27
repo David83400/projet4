@@ -1,8 +1,10 @@
 <?php
 
-namespace David\Projet4\Model;
+namespace David\Projet4\Model\Frontend;
 
 require_once 'Model/Manager.php';
+
+use David\Projet4\Model\Manager;
 
 class ProfilManager extends Manager
 {
@@ -10,8 +12,6 @@ class ProfilManager extends Manager
     {
         $sql = 'UPDATE users SET pass = ? WHERE pseudo = ?';
         $req = $this->executeRequest($sql, array($pass, $pseudo));
-        var_dump($pseudo);
-        var_dump($pass);
         return $pass;
     }
 }
