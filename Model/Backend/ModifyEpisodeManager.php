@@ -6,7 +6,7 @@ require_once 'Model/Manager.php';
 
 use David\Projet4\Model\Manager;
 
-class ModifyManager extends Manager
+class ModifyEpisodeManager extends Manager
 {
     /**
      * Return the requested episode

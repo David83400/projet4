@@ -6,7 +6,9 @@ require_once 'Controller/Frontend/HomeController.php';
 require_once 'Controller/Frontend/ConnexionController.php';
 require_once 'Controller/Frontend/ProfilController.php';
 require_once 'Controller/Backend/AdminIndexController.php';
-require_once 'Controller/Backend/modifyController.php';
+require_once 'Controller/Backend/modifyEpisodeController.php';
+require_once 'Controller/Backend/EpisodeCommentController.php';
+require_once 'Controller/Backend/BookCommentController.php';
 require_once 'Controller/Backend/ProfilAdminController.php';
 require_once 'Controller/Frontend/BooksController.php';
 require_once 'Controller/Frontend/BookController.php';
@@ -20,7 +22,9 @@ use David\Projet4\Controller\Frontend\HomeController;
 use David\Projet4\Controller\Frontend\ConnexionController;
 use David\Projet4\Controller\Frontend\ProfilController;
 use David\Projet4\Controller\Backend\AdminIndexController;
-use David\Projet4\Controller\Backend\modifyController;
+use David\Projet4\Controller\Backend\modifyEpisodeController;
+use David\Projet4\Controller\Backend\EpisodeCommentController;
+use David\Projet4\Controller\Backend\BookCommentController;
 use David\Projet4\Controller\Backend\ProfilAdminController;
 use David\Projet4\Controller\Frontend\BooksController;
 use David\Projet4\Controller\Frontend\BookController;
@@ -36,7 +40,9 @@ class Router
     private $connexionControl;
     private $profilControl;
     private $adminIndexControl;
-    private $modifyControl;
+    private $modifyEpisodeControl;
+    private $episodeCommentControl;
+    private $bookCommentControl;
     private $profilAdminControl;
     private $booksControl;
     private $bookControl;
@@ -51,7 +57,9 @@ class Router
         $this->connexionControl = new ConnexionController();
         $this->profilControl = new ProfilController();
         $this->adminIndexControl = new AdminIndexController();
-        $this->modifyControl = new ModifyController();
+        $this->modifyEpisodeControl = new ModifyEpisodeController();
+        $this->episodeCommentControl = new EpisodeCommentController();
+        $this->bookCommentControl = new BookCommentController();
         $this->profilAdminControl = new ProfilAdminController();
         $this->booksControl = new BooksController();
         $this->bookControl = new BookController();
@@ -233,12 +241,12 @@ class Router
                 {
                     $this->adminIndexControl->displayAdminIndex();
                 }
-                elseif (($_GET['action'] == 'modify') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
+                elseif (($_GET['action'] == 'modifyEpisode') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
                 {
                     $episodeId = intval($this->getParameter($_GET, 'id'));
                     if ($episodeId > 0)
                     {
-                        $this->modifyControl->displayAdminEpisode($episodeId);
+                        $this->modifyEpisodeControl->displayAdminEpisode($episodeId);
                         if (isset($_POST['formModifyEpisode']))
                         {
                             if ((!empty($_POST['title'])) && (!empty($_POST['slug'])) && (!empty($_POST['content'])))
@@ -246,7 +254,7 @@ class Router
                                 $title = $this->getParameter($_POST, 'title');
                                 $slug = $this->getParameter($_POST, 'slug');
                                 $content = $this->getParameter($_POST, 'content');
-                                $this->modifyControl->modifyEpisode($title, $slug, $content, $episodeId);
+                                $this->modifyEpisodeControl->modifyEpisode($title, $slug, $content, $episodeId);
                                 header('Location:index.php?action=admin');
                                 $successMessage['message'] = 'L\'épisode a bien été modifié !';
                                 var_dump($successMessage);
@@ -263,13 +271,60 @@ class Router
                     $id = intval($this->getParameter($_GET, 'id'));
                     if ($id > 0)
                     {
-                        $this->adminIndexControl->removeEpisode($id);
+                        $this->adminIndexControl->removeEpisodeAndComments($id);
                         header('Location:index.php?action=admin');
                     }
                     else
                     {
                         throw new \Exception('Identifiant d\'épisode invalide');
                     }
+                }
+                elseif (($_GET['action'] == 'editEpisodeComment') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
+                {
+                    $commentId = intval($this->getParameter($_GET, 'id'));
+                    if ($commentId > 0)
+                    {
+                        $this->episodeCommentControl->displayEpisodeComment($commentId);
+                        if (isset($_POST['formAcceptComment']))
+                        {
+                            $this->episodeCommentControl->acceptEpisodeComment($commentId);
+                            header('Location:index.php?action=admin');
+                        }
+                        elseif (isset($_POST['formDeleteComment']))
+
+                        {
+                            $this->episodeCommentControl->removeEpisodeComment($commentId);
+                            header('Location:index.php?action=admin');
+                        }
+                    }
+                    else
+                    {
+                        throw new \Exception('Identifiant de commentaire invalide');
+                    }
+                    
+                }elseif (($_GET['action'] == 'editBookComment') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
+                {
+                    $commentId = intval($this->getParameter($_GET, 'id'));
+                    if ($commentId > 0)
+                    {
+                        $this->bookCommentControl->displayBookComment($commentId);
+                        if (isset($_POST['formAcceptComment']))
+                        {
+                            $this->bookCommentControl->acceptBookComment($commentId);
+                            header('Location:index.php?action=admin');
+                        }
+                        elseif (isset($_POST['formDeleteComment']))
+
+                        {
+                            $this->bookCommentControl->removeBookComment($commentId);
+                            header('Location:index.php?action=admin');
+                        }
+                    }
+                    else
+                    {
+                        throw new \Exception('Identifiant de commentaire invalide');
+                    }
+                    
                 }
                 elseif (($_GET['action'] == 'profilAdmin') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
                 {
@@ -335,6 +390,20 @@ class Router
                     $bookId = $this->getParameter($_POST, 'id');
                     $this->bookControl->addBookComment($author, $bookComment, $bookId);
                 }
+                elseif ($_GET['action'] == 'signaleBookComment')
+                {
+                    $id = intval($this->getParameter($_GET, 'id'));
+                    $bookId = intval($this->getParameter($_GET, 'bookId'));
+                    if ($id > 0)
+                    {
+                        $this->bookControl->signalBookComment($id, $bookId);
+                        header("Location:index.php?action=book&id=$bookId");
+                    }
+                    else
+                    {
+                        throw new \Exception('Identifiant de roman invalide');
+                    }
+                }
                 elseif ($_GET['action'] == 'episodes')
                 {
                     $this->episodesControl->displayEpisodes();
@@ -357,6 +426,20 @@ class Router
                     $episodeComment = $this->getParameter($_POST, 'episodeComment');
                     $episodeId = $this->getParameter($_POST, 'id');
                     $this->episodeControl->addEpisodeComment($author, $episodeComment, $episodeId);
+                }
+                elseif ($_GET['action'] == 'signaleEpisodeComment')
+                {
+                    $id = intval($this->getParameter($_GET, 'id'));
+                    $episodeId = intval($this->getParameter($_GET, 'episodeId'));
+                    if ($id > 0)
+                    {
+                        $this->episodeControl->signalEpisodeComment($id, $episodeId);
+                        header("Location:index.php?action=episode&id=$episodeId");
+                    }
+                    else
+                    {
+                        throw new \Exception('Identifiant d\épisode invalide');
+                    }
                 }
                 elseif ($_GET['action'] == 'contact')
                 {

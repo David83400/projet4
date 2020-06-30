@@ -68,8 +68,9 @@
                         <h4>Commentaires :</h4>
                         </header>
                         <?php foreach ($bookComments as $bookComment): ?>
-                        <p><span><?= htmlspecialchars($bookComment['author']) ?> :</span> Le <?= htmlspecialchars($bookComment['commentFrDate']) ?></p>
+                        <p><span><?= htmlspecialchars($bookComment['author']) ?> :</span> Le <?= htmlspecialchars($bookComment['commentFrDate']) ?> <a href="index.php?action=signaleBookComment&id=<?= htmlspecialchars($bookComment['id']) ?>&bookId=<?= htmlspecialchars($bookComment['bookId']) ?>">Signaler</a></p>
                         <p><?= htmlspecialchars($bookComment['bookComment']) ?></p>
+                        <hr />
                         <?php endforeach; ?>
                     </div>
                 </div>

@@ -31,9 +31,11 @@ class CommentsManager extends Manager
      */
     public function postEpisodeComment($author, $episodeComment, $episodeId)
     {
-        $sql = 'INSERT INTO episodeComments(author, episodeComment, episodeId, commentDate) VALUES(?, ?, ?, NOW())';
+        $sql = 'INSERT INTO episodeComments(author, episodeComment, episodeId, flag, commentDate) VALUES(?, ?, ?, 0, NOW())';
         $this->executeRequest($sql, array($author, $episodeComment, $episodeId));
     }
+
+
 
     /**
      * Returns the list of comments associated with a book
@@ -58,7 +60,23 @@ class CommentsManager extends Manager
      */
     public function postBookComment($author, $bookComment, $bookId)
     {
-        $sql = 'INSERT INTO bookComments(author, bookComment, bookId, commentDate) VALUES(?, ?, ?, NOW())';
+        $sql = 'INSERT INTO bookComments(author, bookComment, bookId, flag, commentDate) VALUES(?, ?, ?, 0, NOW())';
         $this->executeRequest($sql, array($author, $bookComment, $bookId));
+    }
+
+    public function updateBookComment($id, $bookId)
+    {
+        $sql = 'SELECT bookId FROM bookComments WHERE id=?';
+        $bookId = $this->executeRequest($sql, array($bookId));
+        $sql = 'UPDATE bookComments SET flag = 1 WHERE id = ?';
+        $req = $this->executeRequest($sql, array($id));
+    }
+
+    public function updateEpisodeComment($id, $episodeId)
+    {
+        $sql = 'SELECT episodeId FROM episodeComments WHERE id=?';
+        $episodeId = $this->executeRequest($sql, array($episodeId));
+        $sql = 'UPDATE episodeComments SET flag = 1 WHERE id = ?';
+        $req = $this->executeRequest($sql, array($id));
     }
 }

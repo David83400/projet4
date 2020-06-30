@@ -50,4 +50,10 @@ class EpisodeController
         // Actualisation de l'affichage du billet
         $this->displayEpisode($episodeId);
     }
+
+    public function signalEpisodeComment($id, $episodeId)
+    {
+        $this->episodeComments->updateEpisodeComment($id, $episodeId);
+        return $episodeId;
+    }
 }

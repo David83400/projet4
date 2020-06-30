@@ -50,4 +50,10 @@ class BookController
         // Actualisation de l'affichage du billet
         $this->displayBook($bookId);
     }
+
+    public function signalBookComment($id, $bookId)
+    {
+        $this->bookComments->updateBookComment($id, $bookId);
+        return $bookId;
+    }
 }

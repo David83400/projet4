@@ -63,8 +63,9 @@
                             <h4>Commentaires :</h4>
                         </header>
                         <?php foreach ($episodeComments as $episodeComment): ?>
-                            <p><span><?= htmlspecialchars($episodeComment['author']) ?> :</span> Le <?= htmlspecialchars($episodeComment['commentFrDate']) ?></p>
+                            <p><span><?= htmlspecialchars($episodeComment['author']) ?> :</span> Le <?= htmlspecialchars($episodeComment['commentFrDate']) ?> <a href="index.php?action=signaleEpisodeComment&id=<?= htmlspecialchars($episodeComment['id']) ?>&episodeId=<?= htmlspecialchars($episodeComment['episodeId']) ?>">Signaler</a></p>
                             <p><?= htmlspecialchars($episodeComment['episodeComment']) ?></p>
+                            <hr />
                         <?php endforeach; ?>
                     </div>
                 </div>

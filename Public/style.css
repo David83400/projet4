@@ -719,9 +719,25 @@ footer p
     margin-right: 10px;
 }
 
-#admin .listComments h2
+#admin .listEpisodeComments h2, #admin .listBookComments h2
+{
+    margin: 50px 0;
+}
+
+/* edit comment page */
+#editBookComment, #editEpisodeComment
+{
+    margin: 25px 0 80px;
+}
+
+#editBookComment h1, #editEpisodeComment h1
 {
     margin: 40px 0;
+}
+
+#editBookComment input, #editEpisodeComment input
+{
+    margin: 20px 15px 0 0;
 }
 
 /* modify page */

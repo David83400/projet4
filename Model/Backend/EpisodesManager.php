@@ -5,7 +5,7 @@ require_once 'Model/Manager.php';
 
 use David\Projet4\Model\Manager;
 
-class AdminIndexManager extends Manager
+class EpisodesManager extends Manager
 {
     /**
      * Return the episodes list
@@ -25,7 +25,7 @@ class AdminIndexManager extends Manager
      * @param [int] $id
      * @return void
      */
-    public function deleteEpisode($id)
+    public function deleteEpisodeAndComments($id)
     {
         $sql = 'DELETE episodes, episodeComments FROM episodes INNER JOIN episodeComments WHERE episodes.id = ? AND episodeComments.episodeId = episodes.id';
         $req = $this->executeRequest($sql, array($id));
