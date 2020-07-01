@@ -26,7 +26,7 @@ class EpisodeCommentController
     public function displayEpisodeComment($commentId)
     {
         $episodeComments = $this->editComment->getSignaledEpisodeComment($commentId);
-        $view = new ControllerViews("Backend/editEpisodeComment");
+        $view = new ControllerViews("Backend/episodeComment");
         $view->generateBackendViews(array('episodeComments' => $episodeComments));
     }
 

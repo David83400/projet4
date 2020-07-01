@@ -51,6 +51,13 @@ class EpisodeController
         $this->displayEpisode($episodeId);
     }
 
+    /**
+     * Method to signal an episode comment
+     *
+     * @param [int] $id
+     * @param [int] $episodeId
+     * @return void
+     */
     public function signalEpisodeComment($id, $episodeId)
     {
         $this->episodeComments->updateEpisodeComment($id, $episodeId);

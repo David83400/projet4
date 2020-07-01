@@ -7,10 +7,7 @@
             <a class="nav-link" href="index.php?action=admin">Administration<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">Editer un épisode</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">Les romans</a>
+            <a class="nav-link" href="index.php?action=editEpisode">Editer un épisode</a>
         </li>
     </ul>
 </div>

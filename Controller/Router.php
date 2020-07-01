@@ -9,6 +9,7 @@ require_once 'Controller/Backend/AdminIndexController.php';
 require_once 'Controller/Backend/modifyEpisodeController.php';
 require_once 'Controller/Backend/EpisodeCommentController.php';
 require_once 'Controller/Backend/BookCommentController.php';
+require_once 'Controller/Backend/EditEpisodeController.php';
 require_once 'Controller/Backend/ProfilAdminController.php';
 require_once 'Controller/Frontend/BooksController.php';
 require_once 'Controller/Frontend/BookController.php';
@@ -25,6 +26,7 @@ use David\Projet4\Controller\Backend\AdminIndexController;
 use David\Projet4\Controller\Backend\modifyEpisodeController;
 use David\Projet4\Controller\Backend\EpisodeCommentController;
 use David\Projet4\Controller\Backend\BookCommentController;
+use David\Projet4\Controller\Backend\EditEpisodeController;
 use David\Projet4\Controller\Backend\ProfilAdminController;
 use David\Projet4\Controller\Frontend\BooksController;
 use David\Projet4\Controller\Frontend\BookController;
@@ -43,6 +45,7 @@ class Router
     private $modifyEpisodeControl;
     private $episodeCommentControl;
     private $bookCommentControl;
+    private $editEpisodeControl;
     private $profilAdminControl;
     private $booksControl;
     private $bookControl;
@@ -60,6 +63,7 @@ class Router
         $this->modifyEpisodeControl = new ModifyEpisodeController();
         $this->episodeCommentControl = new EpisodeCommentController();
         $this->bookCommentControl = new BookCommentController();
+        $this->editEpisodeControl = new EditEpisodeController();
         $this->profilAdminControl = new ProfilAdminController();
         $this->booksControl = new BooksController();
         $this->bookControl = new BookController();
@@ -259,6 +263,10 @@ class Router
                                 $successMessage['message'] = 'L\'épisode a bien été modifié !';
                                 var_dump($successMessage);
                             }
+                            else
+                            {
+                                $errors['message'] = "Tous les champs doivent être remplis !";  
+                            }
                         }
                     }
                     else
@@ -325,6 +333,30 @@ class Router
                         throw new \Exception('Identifiant de commentaire invalide');
                     }
                     
+                }
+                elseif (($_GET['action'] == 'editEpisode') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
+                {
+                    $this->editEpisodeControl->displayEditEpisode();
+                    if (isset($_POST['formEditEpisode']))
+                    {
+                        if ((!empty($_POST['title'])) && (!empty($_POST['slug'])) && (!empty($_POST['content'])) && (!empty($_POST['author'])))
+                        {
+                            $author = $this->getParameter($_POST, 'author');
+                            $episodeImage = 'http://localhost/blogJeanForteroche/projet4/Public/images/couverture.jpg';
+                            $title = $this->getParameter($_POST, 'title');
+                            $slug = $this->getParameter($_POST, 'slug');
+                            $content = $this->getParameter($_POST, 'content');
+                            $this->editEpisodeControl->addEpisode($author, $episodeImage, $title, $slug, $content);
+                            header('Location:index.php?action=admin');
+                            $successMessage['message'] = 'L\'épisode a bien été créé !';
+                            var_dump($successMessage);
+                        }
+                        else
+                        {
+                            $errors['message'] = "Tous les champs doivent être remplis !";
+                            var_dump($errors);
+                        }
+                    }
                 }
                 elseif (($_GET['action'] == 'profilAdmin') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
                 {

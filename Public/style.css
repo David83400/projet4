@@ -740,23 +740,23 @@ footer p
     margin: 20px 15px 0 0;
 }
 
-/* modify page */
-#modify
+/* modify  and edit episode page */
+#modify, #editEpisode
 {
     margin: 25px 0 80px;
 }
 
-#modify h1
+#modify h1, #editEpisode h1
 {
     margin: 50px 0;
 }
 
-#modify header
+#modify header, #editEpisode header
 {
     margin: 60px 0;
 }
 
-#modify label
+#modify label, #editEpisode label
 {
     font-weight: bold;
 }

@@ -24,9 +24,9 @@ class CommentsManager extends Manager
     /**
      * Insert into bdd an episode comment
      *
-     * @param [type] $author
-     * @param [type] $episodeComment
-     * @param [type] $episodeId
+     * @param [string] $author
+     * @param [string] $episodeComment
+     * @param [string] $episodeId
      * @return void
      */
     public function postEpisodeComment($author, $episodeComment, $episodeId)

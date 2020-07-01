@@ -20,9 +20,8 @@ class modifyEpisodeController
     public function displayAdminEpisode($episodeId)
     {
         $episode = $this->episode->getEpisode($episodeId);
-        $episodeComments = $this->episode->getEpisodeComments($episodeId);
         $view = new ControllerViews("Backend/modifyEpisode");
-        $view->generateBackendViews(array('episode' => $episode, 'episodeComments' => $episodeComments));
+        $view->generateBackendViews(array('episode' => $episode));
     }
 
     public function modifyEpisode($title, $slug, $content, $episodeId)

@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="Public/style.css" />
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
         <link rel="icon" type="image/png" href="Public/images/favicon.png" />
+        <script src="https://cdn.tiny.cloud/1/wv4gd1po1a9gi1dsf2fzj5ul79crnk2ubj2dtl39y002kxu4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <script src="https://kit.fontawesome.com/c9ef589bf6.js" crossorigin="anonymous"></script>
         <title><?= $title ?></title>
     </head>
@@ -26,5 +27,16 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="Public/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+        <script>
+            tinymce.init({
+            mode: 'specific_textareas',
+            editor_selector: 'wysiwyg',
+            plugins: 'casechange formatpainter linkchecker link autolink lists checklist media mediaembed pageembed permanentpen powerpaste tinycomments',
+            toolbar: 'undo redo | casechange | checklist | addcomments | showcomments | link unlink | formatpainter | permanentpen',
+            toolbar_mode: 'floating',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Jean',
+            });
+        </script>
     </body>
 </html>
