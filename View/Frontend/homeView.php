@@ -32,7 +32,8 @@
     <div class="col-sm-3 offset-sm-6 col-md-3 offset-md-6 col-lg-3 offset-lg-6 book">
       <div class="front">
         <div class="title">
-          <h2>chapitre n°1</h2>
+          <h2>Dernier épisode</h2>
+          <h3>"<?= htmlspecialchars($lastEpisode['title']) ?>"</h3>
         </div>
       </div>
       <div class="layer1"></div>
@@ -64,9 +65,7 @@
   <div class="card">
     <div class="row no-gutters">
       <div class="col-6 offset-3 col-md-4 offset-md-0 couverture">
-        <img src="Public/images/couverture.jpg" class="card-img" alt="livre de Jean Forteroche">
-      </div>
-      <div class="col-8 offset-2 col-md-8col-md-4 offset-md-0 ">
+        <img src="Public/images/couvertureResponsive.jpg" class="card-img-top" alt="Livre de Jean Forteroche">
         <div class="card-body">
           <h3 class="card-title"><?= htmlspecialchars($lastEpisode['title']) ?></h3>
           <p class="card-text"><?= htmlspecialchars(substr($lastEpisode['content'], 0, 550)) ?> ... <a href="<?= 'index.php?action=episode&id=' . htmlspecialchars($lastEpisode['id']) ?>">lire la suite</a></p>

@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="Public/bootstrap-4.5.0-dist/css/bootstrap.css" rel="stylesheet">
-        <link rel="stylesheet" href="Public/style.css" />
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
         <link rel="icon" type="image/png" href="Public/images/favicon.png" />
+        <link href="Public/bootstrap-4.5.0-dist/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="Public/style.css" />
         <script src="https://kit.fontawesome.com/c9ef589bf6.js" crossorigin="anonymous"></script>
         <title><?= $title ?></title>
     </head>
@@ -25,9 +25,7 @@
                 </div>
             </div>
         </header>
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <?= $navbar ?>
-        </nav>
+        <?= $navbar ?>
         <div class="container-fluid">
             <?= $content ?>
         </div>

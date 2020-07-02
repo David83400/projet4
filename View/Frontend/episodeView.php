@@ -23,14 +23,13 @@
             </div>
         </article>
     </section>
-    <hr />
     <section id="commentsEpisodes">
         <div class="row">
             <div class="col-12">
                 <div class="row">
                     <div class="col-12">
                         <header>
-                            <h4>Laissez votre commentaire.</h4>
+                            <h3>Laissez votre commentaire.</h3>
                         <?php
                         if (isset($_SESSION['userPseudo'])) {
                         ?>
@@ -63,7 +62,7 @@
                             <h4>Commentaires :</h4>
                         </header>
                         <?php foreach ($episodeComments as $episodeComment): ?>
-                            <p><span><?= htmlspecialchars($episodeComment['author']) ?> :</span> Le <?= htmlspecialchars($episodeComment['commentFrDate']) ?> <a href="index.php?action=signaleEpisodeComment&id=<?= htmlspecialchars($episodeComment['id']) ?>&episodeId=<?= htmlspecialchars($episodeComment['episodeId']) ?>">Signaler</a></p>
+                            <p><span><?= htmlspecialchars($episodeComment['author']) ?> </span> Le <?= htmlspecialchars($episodeComment['commentFrDate']) ?> <a class="signale" href="index.php?action=signaleEpisodeComment&id=<?= htmlspecialchars($episodeComment['id']) ?>&episodeId=<?= htmlspecialchars($episodeComment['episodeId']) ?>">Signaler</a></p>
                             <p><?= htmlspecialchars($episodeComment['episodeComment']) ?></p>
                             <hr />
                         <?php endforeach; ?>

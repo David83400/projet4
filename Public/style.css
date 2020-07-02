@@ -39,6 +39,12 @@ li
     list-style-type: none;
 }
 
+.signale
+{
+    margin-left: 20px;
+}
+
+
 /*  header */
 .mainHeader
 {
@@ -87,10 +93,14 @@ li
     background-color: #5477bc;
 }
 
+.navbar .connexion
+{
+    padding-top: 5px;
+}
 .navbar .nav-item a,.navbar .connexion a, .navbar .dropdown .btn
 {
     color: #ffffff !important;
-    margin-right: 5px;
+    margin: 5px 10px 0 0;
 }
 
 .navbar a:hover, .navbar .dropdown .btn:hover
@@ -202,7 +212,7 @@ blockquote h2
 
 .front
 {
-    background: #4e2802;
+    background: url("images/couverture.jpg");
     z-index: 1;
 }
 
@@ -213,6 +223,7 @@ blockquote h2
 
 .title
 {
+    height: 100%;
     width: 100%;
     position: relative;
     top: 40%;
@@ -220,9 +231,24 @@ blockquote h2
 
 .title h2
 {
-    font-size: 3em;
+    position: relative;
+    top: -150px;
+    margin: 0 10px;
+    font-size: 2.2em;
+    text-shadow: -3px 3px 4.5px rgb(0, 0, 0);
     text-align: center;
-    color: white;
+    color: #e8e8e8;
+}
+
+.title h3
+{
+    position: relative;
+    top: -60px;
+    margin: 0 10px;
+    font-size: 2.3em;
+    text-shadow: -3px 3px 4.5px rgb(0, 0, 0);
+    text-align: center;
+    color: #e8e8e8;
 }
 
 .front, .back, .layer1, .layer2, .layer3, .layer4, .layer-text, .layer-text-2, .layer5, .layer6, .layer7, .layer8
@@ -378,7 +404,7 @@ blockquote h2
 
 #lastEpisodeResponsive .couverture
 {
-    padding-top: 60px;
+    padding: 60px 0;
 }
 
 #lastEpisodeResponsive .no-gutters
@@ -388,10 +414,17 @@ blockquote h2
     margin-left: -15px;
 }
 
+#lastEpisodeResponsive .card-body
+{
+    background-color: #ffffff;
+}
+
 #lastEpisodeResponsive .card-title
 {
     margin: 15px 0 30px 0;
-    text-align: justify;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
 }
 
 #lastEpisodeResponsive .card-text
@@ -537,7 +570,7 @@ footer p
 /* section book */
 #book
 {
-    margin-top: 15px;
+    margin: 15px 0;
 }
 
 #book header
@@ -578,10 +611,61 @@ footer p
     height: 250px;
 }
 
+#commentsBooks
+{
+    margin-bottom: 40px;
+    background-color: #fcf2e8;
+    border-radius: 20px;
+    box-shadow:  0 1em 3em 0 rgba(0, 0, 0, .15);
+    padding: 10px;
+}
+
+#commentsBooks h3
+{
+    color: #FF5483;
+    font-weight: bold;
+    margin: 10px 0 20px 0;
+}
+
+#commentsBooks h4
+{
+    font-weight: bold;
+    margin: 10px 0 20px 0;
+}
+
+#commentsBooks span
+{
+    color: #FF5483;
+    font-weight: bold;
+}
+
+#commentsBooks a
+{
+    text-decoration: underline;
+}
+
 /* section episodes list */
 #episodesList
 {
-    margin-top: 40px;
+    margin: 40px 0;
+}
+
+#episodesList .no-gutters
+{
+    margin-bottom: 40px;
+}
+
+#episodesList h3
+{
+    color: #ffffff;
+    position: relative;
+    top: 215px;
+    left: 40px;
+}
+
+#episodesList .card-body
+{
+    padding-top: 80px;
 }
 
 #episodesList a
@@ -601,7 +685,7 @@ footer p
 /* section episode et author */
 #episode, #author
 {
-    margin-top: 15px;
+    margin: 15px 0;
 }
 
 #episode header, #author header
@@ -626,19 +710,37 @@ footer p
 }
 
 /* section commentaires episodes*/
-#comments
+#commentsEpisodes
 {
     margin-bottom: 40px;
+    background-color: #fcf2e8;
+    border-radius: 20px;
+    box-shadow:  0 1em 3em 0 rgba(0, 0, 0, .15);
+    padding: 10px;
 }
 
-#comments h4
+#commentsEpisodes h3
 {
+    color: #FF5483;
+    font-weight: bold;
     margin: 10px 0 20px 0;
 }
 
-#comments span
+
+#commentsEpisodes h4
 {
     font-weight: bold;
+    margin: 10px 0 20px 0;
+}
+
+#commentsEpisodes span
+{
+    color: #FF5483;
+}
+
+#commentsEpisodes a
+{
+    text-decoration: underline;
 }
 
 #commentsEpisodes #textCommentEpisode
