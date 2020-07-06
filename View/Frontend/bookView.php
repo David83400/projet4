@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php $this->title = 'Jean Forteroche | ' . htmlspecialchars($book['title']) ?>
 <div class="container">
     <section id="book">
@@ -9,7 +10,7 @@
                         <div class="col-12">
                             <header>
                             <h1><?= htmlspecialchars($book['title']) ?></h1>
-                            <p>Parution : <?= htmlspecialchars($book['parutionFrDate']) ?></p>
+                            <p><span>Parution : </span><?= htmlspecialchars($book['parutionFrDate']) ?></p>
                             </header>
                         </div>
                     </div>
@@ -17,7 +18,7 @@
                         <div class="col-12">
                             <img src="<?= htmlspecialchars($book['bookImage']) ?>" class="float-left" alt="Livre de Jean Forteroche">
                             <p class="content"><?= htmlspecialchars($book['content']) ?></p>
-                            <h4>Commander</h4>
+                            <h4>Commander :</h4>
                             <a href="https://www.placedeslibraires.fr/" target="_blank"><button type="button" class="btn btn-outline-primary">Place des libraires</button></a>
                             <a href="https://www.fnac.com/" target="_blank"><button type="button" class="btn btn-outline-primary">Fnac</button></a>
                             <a href="https://www.amazon.fr/" target="_blank"><button type="button" class="btn btn-outline-primary">Amazon</button></a>
@@ -67,7 +68,7 @@
                         <h4>Commentaires :</h4>
                         </header>
                         <?php foreach ($bookComments as $bookComment): ?>
-                        <p><span><?= htmlspecialchars($bookComment['author']) ?> </span> Le <?= htmlspecialchars($bookComment['commentFrDate']) ?> <a class="signale" href="index.php?action=signaleBookComment&id=<?= htmlspecialchars($bookComment['id']) ?>&bookId=<?= htmlspecialchars($bookComment['bookId']) ?>">Signaler</a></p>
+                        <p><span><?= htmlspecialchars($bookComment['author']) ?> </span> le <?= htmlspecialchars($bookComment['commentFrDate']) ?> <a class="signale" href="index.php?action=signaleBookComment&id=<?= htmlspecialchars($bookComment['id']) ?>&bookId=<?= htmlspecialchars($bookComment['bookId']) ?>">Signaler</a></p>
                         <p><?= htmlspecialchars($bookComment['bookComment']) ?></p>
                         <hr />
                         <?php endforeach; ?>

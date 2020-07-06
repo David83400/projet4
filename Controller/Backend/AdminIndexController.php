@@ -34,4 +34,9 @@ class AdminIndexController
         $view = new ControllerViews("Backend/admin");
         $view->generateBackendViews(array('episodes' => $episodes, 'episodeComments' => $episodeComments, 'bookComments' => $bookComments));
     }
+
+    public function removeEpisodeAndComments($id, $commentId)
+    {
+        $this->episodes->deleteEpisodeAndComments($id, $commentId);
+    }
 }

@@ -44,7 +44,6 @@ li
     margin-left: 20px;
 }
 
-
 /*  header */
 .mainHeader
 {
@@ -257,6 +256,7 @@ blockquote h2
     position: absolute;
     width: 400px;
     height: 100%;
+    padding: 5px;
     top: 0; 
     left: 0;
     transform-origin: left center;
@@ -578,9 +578,9 @@ footer p
     margin: 10px 0 40px;
 }
 
-#book .rounded-circle
+#book header span
 {
-    margin: 8px 20px 20px 0;
+    font-weight: bold;
 }
 
 #book img

@@ -32,7 +32,7 @@
     <div class="col-sm-3 offset-sm-6 col-md-3 offset-md-6 col-lg-3 offset-lg-6 book">
       <div class="front">
         <div class="title">
-          <h2>Dernier épisode</h2>
+          <h2>Nouvel épisode</h2>
           <h3>"<?= htmlspecialchars($lastEpisode['title']) ?>"</h3>
         </div>
       </div>

@@ -2,10 +2,10 @@
 
 namespace David\Projet4\Controller\Backend;
 
-require_once 'Model/Backend/ModifyEpisodeManager.php';
+require_once 'Model/Backend/EpisodesManager.php';
 require_once 'View/ControllerViews.php';
 
-use David\Projet4\Model\Backend\ModifyEpisodeManager;
+use David\Projet4\Model\Backend\EpisodesManager;
 use David\Projet4\View\ControllerViews;
 
 class modifyEpisodeController
@@ -14,7 +14,7 @@ class modifyEpisodeController
 
     public function __construct()
     {
-        $this->episode = new ModifyEpisodeManager();
+        $this->episode = new EpisodesManager();
     }
 
     public function displayAdminEpisode($episodeId)

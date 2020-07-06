@@ -8,7 +8,7 @@ use David\Projet4\Model\Manager;
 class CommentsManager extends Manager
 {
     /**
-     * return a book comment signaled
+     * return a book comment signaled to the adminIndexController
      *
      * @return void
      */
@@ -20,7 +20,7 @@ class CommentsManager extends Manager
     }
 
     /**
-     * return an episode comment signaled
+     * return an episode comment signaled to the adminIndexController
      *
      * @return void
      */

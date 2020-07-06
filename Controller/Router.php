@@ -241,45 +241,62 @@ class Router
                        var_dump($errors);     
                     }
                 }
-                elseif (($_GET['action'] == 'admin') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
+                elseif (($_GET['action'] == 'admin'))
                 {
-                    $this->adminIndexControl->displayAdminIndex();
-                }
-                elseif (($_GET['action'] == 'modifyEpisode') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
-                {
-                    $episodeId = intval($this->getParameter($_GET, 'id'));
-                    if ($episodeId > 0)
+                    if((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1)
                     {
-                        $this->modifyEpisodeControl->displayAdminEpisode($episodeId);
-                        if (isset($_POST['formModifyEpisode']))
-                        {
-                            if ((!empty($_POST['title'])) && (!empty($_POST['slug'])) && (!empty($_POST['content'])))
-                            {
-                                $title = $this->getParameter($_POST, 'title');
-                                $slug = $this->getParameter($_POST, 'slug');
-                                $content = $this->getParameter($_POST, 'content');
-                                $this->modifyEpisodeControl->modifyEpisode($title, $slug, $content, $episodeId);
-                                header('Location:index.php?action=admin');
-                                $successMessage['message'] = 'L\'épisode a bien été modifié !';
-                                var_dump($successMessage);
-                            }
-                            else
-                            {
-                                $errors['message'] = "Tous les champs doivent être remplis !";  
-                            }
-                        }
+                        $this->adminIndexControl->displayAdminIndex();
                     }
                     else
                     {
-                        throw new \Exception('Identifiant d\'épisode invalide');
+                        header('Location:index.php?action=connexion');
                     }
+                }
+                elseif (($_GET['action'] == 'modifyEpisode'))
+                {
+                    if((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1)
+                    {
+                        $episodeId = intval($this->getParameter($_GET, 'id'));
+                        if ($episodeId > 0)
+                        {
+                            $this->modifyEpisodeControl->displayAdminEpisode($episodeId);
+                            if (isset($_POST['formModifyEpisode']))
+                            {
+                                if ((!empty($_POST['title'])) && (!empty($_POST['slug'])) && (!empty($_POST['content'])))
+                                {
+                                    $title = $this->getParameter($_POST, 'title');
+                                    $slug = $this->getParameter($_POST, 'slug');
+                                    $content = $this->getParameter($_POST, 'content');
+                                    $this->modifyEpisodeControl->modifyEpisode($title, $slug, $content, $episodeId);
+                                    header('Location:index.php?action=admin');
+                                    $successMessage['message'] = 'L\'épisode a bien été modifié !';
+                                    var_dump($successMessage);
+                                }
+                                else
+                                {
+                                    $errors['message'] = "Tous les champs doivent être remplis !";  
+                                }
+                            }
+                        }
+                        else
+                        {
+                            throw new \Exception('Identifiant d\'épisode invalide');
+                        }  
+                    }
+                    else
+                    {
+                        header('Location:index.php?action=connexion');
+                    }
+                    
                 }
                 elseif ($_GET['action'] == 'deleteEpisode')
                 {
                     $id = intval($this->getParameter($_GET, 'id'));
+                    $commentId = intval($this->getParameter($_GET, 'episodeId'));
+
                     if ($id > 0)
                     {
-                        $this->adminIndexControl->removeEpisodeAndComments($id);
+                        $this->adminIndexControl->removeEpisodeAndComments($id, $commentId);
                         header('Location:index.php?action=admin');
                     }
                     else
@@ -421,6 +438,7 @@ class Router
                     $bookComment = $this->getParameter($_POST, 'bookComment');
                     $bookId = $this->getParameter($_POST, 'id');
                     $this->bookControl->addBookComment($author, $bookComment, $bookId);
+                    header("Location:index.php?action=book&id=$bookId");
                 }
                 elseif ($_GET['action'] == 'signaleBookComment')
                 {
@@ -458,6 +476,7 @@ class Router
                     $episodeComment = $this->getParameter($_POST, 'episodeComment');
                     $episodeId = $this->getParameter($_POST, 'id');
                     $this->episodeControl->addEpisodeComment($author, $episodeComment, $episodeId);
+                    header("Location:index.php?action=episode&id=$episodeId");
                 }
                 elseif ($_GET['action'] == 'signaleEpisodeComment')
                 {

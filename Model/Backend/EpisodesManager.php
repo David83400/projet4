@@ -14,21 +14,29 @@ class EpisodesManager extends Manager
      */
     public function getEpisodes()
     {
-        $sql = 'SELECT id, author, episodeImage, title, content, DATE_FORMAT(creationDate, \'%d %M %Y\') AS creationFrDate, DATE_FORMAT(modificationDate, \'%d %M %Y\') AS modificationFrDate FROM episodes ORDER BY id DESC';
+        $sql = 'SELECT episodes.id AS id, episodes.author AS author, episodes.episodeImage AS episodeImage, episodes.title AS title, episodes.content AS content, DATE_FORMAT(episodes.creationDate, \'%d %M %Y\') AS creationFrDate, DATE_FORMAT(episodes.modificationDate, \'%d %M %Y\') AS modificationFrDate, episodeComments.episodeId FROM episodes LEFT JOIN episodeComments ON episodeComments.episodeId = episodes.id GROUP BY episodes.id DESC';
         $episodes = $this->executeRequest($sql);
         return $episodes;
     }
 
     /**
-     * delete the episode selected
+     * Return the requested episode
      *
-     * @param [int] $id
+     * @param [int] $episodeId
      * @return void
      */
-    public function deleteEpisodeAndComments($id)
+    public function getEpisode($episodeId)
     {
-        $sql = 'DELETE episodes, episodeComments FROM episodes INNER JOIN episodeComments WHERE episodes.id = ? AND episodeComments.episodeId = episodes.id';
-        $req = $this->executeRequest($sql, array($id));
+        $sql = 'SELECT id, author, episodeImage, title, slug, content, DATE_FORMAT(creationDate, \'%W %d %M %Y\') AS creationFrDate, DATE_FORMAT(modificationDate, \'%W %d %M %Y\') AS modificationFrDate FROM episodes WHERE id = ?';
+        $episode = $this->executeRequest($sql, array($episodeId));
+        if ($episode->rowCount() > 0)
+        {
+            return $episode->fetch();
+        }
+        else
+        {
+            throw new \exception ("Aucun épisode ne correspond à l'identifiant '$episodeId'");
+        }
     }
 
     /**
@@ -44,5 +52,34 @@ class EpisodesManager extends Manager
     {
         $sql = 'INSERT INTO episodes(author, episodeImage, title, slug, content, creationDate, modificationDate) VALUES(?, ?, ?, ?, ?, NOW(), NOW())';
         $this->executeRequest($sql, array($author, $episodeImage, $title, $slug, $content));
+    }
+
+    /**
+     * Method to modify the episode selected
+     *
+     * @param [string] $title
+     * @param [string] $slug
+     * @param [string] $content
+     * @param [int] $episodeId
+     * @return void
+     */
+    public function updateEpisode($title, $slug, $content, $episodeId)
+    {
+        $sql = 'UPDATE episodes SET title = ?, slug = ?, content = ?, modificationDate = NOW() WHERE id = ?';
+        $req = $this->executeRequest($sql, array($title, $slug, $content, $episodeId));
+    }
+
+    /**
+     * delete the episode selected with is comments
+     *
+     * @param [int] $id
+     * @return void
+     */
+    public function deleteEpisodeAndComments($id, $commentId)
+    {
+        $sql = 'DELETE episodes FROM episodes WHERE episodes.id = ?';
+        $req = $this->executeRequest($sql, array($id));
+        $sql = 'DELETE episodeComments FROM episodeComments WHERE episodeId = ?';
+        $req = $this->executeRequest($sql, array($commentId));
     }
 }

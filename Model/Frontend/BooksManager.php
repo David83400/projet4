@@ -15,7 +15,7 @@ class BooksManager extends Manager
      */
     public function getBooks()
     {
-        $sql = 'SELECT id, author, bookImage, title, content, DATE_FORMAT(parutionDate, \'%W %d %M %Y\') AS parutionFrDate FROM books ORDER BY id DESC';
+        $sql = 'SELECT id, author, bookImage, title, content, DATE_FORMAT(parutionDate, \'%d/%m/%Y\') AS parutionFrDate FROM books ORDER BY id DESC';
         $books = $this->executeRequest($sql);
         return $books;
     }
@@ -28,7 +28,7 @@ class BooksManager extends Manager
      */
     public function getBook($bookId)
     {
-        $sql = 'SELECT id, author, bookImage, title, content, DATE_FORMAT(parutionDate, \'%W %d %M %Y\') AS parutionFrDate FROM books WHERE id = ?';
+        $sql = 'SELECT id, author, bookImage, title, content, DATE_FORMAT(parutionDate, \'%d/%m/%Y\') AS parutionFrDate FROM books WHERE id = ?';
         $book = $this->executeRequest($sql, array($bookId));
         if ($book->rowCount() > 0)
         {

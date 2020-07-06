@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php $this->title = 'Jean Forteroche | ' . htmlspecialchars($episode['title']) ?>
 <div class="container">
     <section id="episode">
@@ -62,7 +63,7 @@
                             <h4>Commentaires :</h4>
                         </header>
                         <?php foreach ($episodeComments as $episodeComment): ?>
-                            <p><span><?= htmlspecialchars($episodeComment['author']) ?> </span> Le <?= htmlspecialchars($episodeComment['commentFrDate']) ?> <a class="signale" href="index.php?action=signaleEpisodeComment&id=<?= htmlspecialchars($episodeComment['id']) ?>&episodeId=<?= htmlspecialchars($episodeComment['episodeId']) ?>">Signaler</a></p>
+                            <p><span><?= htmlspecialchars($episodeComment['author']) ?> </span> le <?= htmlspecialchars($episodeComment['commentFrDate']) ?> <a class="signale" href="index.php?action=signaleEpisodeComment&id=<?= htmlspecialchars($episodeComment['id']) ?>&episodeId=<?= htmlspecialchars($episodeComment['episodeId']) ?>">Signaler</a></p>
                             <p><?= htmlspecialchars($episodeComment['episodeComment']) ?></p>
                             <hr />
                         <?php endforeach; ?>
