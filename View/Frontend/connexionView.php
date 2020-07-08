@@ -6,16 +6,16 @@
             <div class="row">
                 <div class="col-12 ">
                     <h3>Se connecter</h3>
-                    <?php /*if (isset($_POST['formConnect'])) { */?>
-                    <!--<div class="alert alert-danger">
+                    <?php if (isset($_POST['formConnect'])) { ?>
+                    <div class="alert alert-danger">
                         <p>Vous n'avez pas rempli le formulaire correctement</p>
                         <ul>
-                            <?php //foreach ($errors as $error): ?>
-                                <li><? //= $error; var_dump($error); ?></li>
-                            <?php // endforeach; ?>
+                            <?php foreach ($errors as $error): ?>
+                                <li><?= $error; ?></li>
+                            <?php endforeach; ?>
                         </ul>
-                    </div> -->
-                    <?php /* } */ ?>
+                    </div>
+                    <?php } ?>
                     <form method="POST" action="">
                         <div class="form-group d-flex flex-column justify-content-center">
                             <label for="pseudoConnect">Votre pseudo</label><input id="pseudoConnect" name="pseudo" type="text" />
@@ -34,16 +34,16 @@
             <div class="row">
                 <div class="col-12">
                     <h3>Créer un compte</h3>
-                    <?php /*if (isset($_POST['formCreate'])) { */?>
-                    <!--<div class="alert alert-danger">
+                    <?php if (isset($_POST['formCreate'])) { ?>
+                    <div class="alert alert-danger">
                         <p>Vous n'avez pas rempli le formulaire correctement</p>
                         <ul>
-                            <?php //foreach ($errors as $error): ?>
-                                <li><? //= $error; var_dump($error); ?></li>
-                            <?php //endforeach; ?>
+                            <?php foreach ($errors as $error): ?>
+                                <li><?= $error; ?></li>
+                            <?php endforeach; ?>
                         </ul>
-                    </div> -->
-                    <?php /* } */ ?>
+                    </div>
+                    <?php } ?>
                     <form method="POST" action="">
                         <div class="form-group d-flex flex-column justify-content-center">
                             <label for="pseudoCreate">Votre pseudo </label><input id="pseudoCreate" name="pseudo" type="text" />

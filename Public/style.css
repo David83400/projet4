@@ -256,7 +256,6 @@ blockquote h2
     position: absolute;
     width: 400px;
     height: 100%;
-    padding: 5px;
     top: 0; 
     left: 0;
     transform-origin: left center;
@@ -279,6 +278,7 @@ blockquote h2
 .layer-text-2
 {
     border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 5px;
 }
 
 .book .page-text
@@ -861,6 +861,11 @@ footer p
 #modify label, #editEpisode label
 {
     font-weight: bold;
+}
+
+#modify textarea, #editEpisode textarea
+{
+    height: 420px;
 }
 
 /* error page */

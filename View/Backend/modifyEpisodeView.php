@@ -19,8 +19,8 @@
                     <input id="slug" class="form-control" type="text" name="slug" value="<?= htmlspecialchars($episode['slug']) ?>" />
                 </div>
                 <label for="content">Contenu :</label>
-                <div class="form-group">
-                    <textarea id="content" class="form-control wysiwyg" name="content" rows=15" cols="60"><?= htmlspecialchars($episode['content']) ?></textarea>
+                <div id="myeditablediv" class="form-group">
+                    <textarea id="content" class="form-control" name="content"><?= htmlspecialchars($episode['content']) ?></textarea>
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="id" value="<?= htmlspecialchars($episode['id']) ?>" />

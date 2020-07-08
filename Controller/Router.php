@@ -85,12 +85,12 @@ class Router
             if (isset($_GET['action']))
             {
                 session_start();
-                $errors = [];
+                $errors = array();
                 $successMessage = array();
                 
                 if ($_GET['action'] == 'connexion')
                 {
-                    $this->connexionControl->displayConnexion();
+                    $this->connexionControl->displayConnexion($errors);
 
                     if (isset($_POST['formCreate']))
                     {
@@ -132,7 +132,7 @@ class Router
                                                         }
                                                         else
                                                         {
-                                                           $errors['message'] = "Un problème est survenu, veuillez réessayer !";
+                                                            $errors['message'] = "Un problème est survenu, veuillez réessayer !";
                                                         }
                                                     }
                                                 }
@@ -170,7 +170,6 @@ class Router
                         {
                             $errors['message'] = "Veuillez remplir tous les champs !"; 
                         }
-                        var_dump($errors);
                     }
                     elseif (isset($_POST['formConnect']))
                     {
@@ -200,15 +199,16 @@ class Router
                             }
                             else
                             {
-                                $errors['message'] = "Email ou mot de passe incorrect !";
+                                $errors['pseudo'] = "Pseudo ou mot de passe incorrect !";
                             }
                         }
                         else
                         {
-                            $errors['message'] = "Veuillez remplir tous les champs !";  
+                            $errors['pseudo'] = "Veuillez remplir tous les champs !";  
                         }
-                        var_dump($errors);
+                        $this->connexionControl->displayErrors($errors);
                     }
+                    
                 }
                 elseif ($_GET['action'] == 'profil')
                 {
@@ -316,7 +316,6 @@ class Router
                             header('Location:index.php?action=admin');
                         }
                         elseif (isset($_POST['formDeleteComment']))
-
                         {
                             $this->episodeCommentControl->removeEpisodeComment($commentId);
                             header('Location:index.php?action=admin');
@@ -327,7 +326,8 @@ class Router
                         throw new \Exception('Identifiant de commentaire invalide');
                     }
                     
-                }elseif (($_GET['action'] == 'editBookComment') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
+                }
+                elseif (($_GET['action'] == 'editBookComment') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
                 {
                     $commentId = intval($this->getParameter($_GET, 'id'));
                     if ($commentId > 0)

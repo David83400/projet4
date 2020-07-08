@@ -7,7 +7,7 @@
             <header class="text-center">
                 <h1>Editer un épisode</h1>
             </header>
-            <form method="post" action="">
+            <form method="post">
                 <label for="title">Titre :</label>
                 <div class="form-group">
                     <input id="title" class="form-control" type="text" name="title" value="" />
@@ -18,14 +18,13 @@
                 </div>
                 <label for="content">Contenu :</label>
                 <div class="form-group">
-                    <textarea id="content" class="form-control wysiwyg" name="content" rows=15" cols="60"></textarea>
+                    <textarea id="content" class="form-control tiny" type="text" name="content"></textarea>
                 </div>
                 <label for="authorEpisode">Auteur :</label>
                 <div class="form-group">
                     <input id="authorEpisode" class="form-control" type="text" name="author" value="" />
                 </div>
                 <div class="form-group">
-                    <input type="hidden" name="id" value="<?//= htmlspecialchars($episode['id']) ?>" />
                     <input type="submit" class="btn btn-outline-primary" name="formEditEpisode" value="Valider" />
                 </div>
             </form>

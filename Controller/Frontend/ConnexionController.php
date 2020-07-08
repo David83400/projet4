@@ -10,7 +10,6 @@ use David\Projet4\View\ControllerViews;
 
 class ConnexionController
 {
-    private $connexion;
     private $users;
     
     public function __construct()
@@ -23,12 +22,17 @@ class ConnexionController
      *
      * @return void
      */
-    public function displayConnexion()
+    public function displayConnexion($errors)
     {
         $view = new ControllerViews("Frontend/connexion");
-        $view->generateFrontendViews(array('connexion' => $this->connexion));
+        $view->generateFrontendViews(array('errors' => $errors));
     }
 
+    public function displayErrors($errors)
+    {
+        $this->displayConnexion($errors);
+    }
+    
     /**
      * method that return the pseudo checked in bdd to compare with data post
      *
