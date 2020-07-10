@@ -91,155 +91,10 @@ class Router
                 if ($_GET['action'] == 'connexion')
                 {
                     $this->connexionControl->displayConnexion($errors);
-
-                    if (isset($_POST['formCreate']))
-                    {
-                        $pseudo = $this->getParameter($_POST, 'pseudo');
-                        $pass = sha1($_POST['pass']);
-                        $email = $this->getParameter($_POST, 'email');
-
-                        if ((!empty($_POST['pseudo'])) && (!empty($_POST['pass'])) && (!empty($_POST['passConfirm'])) && (!empty($_POST['email'])))
-                        {
-                            if (strlen($_POST['pseudo']) < 20)
-                            {
-                                if (preg_match('/^[a-zA-Z0-9_]+$/', $_POST['pseudo']))
-                                {
-                                    $userPseudo = $this->connexionControl->verifyPseudoUser($pseudo);
-                                    if ($userPseudo == false)
-                                    {
-                                        if ($_POST['pass'] == $_POST['passConfirm'])
-                                        {
-                                            if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
-                                            {
-                                                $userMail = $this->connexionControl->verifyMailUser($email);
-                                                if($userMail == false)
-                                                {
-                                                    if(empty($errors))
-                                                    {
-                                                        $this->connexionControl->addUser($pseudo, $pass, $email);
-                                                        $userInfo = $this->connexionControl->confirmUser($pseudo, $pass);
-
-                                                        if ($userInfo)
-                                                        {
-                                                            $_SESSION['userId'] = $userInfo['id'];
-                                                            $_SESSION['userPseudo'] = $userInfo['pseudo'];
-                                                            $_SESSION['userEmail'] = $userInfo['email'];
-                                                            $_SESSION['userPass'] = $userInfo['pass'];
-                                                            $_SESSION['userAdmin'] = $userInfo['isAdmin'];
-                                                            $_SESSION['userInscriptionDate'] = $userInfo['inscriptionFrDate'];
-                                                            $successMessage['message'] = 'Votre compte a bien été créé !';
-                                                            header('location:index.php');
-                                                        }
-                                                        else
-                                                        {
-                                                            $errors['message'] = "Un problème est survenu, veuillez réessayer !";
-                                                        }
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    $errors['email'] = "Cet email est déja utilisé pour un autre compte !";
-                                                }
-                                            }
-                                            else
-                                            {
-                                                $errors['email'] = "Votre email n'est pas valide !";
-                                            }
-                                        }
-                                        else
-                                        {
-                                            $errors['pass'] = "Les mots de passe ne correspondent pas !";
-                                        }
-                                    }
-                                    else
-                                    {
-                                        $errors['pseudo'] = "Ce pseudo est déja utilisé !";
-                                    }
-                                }
-                                else
-                                {
-                                    $errors['pseudo'] = "Votre pseudo n'est pas valide !";
-                                }
-                            }
-                            else
-                            {
-                                $errors['pseudo'] = "Le pseudo choisi est trop long !";
-                            }
-                        }
-                        else
-                        {
-                            $errors['message'] = "Veuillez remplir tous les champs !"; 
-                        }
-                    }
-                    elseif (isset($_POST['formConnect']))
-                    {
-                        $pseudo = $this->getParameter($_POST, 'pseudo');
-                        $pass = sha1($_POST['pass']);
-
-                        if ((!empty($_POST['pseudo'])) && (!empty($_POST['pass'])))
-                        {
-                            $userInfo = $this->connexionControl->confirmUser($pseudo, $pass);
-                            if ($userInfo)
-                            {
-                                $_SESSION['userId'] = $userInfo['id'];
-                                $_SESSION['userPseudo'] = $userInfo['pseudo'];
-                                $_SESSION['userEmail'] = $userInfo['email'];
-                                $_SESSION['userPass'] = $userInfo['pass'];
-                                $_SESSION['userAdmin'] = $userInfo['isAdmin'];
-                                $_SESSION['userInscriptionDate'] = $userInfo['inscriptionFrDate'];
-                                $successMessage['message'] = 'Vous êtes maintenant connecté !';
-                                if($_SESSION['userAdmin'] == 1)
-                                {
-                                    header('Location:index.php?action=admin');
-                                }
-                                else
-                                {
-                                    header('location:index.php');
-                                }
-                            }
-                            else
-                            {
-                                $errors['pseudo'] = "Pseudo ou mot de passe incorrect !";
-                            }
-                        }
-                        else
-                        {
-                            $errors['pseudo'] = "Veuillez remplir tous les champs !";  
-                        }
-                        $this->connexionControl->displayErrors($errors);
-                    }
-                    
                 }
                 elseif ($_GET['action'] == 'profil')
                 {
-                    $this->profilControl->displayProfil();
-                    if (isset($_POST['formChangeMdp']))
-                    {
-                        $pseudo = $_SESSION['userPseudo'];
-                        $oldPass = sha1($_POST['oldPass']);
-                        $pass = sha1($_POST['newPass']);
-                        $newPassConfirm = sha1($_POST['newPassConfirm']);
-                        
-                        if($_SESSION['userPass'] == $oldPass)
-                        {
-                            if($pass == $newPassConfirm)
-                            {
-                                $this->profilControl->changeMdp($pseudo, $pass);
-                                $_SESSION['userPass'] = $pass;
-                                $successMessage['message'] = 'Le mot de passe a bien été modifié !';
-                                var_dump($successMessage);
-                            }
-                            else
-                            {
-                                $errors['message'] = "Les mots de passe ne sont pas identiques !";
-                            }
-                        }
-                        else
-                        {
-                            $errors['message'] = "L'ancien mot de passe est incorrect !";
-                        }
-                       var_dump($errors);     
-                    }
+                    $this->profilControl->displayProfil($errors);
                 }
                 elseif (($_GET['action'] == 'admin'))
                 {
@@ -259,24 +114,7 @@ class Router
                         $episodeId = intval($this->getParameter($_GET, 'id'));
                         if ($episodeId > 0)
                         {
-                            $this->modifyEpisodeControl->displayAdminEpisode($episodeId);
-                            if (isset($_POST['formModifyEpisode']))
-                            {
-                                if ((!empty($_POST['title'])) && (!empty($_POST['slug'])) && (!empty($_POST['content'])))
-                                {
-                                    $title = $this->getParameter($_POST, 'title');
-                                    $slug = $this->getParameter($_POST, 'slug');
-                                    $content = $this->getParameter($_POST, 'content');
-                                    $this->modifyEpisodeControl->modifyEpisode($title, $slug, $content, $episodeId);
-                                    header('Location:index.php?action=admin');
-                                    $successMessage['message'] = 'L\'épisode a bien été modifié !';
-                                    var_dump($successMessage);
-                                }
-                                else
-                                {
-                                    $errors['message'] = "Tous les champs doivent être remplis !";  
-                                }
-                            }
+                            $this->modifyEpisodeControl->displayAdminEpisode($episodeId, $errors);
                         }
                         else
                         {
@@ -298,6 +136,7 @@ class Router
                     {
                         $this->adminIndexControl->removeEpisodeAndComments($id, $commentId);
                         header('Location:index.php?action=admin');
+                        $_SESSION['flash']['success'] = 'L\'épisode a bien été supprimé !';
                     }
                     else
                     {
@@ -314,11 +153,13 @@ class Router
                         {
                             $this->episodeCommentControl->acceptEpisodeComment($commentId);
                             header('Location:index.php?action=admin');
+                            $_SESSION['flash']['success'] = 'Le commentaire a bien été mis en ligne !';
                         }
                         elseif (isset($_POST['formDeleteComment']))
                         {
                             $this->episodeCommentControl->removeEpisodeComment($commentId);
                             header('Location:index.php?action=admin');
+                            $_SESSION['flash']['success'] = 'Le commentaire a bien été supprimé !';
                         }
                     }
                     else
@@ -337,12 +178,14 @@ class Router
                         {
                             $this->bookCommentControl->acceptBookComment($commentId);
                             header('Location:index.php?action=admin');
+                            $_SESSION['flash']['success'] = 'Le commentaire a bien été mis en ligne !';
                         }
                         elseif (isset($_POST['formDeleteComment']))
 
                         {
                             $this->bookCommentControl->removeBookComment($commentId);
                             header('Location:index.php?action=admin');
+                            $_SESSION['flash']['success'] = 'Le commentaire a bien été supprimé !';
                         }
                     }
                     else
@@ -353,64 +196,19 @@ class Router
                 }
                 elseif (($_GET['action'] == 'editEpisode') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
                 {
-                    $this->editEpisodeControl->displayEditEpisode();
-                    if (isset($_POST['formEditEpisode']))
-                    {
-                        if ((!empty($_POST['title'])) && (!empty($_POST['slug'])) && (!empty($_POST['content'])) && (!empty($_POST['author'])))
-                        {
-                            $author = $this->getParameter($_POST, 'author');
-                            $episodeImage = 'http://localhost/blogJeanForteroche/projet4/Public/images/couverture.jpg';
-                            $title = $this->getParameter($_POST, 'title');
-                            $slug = $this->getParameter($_POST, 'slug');
-                            $content = $this->getParameter($_POST, 'content');
-                            $this->editEpisodeControl->addEpisode($author, $episodeImage, $title, $slug, $content);
-                            header('Location:index.php?action=admin');
-                            $successMessage['message'] = 'L\'épisode a bien été créé !';
-                            var_dump($successMessage);
-                        }
-                        else
-                        {
-                            $errors['message'] = "Tous les champs doivent être remplis !";
-                            var_dump($errors);
-                        }
-                    }
+                    $this->editEpisodeControl->displayEditEpisode($errors);
                 }
                 elseif (($_GET['action'] == 'profilAdmin') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
                 {
-                    $this->profilAdminControl->displayProfilAdmin();
-                    if (isset($_POST['formAdminChangeMdp']))
-                    {
-                        $pseudo = $_SESSION['userPseudo'];
-                        $oldPass = sha1($_POST['oldPass']);
-                        $pass = sha1($_POST['newPass']);
-                        $newPassConfirm = sha1($_POST['newPassConfirm']);
-                        
-                        if($_SESSION['userPass'] == $oldPass)
-                        {
-                            if($pass == $newPassConfirm)
-                            {
-                                $this->profilControl->changeMdp($pseudo, $pass);
-                                $_SESSION['userPass'] = $pass;
-                                $successMessage['message'] = 'Le mot de passe a bien été modifié !';
-                                var_dump($successMessage);
-                            }
-                            else
-                            {
-                                $errors['message'] = "Les mots de passe ne sont pas identiques !";
-                            }
-                        }
-                        else
-                        {
-                            $errors['message'] = "L'ancien mot de passe est incorrect !";
-                        }
-                       var_dump($errors);     
-                    }
+                    $this->profilAdminControl->displayProfilAdmin($errors);
                 }
                 elseif ($_GET['action'] == 'deconnect')
                 {
                     session_start();
                     session_destroy();
                     header('Location:index.php');
+                    session_start();
+                    $_SESSION['flash']['success'] = 'Vous êtes bien déconnecté de votre espace membre !';
                 }
                 elseif ($_GET['action'] == 'author')
                 {
@@ -444,10 +242,19 @@ class Router
                 {
                     $id = intval($this->getParameter($_GET, 'id'));
                     $bookId = intval($this->getParameter($_GET, 'bookId'));
+                    $flag = intval($this->getParameter($_GET, 'flag'));
                     if ($id > 0)
                     {
-                        $this->bookControl->signalBookComment($id, $bookId);
-                        header("Location:index.php?action=book&id=$bookId");
+                        if ($flag == 1)
+                        {
+                            header("Location:index.php?action=book&id=$bookId");
+                            $_SESSION['flash']['signale'] = 'Ce commentaire a déja été signalé !';
+                        }
+                        else
+                        {
+                            $this->bookControl->signalBookComment($id, $bookId);
+                            header("Location:index.php?action=book&id=$bookId");
+                        }
                     }
                     else
                     {
@@ -482,10 +289,19 @@ class Router
                 {
                     $id = intval($this->getParameter($_GET, 'id'));
                     $episodeId = intval($this->getParameter($_GET, 'episodeId'));
+                    $flag = intval($this->getParameter($_GET, 'flag'));
                     if ($id > 0)
                     {
-                        $this->episodeControl->signalEpisodeComment($id, $episodeId);
-                        header("Location:index.php?action=episode&id=$episodeId");
+                        if ($flag == 1)
+                        {
+                            header("Location:index.php?action=episode&id=$episodeId");
+                            $_SESSION['flash']['signale'] = 'Ce commentaire a déja été signalé !';
+                        }
+                        else
+                        {
+                            $this->episodeControl->signalEpisodeComment($id, $episodeId);
+                            header("Location:index.php?action=episode&id=$episodeId");
+                        }
                     }
                     else
                     {

@@ -39,6 +39,24 @@ li
     list-style-type: none;
 }
 
+.alert-flash
+{
+    background-color: #FFE0BF;
+    margin: 0 -15px;
+}
+
+.alert-flash h2
+{
+    padding: 20px;
+}
+
+.alert-flash h2
+{
+    text-align: center;
+    color: #FF5483;
+    margin: 0;
+}
+
 .signale
 {
     margin-left: 20px;
@@ -777,32 +795,46 @@ footer p
     margin: 20px 0;
 }
 
-/* profil page */
-#infos
+#connexion ul
+{
+    margin-bottom: 0;
+}
+
+#connexion span
+{
+    color: #FF5483;
+}
+
+/* profil and profil admin view */
+.infos
 {
     margin-top: 60px;
-    height: 1200px;
+    margin-bottom: 60px;
+}
+
+.infos h4, .infos h3
+{
+    padding-bottom: 20px;
 }
 
 .textInfos
 {
-    height: 400px;
+    margin-bottom: 40px;
 }
 
-.changeMdp
+.textInfos p
 {
-    margin-bottom: 60px;
-    height: 400px;
-}
-
-.changeMdp h4
-{
-    padding-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .changeMdp label, .changeMdp .btn
 {
     margin: 10px 0;
+}
+
+.changeMdp span
+{
+    color: #FF5483;
 }
 
 /* admin */

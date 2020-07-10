@@ -35,6 +35,13 @@ class AdminIndexController
         $view->generateBackendViews(array('episodes' => $episodes, 'episodeComments' => $episodeComments, 'bookComments' => $bookComments));
     }
 
+    /**
+     * Method to delete an episode and the comments associted
+     *
+     * @param [int] $id
+     * @param [int] $commentId
+     * @return void
+     */
     public function removeEpisodeAndComments($id, $commentId)
     {
         $this->episodes->deleteEpisodeAndComments($id, $commentId);

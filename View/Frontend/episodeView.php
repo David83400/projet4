@@ -31,6 +31,15 @@
                     <div class="col-12">
                         <header>
                             <h3>Laissez votre commentaire.</h3>
+                        <?php if (isset($_SESSION['flash']))
+                        { ?>
+                        <?php foreach($_SESSION['flash'] as $type => $message): ?>
+                        <div class="alert-flash">
+                            <h2><?= $message; ?></h2>
+                        <?php endforeach; ?>
+                        <?php unset($_SESSION['flash']); ?>
+                        </div>
+                        <?php } ?>
                         <?php
                         if (isset($_SESSION['userPseudo'])) {
                         ?>
@@ -63,7 +72,7 @@
                             <h4>Commentaires :</h4>
                         </header>
                         <?php foreach ($episodeComments as $episodeComment): ?>
-                            <p><span><?= htmlspecialchars($episodeComment['author']) ?> </span> le <?= htmlspecialchars($episodeComment['commentFrDate']) ?> <a class="signale" href="index.php?action=signaleEpisodeComment&id=<?= htmlspecialchars($episodeComment['id']) ?>&episodeId=<?= htmlspecialchars($episodeComment['episodeId']) ?>">Signaler</a></p>
+                            <p><span><?= htmlspecialchars($episodeComment['author']) ?> </span> le <?= htmlspecialchars($episodeComment['commentFrDate']) ?> <a class="signale" href="index.php?action=signaleEpisodeComment&id=<?= htmlspecialchars($episodeComment['id']) ?>&episodeId=<?= htmlspecialchars($episodeComment['episodeId']) ?>&flag=<?= htmlspecialchars($episodeComment['flag']) ?>">Signaler</a></p>
                             <p><?= htmlspecialchars($episodeComment['episodeComment']) ?></p>
                             <hr />
                         <?php endforeach; ?>

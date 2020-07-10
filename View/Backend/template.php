@@ -22,7 +22,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
             <?= $navbar ?>
         </nav>
-        <div class="container">
+        <div class="container-fluid">
             <?= $content ?>
         </div>
         <script>

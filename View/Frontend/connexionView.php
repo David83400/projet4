@@ -8,7 +8,6 @@
                     <h3>Se connecter</h3>
                     <?php if (isset($_POST['formConnect'])) { ?>
                     <div class="alert alert-danger">
-                        <p>Vous n'avez pas rempli le formulaire correctement</p>
                         <ul>
                             <?php foreach ($errors as $error): ?>
                                 <li><?= $error; ?></li>
@@ -36,7 +35,6 @@
                     <h3>Créer un compte</h3>
                     <?php if (isset($_POST['formCreate'])) { ?>
                     <div class="alert alert-danger">
-                        <p>Vous n'avez pas rempli le formulaire correctement</p>
                         <ul>
                             <?php foreach ($errors as $error): ?>
                                 <li><?= $error; ?></li>
@@ -46,10 +44,10 @@
                     <?php } ?>
                     <form method="POST" action="">
                         <div class="form-group d-flex flex-column justify-content-center">
-                            <label for="pseudoCreate">Votre pseudo </label><input id="pseudoCreate" name="pseudo" type="text" />
+                            <label for="pseudoCreate">Votre pseudo <span>(entre 5 et 19 caractères)</span></label><input id="pseudoCreate" name="pseudo" type="text" />
                         </div>
                         <div class="form-group d-flex flex-column justify-content-center">
-                            <label for="passCreate">Votre mot de passe </label><input id="passCreate" name="pass" type="password" />
+                            <label for="passCreate">Votre mot de passe <span>(8 caractères minimum)</span></label><input id="passCreate" name="pass" type="password" />
                         </div>
                         <div class="form-group d-flex flex-column justify-content-center">
                             <label for="passConfirm">Confirmez votre mot de passe</label><input id="passConfirm" name="passConfirm" type="password" />

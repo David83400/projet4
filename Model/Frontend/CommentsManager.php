@@ -16,7 +16,7 @@ class CommentsManager extends Manager
      */
     public function getEpisodeComments($episodeId)
     {
-        $sql = 'SELECT id, author, episodeComment, episodeId, DATE_FORMAT(commentDate, \'%d/%m/%y à %Hh%i\') AS commentFrDate FROM episodeComments WHERE episodeId=? ORDER BY id DESC';
+        $sql = 'SELECT id, episodeId, author, episodeComment, DATE_FORMAT(commentDate, \'%d/%m/%y à %Hh%i\') AS commentFrDate, flag FROM episodeComments WHERE episodeId=? ORDER BY id DESC';
         $episodeComments = $this->executeRequest($sql, array($episodeId));
         return $episodeComments;
     }
@@ -45,7 +45,7 @@ class CommentsManager extends Manager
      */
     public function getBookComments($bookId)
     {
-        $sql = 'SELECT id, author, bookComment, bookId, DATE_FORMAT(commentDate, \'%d/%m/%y à %Hh%i\') AS commentFrDate FROM bookComments WHERE bookId=? ORDER BY id DESC';
+        $sql = 'SELECT id, bookId, author, bookComment, DATE_FORMAT(commentDate, \'%d/%m/%y à %Hh%i\') AS commentFrDate, flag FROM bookComments WHERE bookId=? ORDER BY id DESC';
         $bookComments = $this->executeRequest($sql, array($bookId));
         return $bookComments;
     }

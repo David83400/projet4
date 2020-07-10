@@ -10,7 +10,6 @@ use David\Projet4\View\ControllerViews;
 
 class ProfilController
 {
-    private $profil;
     private $dataUser;
     
     public function __construct()
@@ -22,10 +21,56 @@ class ProfilController
      *
      * @return void
      */
-    public function displayProfil()
+    public function displayProfil($errors)
     {
+        if (isset($_POST['formChangeMdp']))
+        {
+            $errors = $this->verifyFormChangeMdp($errors);
+        }
         $view = new ControllerViews("Frontend/profil");
-        $view->generateFrontendViews(array('profil' => $this->profil));
+        $view->generateFrontendViews(array('errors' => $errors));
+    }
+
+    public function verifyFormChangeMdp($errors)
+    {
+        $pseudo = $_SESSION['userPseudo'];
+        $oldPass = sha1($_POST['oldPass']);
+        $pass = sha1($_POST['newPass']);
+        $newPassConfirm = sha1($_POST['newPassConfirm']);
+        
+        if((!empty($_POST['oldPass'])) && (!empty($_POST['newPass'])) && (!empty($_POST['newPassConfirm'])))
+        {
+            if($_SESSION['userPass'] == $oldPass)
+            {
+                if(strlen($_POST['newPass']) >= 8)
+                {
+                    if($pass == $newPassConfirm)
+                    {
+                        $this->changeMdp($pseudo, $pass);
+                        $_SESSION['userPass'] = $pass;
+                        header('Location:index.php');
+                        $_SESSION['flash']['success'] = 'Le mot de passe a bien été modifié !';
+                    }
+                    else
+                    {
+                        $errors['message'] = "Les mots de passe ne sont pas identiques !";
+                    }
+                }
+                else
+                {
+                    $errors['message'] = "Le nouveau mot de passe n'est pas valide !";
+                }
+            }
+            else
+            {
+                $errors['message'] = "L'ancien mot de passe est incorrect !";
+            }
+        }
+        else
+        {
+            $errors['message'] = "Tous les champs doivent être remplis !";
+        }
+        return $errors;
     }
 
     public function changeMdp($pseudo, $pass)

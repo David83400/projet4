@@ -35,6 +35,15 @@
                     <div class="col-12">
                         <header>
                             <h3>Laissez votre commentaire.</h3>
+                        <?php if (isset($_SESSION['flash']))
+                        { ?>
+                        <?php foreach($_SESSION['flash'] as $type => $message): ?>
+                        <div class="alert-flash">
+                            <h2><?= $message; ?></h2>
+                        <?php endforeach; ?>
+                        <?php unset($_SESSION['flash']); ?>
+                        </div>
+                        <?php } ?>
                         <?php
                         if (isset($_SESSION['userPseudo']))
                         {
@@ -68,7 +77,7 @@
                         <h4>Commentaires :</h4>
                         </header>
                         <?php foreach ($bookComments as $bookComment): ?>
-                        <p><span><?= htmlspecialchars($bookComment['author']) ?> </span> le <?= htmlspecialchars($bookComment['commentFrDate']) ?> <a class="signale" href="index.php?action=signaleBookComment&id=<?= htmlspecialchars($bookComment['id']) ?>&bookId=<?= htmlspecialchars($bookComment['bookId']) ?>">Signaler</a></p>
+                        <p><span><?= htmlspecialchars($bookComment['author']) ?> </span> le <?= htmlspecialchars($bookComment['commentFrDate']) ?> <a class="signale" href="index.php?action=signaleBookComment&id=<?= htmlspecialchars($bookComment['id']) ?>&bookId=<?= htmlspecialchars($bookComment['bookId']) ?>&flag=<?= htmlspecialchars($bookComment['flag']) ?>">Signaler</a></p>
                         <p><?= htmlspecialchars($bookComment['bookComment']) ?></p>
                         <hr />
                         <?php endforeach; ?>
