@@ -45,12 +45,17 @@ class BookController
      */
     public function addBookComment($author, $bookComment, $bookId)
     {
-        // Sauvegarde du commentaire
         $this->bookComments->postBookComment($author, $bookComment, $bookId);
-        // Actualisation de l'affichage du billet
         $this->displayBook($bookId);
     }
 
+    /**
+     * Method to signale a comment associated with a book
+     *
+     * @param [int] $id
+     * @param [int] $bookId
+     * @return void
+     */
     public function signalBookComment($id, $bookId)
     {
         $this->bookComments->updateBookComment($id, $bookId);

@@ -21,6 +21,7 @@ class modifyEpisodeController
      * Display the modify episode page
      *
      * @param [int] $episodeId
+     * @param [int] $errors
      * @return void
      */
     public function displayAdminEpisode($episodeId, $errors)
@@ -28,7 +29,7 @@ class modifyEpisodeController
         $episode = $this->episode->getEpisode($episodeId);
         if (isset($_POST['formModifyEpisode']))
         {
-            $errors = $this->verifFormModifyEpisode($errors);
+            $errors = $this->verifFormModifyEpisode();
         }
         $view = new ControllerViews("Backend/modifyEpisode");
         $view->generateBackendViews(array('episode' => $episode, 'errors' => $errors));
@@ -37,12 +38,14 @@ class modifyEpisodeController
     /**
      * Method to make verifications in the modify episode form
      *
+     * @param [int] $errors
      * @return void
      */
-    public function verifFormModifyEpisode($errors)
+    public function verifFormModifyEpisode()
     {
         if ((!empty($_POST['title'])) && (!empty($_POST['slug'])) && (!empty($_POST['content'])))
         {
+            $errors = array();
             $episodeId = intval($_GET['id']);
             $title = $_POST['title'];
             $slug = $_POST['slug'];

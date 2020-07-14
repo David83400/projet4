@@ -9,7 +9,7 @@ use David\Projet4\Model\Manager;
 class CommentsManager extends Manager
 {
     /**
-     * Returns the list of comments associated with an episode
+     * Return the list of comments associated with an episode
      *
      * @param [int] $episodeId
      * @return void
@@ -38,7 +38,7 @@ class CommentsManager extends Manager
 
 
     /**
-     * Returns the list of comments associated with a book
+     * Return the list of comments associated with a book
      *
      * @param [int] $bookId
      * @return void
@@ -64,6 +64,13 @@ class CommentsManager extends Manager
         $this->executeRequest($sql, array($author, $bookComment, $bookId));
     }
 
+    /**
+     * Method that update flag to signale a book comment
+     *
+     * @param [int] $id
+     * @param [int] $bookId
+     * @return void
+     */
     public function updateBookComment($id, $bookId)
     {
         $sql = 'SELECT bookId FROM bookComments WHERE id=?';
@@ -72,6 +79,13 @@ class CommentsManager extends Manager
         $req = $this->executeRequest($sql, array($id));
     }
 
+    /**
+     * Method that update flag to signale an episode comment
+     *
+     * @param [int] $id
+     * @param [int] $episodeId
+     * @return void
+     */
     public function updateEpisodeComment($id, $episodeId)
     {
         $sql = 'SELECT episodeId FROM episodeComments WHERE id=?';

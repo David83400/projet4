@@ -9,6 +9,9 @@
         <li class="nav-item">
             <a class="nav-link" href="index.php?action=editEpisode">Editer un épisode</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="index.php?action=messaging">Messagerie</a>
+        </li>
     </ul>
 </div>
 <div class="dropdown">

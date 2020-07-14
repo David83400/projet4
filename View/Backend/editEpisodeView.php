@@ -28,7 +28,10 @@
                     </div>
                     <label for="content">Contenu :</label>
                     <div class="form-group">
-                        <textarea id="content" class="form-control tiny" type="text" name="content"></textarea>
+                        <textarea id="content" class="form-control tiny" type="text" name="content">
+                            <h1>Titre du chapitre</h1>
+                            <p>Contenu .......</p>
+                        </textarea>
                     </div>
                     <label for="authorEpisode">Auteur :</label>
                     <div class="form-group">

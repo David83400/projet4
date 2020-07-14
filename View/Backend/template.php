@@ -2,6 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="Public/bootstrap-4.5.0-dist/css/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="Public/style.css" />
@@ -28,9 +29,11 @@
         <script>
             tinymce.init({
             selector: '.tiny',
+            elements:"contenu",
+            entity_encoding : "raw",
+            encoding: "UTF-8",
             plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
             toolbar_mode: 'floating',
-            allow_html_in_named_anchor: false,
             language: 'fr_FR'
             });
         </script>

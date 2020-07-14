@@ -20,6 +20,7 @@ class ConnexionController
     /**
      * display the connexion page
      *
+     * @param [int] $errors
      * @return void
      */
     public function displayConnexion($errors)
@@ -45,7 +46,8 @@ class ConnexionController
     {
         if ((!empty($_POST['pseudo'])) && (!empty($_POST['pass'])))
         {
-            $pseudo = $_POST['pseudo'];
+            $errors = array();
+            $pseudo =  htmlspecialchars($_POST['pseudo']);
             $pass = sha1($_POST['pass']);
 
             $userInfo = $this->confirmUser($pseudo, $pass);
@@ -64,7 +66,7 @@ class ConnexionController
                 }
                 else
                 {
-                    header('location:index.php');
+                    header('Location:index.php');
                     $_SESSION['flash']['success'] = 'Vous êtes maintenant connecté !';
                 }
             }
@@ -87,9 +89,10 @@ class ConnexionController
      */
     public function verifyFormCreate()
     {
-        $pseudo = $_POST['pseudo'];
+        $errors = array();
+        $pseudo =  htmlspecialchars($_POST['pseudo']);
         $pass = sha1($_POST['pass']);
-        $email = $_POST['email'];
+        $email =  htmlspecialchars($_POST['email']);
 
         if ((!empty($_POST['pseudo'])) && (!empty($_POST['pass'])) && (!empty($_POST['passConfirm'])) && (!empty($_POST['email'])))
         {

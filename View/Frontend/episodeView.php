@@ -49,7 +49,7 @@
                                 <input id="pseudoEpisode" name="author" type="text" placeholder="Votre pseudo" required />
                             </div>
                             <div class="form-group">
-                                <textarea id="textCommentEpisode" name="episodeComment" placeholder="Votre commentaire" required></textarea>
+                                <textarea id="textCommentEpisode" name="episodeComment" placeholder="Votre commentaire"></textarea>
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="id" value="<?= htmlspecialchars($episode['id']) ?>" />

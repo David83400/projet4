@@ -4,14 +4,11 @@ namespace David\Projet4\View;
 
 class ControllerViews
 {
-    // nom du fichier associé à la vue
     private $file;
-    // titre de la vue définie dans le fichier view
     private $title;
 
     public function __construct($action)
     {
-        //détermination du nom du fichier view à partir du paramètre action
         $this->file = "View/" . $action . "View.php";
     }
 
@@ -23,11 +20,9 @@ class ControllerViews
      */
     public function generateFrontendViews($data)
     {
-        //génération de la partie spécifique de la vue
         $content = $this->generateFile($this->file, $data);
         $navbar = $this->generateFile("View/Frontend/navbar.php", $data);
         $footer = $this->generateFile("View/Frontend/footer.php", $data);
-        // génération du template commun utilisant la partie spécifique
         $view = $this->generateFile('View/Frontend/template.php', array('title' => $this->title, 'navbar' => $navbar, 'content' => $content, 'footer' => $footer));
 
         echo $view;
@@ -41,10 +36,8 @@ class ControllerViews
      */
     public function generateBackendViews($data)
     {
-        //génération de la partie spécifique de la vue
         $content = $this->generateFile($this->file, $data);
         $navbar = $this->generateFile("View/Backend/navbarAdmin.php", $data);
-        // génération du template commun utilisant la partie spécifique
         $view = $this->generateFile('View/Backend/template.php', array('title' => $this->title, 'navbar' => $navbar, 'content' => $content));
 
         echo $view;
@@ -61,13 +54,9 @@ class ControllerViews
     {
         if (file_exists($file))
         {
-            // rend les éléments du tableau $data accessible dans la view
             extract($data);
-            // démarrage de la temporisation de sortie
             ob_start();
-            // inclut le fichier view. Son résultat est placé dans le tampon de sortie
             require $file;
-            // arrêt de la temporisation et renvoi du tampon de sortie
             return ob_get_clean();
         }
         else

@@ -19,6 +19,7 @@ class ProfilController
     /**
      * display the profil page
      *
+     * @param [int] $errors
      * @return void
      */
     public function displayProfil($errors)
@@ -31,6 +32,12 @@ class ProfilController
         $view->generateFrontendViews(array('errors' => $errors));
     }
 
+    /**
+     * Method that make verifications in the form to change mdp
+     *
+     * @param [int] $errors
+     * @return void
+     */
     public function verifyFormChangeMdp($errors)
     {
         $pseudo = $_SESSION['userPseudo'];
@@ -73,6 +80,13 @@ class ProfilController
         return $errors;
     }
 
+    /**
+     * Method to change mdp
+     *
+     * @param [string] $pseudo
+     * @param [string] $pass
+     * @return void
+     */
     public function changeMdp($pseudo, $pass)
     {
         $this->dataUser->updateMdp($pseudo, $pass);

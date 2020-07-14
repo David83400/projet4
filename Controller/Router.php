@@ -10,6 +10,8 @@ require_once 'Controller/Backend/modifyEpisodeController.php';
 require_once 'Controller/Backend/EpisodeCommentController.php';
 require_once 'Controller/Backend/BookCommentController.php';
 require_once 'Controller/Backend/EditEpisodeController.php';
+require_once 'Controller/Backend/MessagingController.php';
+require_once 'Controller/Backend/EditMessagingController.php';
 require_once 'Controller/Backend/ProfilAdminController.php';
 require_once 'Controller/Frontend/BooksController.php';
 require_once 'Controller/Frontend/BookController.php';
@@ -27,6 +29,8 @@ use David\Projet4\Controller\Backend\modifyEpisodeController;
 use David\Projet4\Controller\Backend\EpisodeCommentController;
 use David\Projet4\Controller\Backend\BookCommentController;
 use David\Projet4\Controller\Backend\EditEpisodeController;
+use David\Projet4\Controller\Backend\MessagingController;
+use David\Projet4\Controller\Backend\EditMessagingController;
 use David\Projet4\Controller\Backend\ProfilAdminController;
 use David\Projet4\Controller\Frontend\BooksController;
 use David\Projet4\Controller\Frontend\BookController;
@@ -46,6 +50,8 @@ class Router
     private $episodeCommentControl;
     private $bookCommentControl;
     private $editEpisodeControl;
+    private $messagingControl;
+    private $editMessagingControl;
     private $profilAdminControl;
     private $booksControl;
     private $bookControl;
@@ -64,6 +70,8 @@ class Router
         $this->episodeCommentControl = new EpisodeCommentController();
         $this->bookCommentControl = new BookCommentController();
         $this->editEpisodeControl = new EditEpisodeController();
+        $this->messagingControl = new MessagingController();
+        $this->editMessagingControl = new EditMessagingController();
         $this->profilAdminControl = new ProfilAdminController();
         $this->booksControl = new BooksController();
         $this->bookControl = new BookController();
@@ -86,8 +94,6 @@ class Router
             {
                 session_start();
                 $errors = array();
-                $successMessage = array();
-                
                 if ($_GET['action'] == 'connexion')
                 {
                     $this->connexionControl->displayConnexion($errors);
@@ -197,6 +203,42 @@ class Router
                 elseif (($_GET['action'] == 'editEpisode') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
                 {
                     $this->editEpisodeControl->displayEditEpisode($errors);
+                }
+                elseif (($_GET['action'] == 'messaging'))
+                {
+                    if((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1)
+                    {
+                        $this->messagingControl->displayMessaging();
+                    }
+                    else
+                    {
+                        header('Location:index.php?action=connexion');
+                    }
+                }
+                elseif (($_GET['action'] == 'editMessaging'))
+                {
+                    if((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1)
+                    {
+                        $idMessage = intval($this->getParameter($_GET, 'id'));
+                        if ($idMessage > 0)
+                        {
+                            $this->editMessagingControl->displayEditMessaging($idMessage);
+                            if (isset($_POST['formTreatMessage']))
+                            {
+                                $this->editMessagingControl->treatMessage($idMessage);
+                                header('Location:index.php?action=messaging');
+                                $_SESSION['flash']['success'] = 'Le message a bien été traité et sauvegardé !';
+                            }
+                        }
+                        else
+                        {
+                            throw new \Exception('Identifiant de message invalide');
+                        }
+                    }
+                    else
+                    {
+                        header('Location:index.php?action=connexion');
+                    }
                 }
                 elseif (($_GET['action'] == 'profilAdmin') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
                 {
@@ -308,13 +350,13 @@ class Router
                         throw new \Exception('Identifiant d\épisode invalide');
                     }
                 }
-                elseif ($_GET['action'] == 'contact')
+                elseif (($_GET['action'] == 'contact') && (isset($_SESSION['userPseudo'])))
                 {
-                    $this->contactControl->displayContact();
+                    $this->contactControl->displayContact($errors);
                 }
                 else
                 {
-                    throw new \Exception('Action non valide');
+                    throw new \Exception('Action non valide !');
                 }
             }
             else

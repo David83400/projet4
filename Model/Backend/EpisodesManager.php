@@ -14,7 +14,7 @@ class EpisodesManager extends Manager
      */
     public function getEpisodes()
     {
-        $sql = 'SELECT episodes.id AS id, episodes.author AS author, episodes.episodeImage AS episodeImage, episodes.title AS title, episodes.content AS content, DATE_FORMAT(episodes.creationDate, \'%d %M %Y\') AS creationFrDate, DATE_FORMAT(episodes.modificationDate, \'%d %M %Y\') AS modificationFrDate, episodeComments.episodeId FROM episodes LEFT JOIN episodeComments ON episodeComments.episodeId = episodes.id GROUP BY episodes.id DESC';
+        $sql = 'SELECT episodes.id AS id, episodes.author AS author, episodes.episodeImage AS episodeImage, episodes.title AS title, episodes.content AS content, DATE_FORMAT(episodes.creationDate, \'%d/%m/%Y\') AS creationFrDate, DATE_FORMAT(episodes.modificationDate, \'%d/%m/%Y\') AS modificationFrDate, episodeComments.episodeId FROM episodes LEFT JOIN episodeComments ON episodeComments.episodeId = episodes.id GROUP BY episodes.id DESC';
         $episodes = $this->executeRequest($sql);
         return $episodes;
     }
@@ -27,7 +27,7 @@ class EpisodesManager extends Manager
      */
     public function getEpisode($episodeId)
     {
-        $sql = 'SELECT id, author, episodeImage, title, slug, content, DATE_FORMAT(creationDate, \'%W %d %M %Y\') AS creationFrDate, DATE_FORMAT(modificationDate, \'%W %d %M %Y\') AS modificationFrDate FROM episodes WHERE id = ?';
+        $sql = 'SELECT id, author, episodeImage, title, slug, content, DATE_FORMAT(creationDate, \'%d/%m/%Y\') AS creationFrDate, DATE_FORMAT(modificationDate, \'%d/%m/%Y\') AS modificationFrDate FROM episodes WHERE id = ?';
         $episode = $this->executeRequest($sql, array($episodeId));
         if ($episode->rowCount() > 0)
         {
@@ -73,6 +73,7 @@ class EpisodesManager extends Manager
      * delete the episode selected with is comments
      *
      * @param [int] $id
+     * @param [int] $commentId
      * @return void
      */
     public function deleteEpisodeAndComments($id, $commentId)

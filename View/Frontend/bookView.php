@@ -54,7 +54,7 @@
                                 <input id="pseudoBook" name="author" type="text" placeholder="Votre pseudo" required />
                             </div>
                             <div class="form-group">
-                                <textarea id="textCommentBook" name="bookComment" placeholder="Votre commentaire" required></textarea>
+                                <textarea id="textCommentBook" name="bookComment" placeholder="Votre commentaire"></textarea>
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="id" value="<?= htmlspecialchars($book['id']) ?>" />

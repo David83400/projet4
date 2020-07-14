@@ -45,7 +45,7 @@ class BooksManager extends Manager
      */
     public function getLastBooks()
     {
-        $sql = 'SELECT id, author, bookImage, title, content, DATE_FORMAT(parutionDate, \'%W %d %M %Y\') AS parutionFrDate FROM books ORDER BY id DESC LIMIT 4';
+        $sql = 'SELECT id, author, bookImage, title, content, DATE_FORMAT(parutionDate, \'%d/%m/%Y\') AS parutionFrDate FROM books ORDER BY id DESC LIMIT 4';
         $lastBooks = $this->executeRequest($sql);
         return $lastBooks;
     }

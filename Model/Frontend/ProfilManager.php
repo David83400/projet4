@@ -8,6 +8,13 @@ use David\Projet4\Model\Manager;
 
 class ProfilManager extends Manager
 {
+    /**
+     * Method to update mdp
+     *
+     * @param [string] $pseudo
+     * @param [string] $pass
+     * @return void
+     */
     public function updateMdp($pseudo, $pass)
     {
         $sql = 'UPDATE users SET pass = ? WHERE pseudo = ?';

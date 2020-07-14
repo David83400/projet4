@@ -16,9 +16,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="index.php?action=episodes">Billet simple</a>
             </li>
+            <?php
+            if (isset($_SESSION['userPseudo']))
+            {
+            ?>
             <li class="nav-item">
                 <a class="nav-link" href="index.php?action=contact">Contact</a>
             </li>
+            <?php
+            }
+            ?>
         </ul>
     </div>
     <?php

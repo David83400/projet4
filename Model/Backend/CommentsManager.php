@@ -45,7 +45,7 @@ class CommentsManager extends Manager
     }
 
     /**
-     * Display a signaled book comment on the edit comment page
+     * return a signaled book comment on the edit comment page
      *
      * @param [int] $commentId
      * @return void

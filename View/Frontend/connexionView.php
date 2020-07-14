@@ -7,13 +7,13 @@
                 <div class="col-12 ">
                     <h3>Se connecter</h3>
                     <?php if (isset($_POST['formConnect'])) { ?>
+                    <?php foreach ($errors as $error): ?>
                     <div class="alert alert-danger">
                         <ul>
-                            <?php foreach ($errors as $error): ?>
-                                <li><?= $error; ?></li>
-                            <?php endforeach; ?>
+                            <li><?= $error; ?></li>
                         </ul>
                     </div>
+                    <?php endforeach; ?>
                     <?php } ?>
                     <form method="POST" action="">
                         <div class="form-group d-flex flex-column justify-content-center">
@@ -34,13 +34,13 @@
                 <div class="col-12">
                     <h3>Créer un compte</h3>
                     <?php if (isset($_POST['formCreate'])) { ?>
+                    <?php foreach ($errors as $error): ?>
                     <div class="alert alert-danger">
                         <ul>
-                            <?php foreach ($errors as $error): ?>
-                                <li><?= $error; ?></li>
-                            <?php endforeach; ?>
+                            <li><?= $error; ?></li>
                         </ul>
                     </div>
+                    <?php endforeach; ?>
                     <?php } ?>
                     <form method="POST" action="">
                         <div class="form-group d-flex flex-column justify-content-center">

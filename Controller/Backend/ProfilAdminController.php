@@ -19,6 +19,7 @@ class ProfilAdminController
     /**
      * display the profil admin page
      *
+     * @param [int] $errors
      * @return void
      */
     public function displayProfilAdmin($errors)
@@ -31,6 +32,12 @@ class ProfilAdminController
         $view->generateBackendViews(array('errors' => $errors));
     }
 
+    /**
+     * Method that make verifications on the admin form to change mdp
+     *
+     * @param [int] $errors
+     * @return void
+     */
     public function verifyFormAdminChangeMdp($errors)
     {
         $pseudo = $_SESSION['userPseudo'];
@@ -73,6 +80,13 @@ class ProfilAdminController
         return $errors; 
     }
 
+    /**
+     * Method to change mdp
+     *
+     * @param [string] $pseudo
+     * @param [string] $pass
+     * @return void
+     */
     public function changeMdp($pseudo, $pass)
     {
         $this->dataUser->updateMdp($pseudo, $pass);

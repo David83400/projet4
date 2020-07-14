@@ -16,25 +16,33 @@ class EditEpisodeController
     {
         $this->editEpisode = new EpisodesManager();
     }
+    
     /**
      * display the edit episode page
      *
+     * @param [int] $errors
      * @return void
      */
     public function displayEditEpisode($errors)
     {
         if (isset($_POST['formEditEpisode']))
         {
-            $errors = $this->verifyFormEditEpisode($errors);
+            $errors = $this->verifyFormEditEpisode();
         }
         $view = new ControllerViews("Backend/editEpisode");
         $view->generateBackendViews(array('errors' => $errors));
     }
 
+    /**
+     * Method that make verifications on the edit episode form
+     *
+     * @return void
+     */
     public function verifyFormEditEpisode()
     {
         if ((!empty($_POST['title'])) && (!empty($_POST['slug'])) && (!empty($_POST['content'])) && (!empty($_POST['author'])))
         {
+            $errors = array();
             $author = $_POST['author'];
             $episodeImage = 'http://localhost/blogJeanForteroche/projet4/Public/images/couverture.jpg';
             $title = $_POST['title'];
@@ -51,6 +59,16 @@ class EditEpisodeController
         return $errors;
     }
 
+    /**
+     * Method to create an episode
+     *
+     * @param [string] $author
+     * @param [jpg] $episodeImage
+     * @param [string] $title
+     * @param [string] $slug
+     * @param [string] $content
+     * @return void
+     */
     public function addEpisode($author, $episodeImage, $title, $slug, $content)
     {
         $this->editEpisode->createEpisode($author, $episodeImage, $title, $slug, $content);
