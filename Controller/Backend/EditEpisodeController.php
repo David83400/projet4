@@ -43,11 +43,11 @@ class EditEpisodeController
         if ((!empty($_POST['title'])) && (!empty($_POST['slug'])) && (!empty($_POST['content'])) && (!empty($_POST['author'])))
         {
             $errors = array();
-            $author = $_POST['author'];
+            $author = htmlspecialchars($_POST['author']);
             $episodeImage = 'http://localhost/blogJeanForteroche/projet4/Public/images/couverture.jpg';
-            $title = $_POST['title'];
-            $slug = $_POST['slug'];
-            $content = $_POST['content'];
+            $title = htmlspecialchars($_POST['title']);
+            $slug = htmlspecialchars($_POST['slug']);
+            $content = htmlspecialchars($_POST['content']);
             $this->addEpisode($author, $episodeImage, $title, $slug, $content);
             header('Location:index.php?action=admin');
             $_SESSION['flash']['success'] = 'L\'épisode a bien été créé !';

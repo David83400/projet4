@@ -53,7 +53,7 @@
                     <?php
                     if ($episodeComment['nbComments'] > 0)
                     { ?>
-                        <h2><span class="alert alert-danger"><?= htmlspecialchars($episodeComment['nbComments']) ?></span> commentaire(s) d'épisode(s) signalé(s)</h2>
+                        <h2><span class="alert alert-danger"><?= $episodeComment['nbComments'] ?></span> commentaire(s) d'épisode(s) signalé(s)</h2>
                     </header>
                     <?php
                     } else { ?>
@@ -74,10 +74,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="col"><?= htmlspecialchars($episodeComment['commentAuthor']) ?></th>
-                                <td><?= htmlspecialchars(substr($episodeComment['comment'], 0, 20)) ?></td>
-                                <td><?= htmlspecialchars($episodeComment['commentFrDate']) ?></td>
-                                <td><?= htmlspecialchars($episodeComment['title']) ?></td>
+                                <th scope="col"><?= $episodeComment['commentAuthor'] ?></th>
+                                <td><?= substr($episodeComment['comment'], 0, 20) ?></td>
+                                <td><?= $episodeComment['commentFrDate'] ?></td>
+                                <td><?= $episodeComment['title'] ?></td>
                                 <?php
                                 if ($episodeComment['nbComments'] > 0)
                                 { ?>
@@ -105,7 +105,7 @@
                     <?php
                     if ($bookComment['nbComments'] > 0)
                     { ?>
-                    <h2><span class="alert alert-danger"><?= htmlspecialchars($bookComment['nbComments']) ?></span> commentaire(s) de roman(s) signalé(s)</h2>
+                    <h2><span class="alert alert-danger"><?= $bookComment['nbComments'] ?></span> commentaire(s) de roman(s) signalé(s)</h2>
                     </header>
                     <?php
                     } else { ?>
@@ -126,10 +126,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="col"><?= htmlspecialchars($bookComment['commentAuthor']) ?></th>
-                                <td><?= htmlspecialchars(substr($bookComment['comment'], 0, 20)) ?></td>
-                                <td><?= htmlspecialchars($bookComment['commentFrDate']) ?></td>
-                                <td><?= htmlspecialchars($bookComment['title']) ?></td>
+                                <th scope="col"><?= $bookComment['commentAuthor'] ?></th>
+                                <td><?= substr($bookComment['comment'], 0, 20) ?></td>
+                                <td><?= $bookComment['commentFrDate'] ?></td>
+                                <td><?= $bookComment['title'] ?></td>
                                 <?php
                                 if ($bookComment['nbComments'] > 0)
                                 { ?>

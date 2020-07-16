@@ -47,8 +47,8 @@ class modifyEpisodeController
         {
             $errors = array();
             $episodeId = intval($_GET['id']);
-            $title = $_POST['title'];
-            $slug = $_POST['slug'];
+            $title = htmlspecialchars($_POST['title']);
+            $slug = htmlspecialchars($_POST['slug']);
             $content = $_POST['content'];
             $this->modifyEpisode($title, $slug, $content, $episodeId);
             header('Location:index.php?action=admin');

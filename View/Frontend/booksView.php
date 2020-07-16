@@ -4,11 +4,11 @@
     <?php foreach ($books as $book): ?>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="<?= htmlspecialchars($book['bookImage']) ?>" class="card-img-top" alt="Livre de Jean Forteroche">
+                <img src="<?= $book['bookImage'] ?>" class="card-img-top" alt="Livre de Jean Forteroche">
                 <div class="card-body">
-                    <h4 class="card-title"><?= htmlspecialchars($book['title']) ?></h4>
-                    <p class="card-text"><?= htmlspecialchars(substr($book['content'], 0, 100)) ?> ... <a href="<?= 'index.php?action=book&id=' . htmlspecialchars($book['id']) ?>">découvrir</a></p>
-                    <p class="card-text"><small class="text-muted">Publié par <?= htmlspecialchars($book['author']) ?> le <?= htmlspecialchars($book['parutionFrDate']) ?></small></p>
+                    <h4 class="card-title"><?= $book['title'] ?></h4>
+                    <p class="card-text"><?= substr($book['content'], 0, 100) ?> ... <a href="<?= 'index.php?action=book&id=' . $book['id'] ?>">découvrir</a></p>
+                    <p class="card-text"><small class="text-muted">Publié par <?= $book['author'] ?> le <?= $book['parutionFrDate'] ?></small></p>
                 </div>
             </div>
         </div>

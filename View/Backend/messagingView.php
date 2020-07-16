@@ -33,13 +33,13 @@
                                         <th scope="col">Membre depuis</th>
                                         <th scope="col">Message</th>
                                         <th scope="col">Envoyé le</th>
-                                        <th scope="col">Actions</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($messages as $message): ?>
                                     <tr>
-                                        <th scope="col"><?= htmlspecialchars($message['userPseudo']) ?>
+                                        <th scope="col"><?= $message['userPseudo'] ?>
                                         <?php
                                         if ((isset($message['flagMessage'])) && ($message['flagMessage'] == 1))
                                         {
@@ -47,12 +47,11 @@
                                         <?php
                                         } ?>
                                         </th>
-                                        <td><?= htmlspecialchars($message['inscriptionFrDate']) ?></td>
-                                        <td><?= htmlspecialchars(substr($message['userMessage'], 0, 25)) ?></td>
-                                        <td><?= htmlspecialchars($message['messageFrDate']) ?></td>
+                                        <td><?= $message['inscriptionFrDate'] ?></td>
+                                        <td><?= substr($message['userMessage'], 0, 25) ?></td>
+                                        <td><?= $message['messageFrDate'] ?></td>
                                         <td>
                                             <a href="index.php?action=editMessaging&id=<?= $message['idMessage'] ?>">éditer</a>
-                                            <a onclick="return confirm('Voulez vous vraiment supprimer ce contenu ?');"href="index.php?action=deleteEpisode&id=<?= $message['idMessage'] ?>">supprimer</a>
                                         </td>
                                     </tr>
                                     <?php endforeach ?>

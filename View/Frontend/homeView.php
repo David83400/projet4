@@ -42,7 +42,7 @@
             <div class="front">
                 <div class="title">
                     <h2>Nouvel épisode</h2>
-                    <h3>"<?= htmlspecialchars($lastEpisode['title']) ?>"</h3>
+                    <h3>"<?= $lastEpisode['title'] ?>"</h3>
                 </div>
             </div>
             <div class="layer1"></div>
@@ -52,14 +52,14 @@
             <div class="layer-text">
                 <div class="page-text">
                     <header>
-                        <h3><?= htmlspecialchars($lastEpisode['title']) ?></h3>
-                        <p>Publié par Jean Forteroche le <?= htmlspecialchars($lastEpisode['creationFrDate']) ?></p>
+                        <h3><?= $lastEpisode['title'] ?></h3>
+                        <p>Publié par Jean Forteroche le <?= $lastEpisode['creationFrDate'] ?></p>
                     </header>
                 </div>
             </div>
             <div class="layer-text-2">
                 <div class="page-text-2">
-                    <p><?= htmlspecialchars(substr($lastEpisode['content'], 0, 550)) ?> ... <a href="<?= 'index.php?action=episode&id=' . htmlspecialchars($lastEpisode['id']) ?>">lire la suite</a></p>
+                    <p><?= substr($lastEpisode['content'], 0, 550) ?> ... <a href="<?= 'index.php?action=episode&id=' . $lastEpisode['id'] ?>">lire la suite</a></p>
                 </div>
             </div>
             <div class="layer5"></div>
@@ -76,9 +76,9 @@
             <div class="col-6 offset-3 col-md-4 offset-md-0 couverture">
                 <img src="Public/images/couvertureResponsive.jpg" class="card-img-top" alt="Livre de Jean Forteroche">
                 <div class="card-body">
-                    <h3 class="card-title"><?= htmlspecialchars($lastEpisode['title']) ?></h3>
-                    <p class="card-text"><?= htmlspecialchars(substr($lastEpisode['content'], 0, 550)) ?> ... <a href="<?= 'index.php?action=episode&id=' . htmlspecialchars($lastEpisode['id']) ?>">lire la suite</a></p>
-                    <p class="card-text"><small class="text-muted">Publié par Jean Forteroche le <?= htmlspecialchars($lastEpisode['creationFrDate']) ?></small></p>
+                    <h3 class="card-title"><?= $lastEpisode['title'] ?></h3>
+                    <p class="card-text"><?= substr($lastEpisode['content'], 0, 550) ?> ... <a href="<?= 'index.php?action=episode&id=' . $lastEpisode['id'] ?>">lire la suite</a></p>
+                    <p class="card-text"><small class="text-muted">Publié par Jean Forteroche le <?= $lastEpisode['creationFrDate'] ?></small></p>
                 </div>
             </div>
         </div>
@@ -91,10 +91,10 @@
         <?php foreach ($lastBooks as $lastBook): ?>
         <div class="col">
             <div class="card h-100">
-                <img src="<?= htmlspecialchars($lastBook['bookImage']) ?>" class="card-img-top" alt="livre de Jean Forteroche">
+                <img src="<?= $lastBook['bookImage'] ?>" class="card-img-top" alt="livre de Jean Forteroche">
                 <div class="card-body">
-                    <h4 class="card-title"><?= htmlspecialchars($lastBook['title']) ?></h4>
-                    <p class="card-text"><?= htmlspecialchars(substr($lastBook['content'], 0, 100)) ?> ... <a href="<?= 'index.php?action=book&id=' . htmlspecialchars($lastBook['id']) ?>">découvrir</a></p>
+                    <h4 class="card-title"><?= $lastBook['title'] ?></h4>
+                    <p class="card-text"><?= substr($lastBook['content'], 0, 100) ?> ... <a href="<?= 'index.php?action=book&id=' . $lastBook['id'] ?>">découvrir</a></p>
                 </div>
             </div>
         </div>

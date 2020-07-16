@@ -1,6 +1,15 @@
 <?php ob_start(); ?>
-<?php $this->title = 'Jean Forteroche | ' . htmlspecialchars($episode['title']) ?>
+<?php $this->title = 'Jean Forteroche | ' . $episode['title'] ?>
 <div class="container">
+    <?php if (isset($_SESSION['flash']))
+    { ?>
+    <?php foreach($_SESSION['flash'] as $type => $message): ?>
+    <div class="alert-flash">
+        <h2><?= $message; ?></h2>
+    <?php endforeach; ?>
+    <?php unset($_SESSION['flash']); ?>
+    </div>
+    <?php } ?>
     <section id="episode">
         <p><a href="index.php?action=episodes">Retour à la liste des billets</a></p>
         <article>
@@ -9,15 +18,15 @@
                     <div class="row">
                         <div class="col-12">
                             <header>
-                              <h1><?= htmlspecialchars($episode['title']) ?></h1>
-                              <p>Publié par Jean Forteroche le <?= htmlspecialchars($episode['creationFrDate']) ?></p>
+                              <h1><?= $episode['title'] ?></h1>
+                              <p>Publié par Jean Forteroche le <?= $episode['creationFrDate'] ?></p>
                             </header>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <img src="Public/images/jeanForterocheRounded.png" class="rounded-circle float-left" alt="Jean Forteroche">
-                            <p class="content"><?= htmlspecialchars($episode['content']) ?></p>
+                            <p class="content"><?= $episode['content'] ?></p>
                         </div>
                     </div>
                 </div>
@@ -31,15 +40,6 @@
                     <div class="col-12">
                         <header>
                             <h3>Laissez votre commentaire.</h3>
-                        <?php if (isset($_SESSION['flash']))
-                        { ?>
-                        <?php foreach($_SESSION['flash'] as $type => $message): ?>
-                        <div class="alert-flash">
-                            <h2><?= $message; ?></h2>
-                        <?php endforeach; ?>
-                        <?php unset($_SESSION['flash']); ?>
-                        </div>
-                        <?php } ?>
                         <?php
                         if (isset($_SESSION['userPseudo'])) {
                         ?>
@@ -52,7 +52,7 @@
                                 <textarea id="textCommentEpisode" name="episodeComment" placeholder="Votre commentaire"></textarea>
                             </div>
                             <div class="form-group">
-                                <input type="hidden" name="id" value="<?= htmlspecialchars($episode['id']) ?>" />
+                                <input type="hidden" name="id" value="<?= $episode['id'] ?>" />
                                 <input type="submit" class="btn btn-outline-primary" value="Commenter" />
                             </div>
                         </form>
@@ -72,8 +72,8 @@
                             <h4>Commentaires :</h4>
                         </header>
                         <?php foreach ($episodeComments as $episodeComment): ?>
-                            <p><span><?= htmlspecialchars($episodeComment['author']) ?> </span> le <?= htmlspecialchars($episodeComment['commentFrDate']) ?> <a class="signale" href="index.php?action=signaleEpisodeComment&id=<?= htmlspecialchars($episodeComment['id']) ?>&episodeId=<?= htmlspecialchars($episodeComment['episodeId']) ?>&flag=<?= htmlspecialchars($episodeComment['flag']) ?>">Signaler</a></p>
-                            <p><?= htmlspecialchars($episodeComment['episodeComment']) ?></p>
+                            <p><span><?= $episodeComment['author'] ?> </span> le <?= $episodeComment['commentFrDate'] ?> <a class="signale" href="index.php?action=signaleEpisodeComment&id=<?= $episodeComment['id'] ?>&episodeId=<?=$episodeComment['episodeId'] ?>&flag=<?= $episodeComment['flag'] ?>">Signaler</a></p>
+                            <p><?= $episodeComment['episodeComment'] ?></p>
                             <hr />
                         <?php endforeach; ?>
                     </div>

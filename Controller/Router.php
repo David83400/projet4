@@ -274,11 +274,20 @@ class Router
                 }
                 elseif ($_GET['action'] == 'bookComment')
                 {
-                    $author = $this->getParameter($_POST, 'author');
-                    $bookComment = $this->getParameter($_POST, 'bookComment');
+                    $author = htmlspecialchars($this->getParameter($_POST, 'author'));
+                    $bookComment = htmlspecialchars($this->getParameter($_POST, 'bookComment'));
                     $bookId = $this->getParameter($_POST, 'id');
-                    $this->bookControl->addBookComment($author, $bookComment, $bookId);
-                    header("Location:index.php?action=book&id=$bookId");
+                    if((isset($_SESSION['userPseudo'])) && ($_SESSION['userPseudo'] == $author))
+                    {
+                        $this->bookControl->addBookComment($author, $bookComment, $bookId);
+                        header("Location:index.php?action=book&id=$bookId");
+                        $_SESSION['flash']['success'] = 'Votre commentaire a bien été posté !';
+                    }
+                    else
+                    {
+                        header("Location:index.php?action=book&id=$bookId");
+                        $_SESSION['flash']['error'] = 'Ce pseudo n\'est pas valide !';
+                    }
                 }
                 elseif ($_GET['action'] == 'signaleBookComment')
                 {
@@ -295,6 +304,7 @@ class Router
                         else
                         {
                             $this->bookControl->signalBookComment($id, $bookId);
+                            $_SESSION['flash']['signale'] = 'Nous avons pris en compte votre signalement !';
                             header("Location:index.php?action=book&id=$bookId");
                         }
                     }
@@ -312,7 +322,7 @@ class Router
                     $episodeId = intval($this->getParameter($_GET, 'id'));
                     if ($episodeId > 0)
                     {
-                        $this->episodeControl->displayEpisode($episodeId);
+                        $this->episodeControl->displayEpisode($errors, $episodeId);
                     }
                     else
                     {
@@ -321,11 +331,20 @@ class Router
                 }
                 elseif ($_GET['action'] == 'episodeComment')
                 {
-                    $author = $this->getParameter($_POST, 'author');
-                    $episodeComment = $this->getParameter($_POST, 'episodeComment');
+                    $author = htmlspecialchars($this->getParameter($_POST, 'author'));
+                    $episodeComment = htmlspecialchars($this->getParameter($_POST, 'episodeComment'));
                     $episodeId = $this->getParameter($_POST, 'id');
-                    $this->episodeControl->addEpisodeComment($author, $episodeComment, $episodeId);
-                    header("Location:index.php?action=episode&id=$episodeId");
+                    if((isset($_SESSION['userPseudo'])) && ($_SESSION['userPseudo'] == $author))
+                    {
+                        $this->episodeControl->addEpisodeComment($author, $episodeComment, $episodeId);
+                        header("Location:index.php?action=episode&id=$episodeId");
+                        $_SESSION['flash']['success'] = 'Votre commentaire a bien été posté !';
+                    }
+                    else
+                    {
+                        header("Location:index.php?action=episode&id=$episodeId");
+                        $_SESSION['flash']['error'] = 'Ce pseudo n\'est pas valide !';
+                    }
                 }
                 elseif ($_GET['action'] == 'signaleEpisodeComment')
                 {
@@ -342,6 +361,7 @@ class Router
                         else
                         {
                             $this->episodeControl->signalEpisodeComment($id, $episodeId);
+                            $_SESSION['flash']['signale'] = 'Nous avons pris en compte votre signalement !';
                             header("Location:index.php?action=episode&id=$episodeId");
                         }
                     }
@@ -394,7 +414,7 @@ class Router
     {
         if (isset($array[$name]))
         {
-            return htmlspecialchars($array[$name]);
+            return $array[$name];
         }
         else
         {

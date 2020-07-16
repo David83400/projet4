@@ -42,7 +42,7 @@
                     </div>
                     <?php endforeach; ?>
                     <?php } ?>
-                    <form method="POST" action="">
+                    <form method="POST">
                         <div class="form-group d-flex flex-column justify-content-center">
                             <label for="pseudoCreate">Votre pseudo <span>(entre 5 et 19 caractères)</span></label><input id="pseudoCreate" name="pseudo" type="text" />
                         </div>

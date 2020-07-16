@@ -27,12 +27,12 @@ class EpisodeController
      * @param [int] $episodeId
      * @return void
      */
-    public function displayEpisode($episodeId)
+    public function displayEpisode($errors,$episodeId)
     {
         $episode = $this->episode->getEpisode($episodeId);
         $episodeComments = $this->episodeComments->getEpisodeComments($episodeId);
         $view = new ControllerViews("Frontend/episode");
-        $view->generateFrontendViews(array('episode' => $episode, 'episodeComments' => $episodeComments));
+        $view->generateFrontendViews(array('episode' => $episode, 'episodeComments' => $episodeComments, 'errors' => $errors));
     }
 
     /**
@@ -45,10 +45,8 @@ class EpisodeController
      */
     public function addEpisodeComment($author, $episodeComment, $episodeId)
     {
-        // Sauvegarde du commentaire
         $this->episodeComments->postEpisodeComment($author, $episodeComment, $episodeId);
-        // Actualisation de l'affichage du billet
-        $this->displayEpisode($episodeId);
+        $this->displayEpisode($errors, $episodeId);
     }
 
     /**
