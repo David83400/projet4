@@ -1,14 +1,14 @@
 <?php
 
-namespace David\Projet4\Controller\Frontend;
+namespace Projet4\Controller\Frontend;
 
 require_once 'Model/Frontend/EpisodesManager.php';
 require_once 'Model/Frontend/CommentsManager.php';
 require_once 'View/ControllerViews.php';
 
-use David\Projet4\Model\Frontend\EpisodesManager;
-use David\Projet4\Model\Frontend\CommentsManager;
-use David\Projet4\View\ControllerViews;
+use Projet4\Model\Frontend\EpisodesManager;
+use Projet4\Model\Frontend\CommentsManager;
+use Projet4\View\ControllerViews;
 
 class EpisodeController
 {

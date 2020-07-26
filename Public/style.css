@@ -405,6 +405,13 @@ blockquote h2
     text-align: justify;
 }
 
+.page-text-2 p, .page-text-2 span
+{
+    word-break: break-word;
+    background: #efefef !important;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
+}
+
 .page-text-2 a
 {
     color: #FF5483;
@@ -722,6 +729,12 @@ footer p
     text-align: justify;
 }
 
+#episode span
+{
+    background: #fff7ef !important;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
+}
+
 #author
 {
     margin-bottom: 40px;
@@ -885,6 +898,20 @@ footer p
     margin: 40px 0;
 }
 
+#editBookComment .contentComment, #editEpisodeComment .contentComment
+{
+    margin: 20px 0;
+    background-color: #fcf2e8;
+    border-radius: 20px;
+    box-shadow:  0 1em 3em 0 rgba(0, 0, 0, .15);
+    padding: 20px;
+}
+
+#editBookComment form, #editEpisodeComment form
+{
+    margin-left: 20px;
+}
+
 #editBookComment input, #editEpisodeComment input
 {
     margin: 20px 15px 0 0;
@@ -944,6 +971,22 @@ footer p
     border-radius: 20px;
     box-shadow:  0 1em 3em 0 rgba(0, 0, 0, .15);
     padding: 20px;
+}
+
+#editMessage input
+{
+    margin-left: 20px;
+}
+
+/* mentions légales, politique de confidentialité */
+#mentions, #confidentialite, #remerciements
+{
+    margin: 15px 0;
+}
+
+#confidentialite li
+{
+    list-style-type: initial;
 }
 
 /* error page */

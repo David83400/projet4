@@ -1,44 +1,32 @@
 <?php
 
-namespace David\Projet4\Controller;
+namespace Projet4\Controller;
 
-require_once 'Controller/Frontend/HomeController.php';
-require_once 'Controller/Frontend/ConnexionController.php';
-require_once 'Controller/Frontend/ProfilController.php';
-require_once 'Controller/Backend/AdminIndexController.php';
-require_once 'Controller/Backend/modifyEpisodeController.php';
-require_once 'Controller/Backend/EpisodeCommentController.php';
-require_once 'Controller/Backend/BookCommentController.php';
-require_once 'Controller/Backend/EditEpisodeController.php';
-require_once 'Controller/Backend/MessagingController.php';
-require_once 'Controller/Backend/EditMessagingController.php';
-require_once 'Controller/Backend/ProfilAdminController.php';
-require_once 'Controller/Frontend/BooksController.php';
-require_once 'Controller/Frontend/BookController.php';
-require_once 'Controller/Frontend/EpisodesController.php';
-require_once 'Controller/Frontend/EpisodeController.php';
-require_once 'Controller/Frontend/AuthorController.php';
-require_once 'Controller/Frontend/ContactController.php';
-require_once 'View/ControllerViews.php';
+require 'Controller/Autoloader.php';
+Autoloader::register();
 
-use David\Projet4\Controller\Frontend\HomeController;
-use David\Projet4\Controller\Frontend\ConnexionController;
-use David\Projet4\Controller\Frontend\ProfilController;
-use David\Projet4\Controller\Backend\AdminIndexController;
-use David\Projet4\Controller\Backend\modifyEpisodeController;
-use David\Projet4\Controller\Backend\EpisodeCommentController;
-use David\Projet4\Controller\Backend\BookCommentController;
-use David\Projet4\Controller\Backend\EditEpisodeController;
-use David\Projet4\Controller\Backend\MessagingController;
-use David\Projet4\Controller\Backend\EditMessagingController;
-use David\Projet4\Controller\Backend\ProfilAdminController;
-use David\Projet4\Controller\Frontend\BooksController;
-use David\Projet4\Controller\Frontend\BookController;
-use David\Projet4\Controller\Frontend\EpisodesController;
-use David\Projet4\Controller\Frontend\EpisodeController;
-use David\Projet4\Controller\Frontend\AuthorController;
-use David\Projet4\Controller\Frontend\ContactController;
-use David\Projet4\View\ControllerViews;
+use Projet4\Controller\Autoloader;
+use Projet4\Controller\Frontend\HomeController;
+use Projet4\Controller\Frontend\ConnexionController;
+use Projet4\Controller\Frontend\ProfilController;
+use Projet4\Controller\Backend\AdminIndexController;
+use Projet4\Controller\Backend\modifyEpisodeController;
+use Projet4\Controller\Backend\EpisodeCommentController;
+use Projet4\Controller\Backend\BookCommentController;
+use Projet4\Controller\Backend\EditEpisodeController;
+use Projet4\Controller\Backend\MessagingController;
+use Projet4\Controller\Backend\EditMessagingController;
+use Projet4\Controller\Backend\ProfilAdminController;
+use Projet4\Controller\Frontend\BooksController;
+use Projet4\Controller\Frontend\BookController;
+use Projet4\Controller\Frontend\EpisodesController;
+use Projet4\Controller\Frontend\EpisodeController;
+use Projet4\Controller\Frontend\AuthorController;
+use Projet4\Controller\Frontend\ContactController;
+use Projet4\Controller\Frontend\MentionsLegalesController;
+use Projet4\Controller\Frontend\ConfidentialiteController;
+use Projet4\Controller\Frontend\RemerciementsController;
+use Projet4\View\ControllerViews;
 
 class Router
 {
@@ -59,6 +47,9 @@ class Router
     private $episodeControl;
     private $authorControl;
     private $contactControl;
+    private $mentionsLegalesControl;
+    private $confidentialiteControl;
+    private $remerciementsControl;
 
     public function __construct()
     {
@@ -79,6 +70,9 @@ class Router
         $this->episodeControl = new EpisodeController();
         $this->authorControl = new AuthorController();
         $this->contactControl = new ContactController();
+        $this->mentionsLegalesControl = new MentionsLegalesController();
+        $this->confidentialiteControl = new ConfidentialiteController();
+        $this->remerciementsControl = new RemerciementsController();
     }
     
     /**
@@ -374,10 +368,23 @@ class Router
                 {
                     $this->contactControl->displayContact($errors);
                 }
+                elseif ($_GET['action'] == 'mentionsLegales')
+                {
+                    $this->mentionsLegalesControl->displayMentionsLegales();
+                }
+                elseif ($_GET['action'] == 'confidentialite')
+                {
+                    $this->confidentialiteControl->displayConfidentialite();
+                }
+                elseif ($_GET['action'] == 'remerciements')
+                {
+                    $this->remerciementsControl->displayRemerciements();
+                }
                 else
                 {
                     throw new \Exception('Action non valide !');
                 }
+                
             }
             else
             {

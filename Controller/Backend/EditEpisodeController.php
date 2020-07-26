@@ -1,12 +1,12 @@
 <?php
 
-namespace David\Projet4\Controller\Backend;
+namespace Projet4\Controller\Backend;
 
 require_once 'Model/Backend/EpisodesManager.php';
 require_once 'View/ControllerViews.php';
 
-use David\Projet4\Model\Backend\EpisodesManager;
-use David\Projet4\View\ControllerViews;
+use Projet4\Model\Backend\EpisodesManager;
+use Projet4\View\ControllerViews;
 
 class EditEpisodeController
 {
@@ -47,7 +47,7 @@ class EditEpisodeController
             $episodeImage = 'http://localhost/blogJeanForteroche/projet4/Public/images/couverture.jpg';
             $title = htmlspecialchars($_POST['title']);
             $slug = htmlspecialchars($_POST['slug']);
-            $content = htmlspecialchars($_POST['content']);
+            $content = $_POST['content'];
             $this->addEpisode($author, $episodeImage, $title, $slug, $content);
             header('Location:index.php?action=admin');
             $_SESSION['flash']['success'] = 'L\'épisode a bien été créé !';

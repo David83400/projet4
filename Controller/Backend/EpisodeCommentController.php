@@ -1,12 +1,12 @@
 <?php
 
-namespace David\Projet4\Controller\Backend;
+namespace Projet4\Controller\Backend;
 
 require_once 'Model/Backend/CommentsManager.php';
 require_once 'View/ControllerViews.php';
 
-use David\Projet4\Model\Backend\CommentsManager;
-use David\Projet4\View\ControllerViews;
+use Projet4\Model\Backend\CommentsManager;
+use Projet4\View\ControllerViews;
 
 class EpisodeCommentController
 {

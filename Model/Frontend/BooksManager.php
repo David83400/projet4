@@ -1,10 +1,10 @@
 <?php
 
-namespace David\Projet4\Model\Frontend;
+namespace Projet4\Model\Frontend;
 
 require_once 'Model/Manager.php';
 
-use David\Projet4\Model\Manager;
+use Projet4\Model\Manager;
 
 class BooksManager extends Manager
 {

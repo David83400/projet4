@@ -1,12 +1,12 @@
 <?php
 
-namespace David\Projet4\Controller\Frontend;
+namespace Projet4\Controller\Frontend;
 
 require_once 'Model/Frontend/ContactManager.php';
 require_once 'View/ControllerViews.php';
 
-use David\Projet4\Model\Frontend\ContactManager;
-use David\Projet4\View\ControllerViews;
+use Projet4\Model\Frontend\ContactManager;
+use Projet4\View\ControllerViews;
 
 class ContactController
 {

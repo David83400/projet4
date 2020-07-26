@@ -6,16 +6,16 @@ require_once 'View/ControllerViews.php';
 
 use Projet4\View\ControllerViews;
 
-class AuthorController
+class RemerciementsController
 {
     /**
-     * display the author page
+     * display the remerciements page
      *
      * @return void
      */
-    public function displayAuthor()
+    public function displayRemerciements()
     {
-        $view = new ControllerViews("Frontend/author");
+        $view = new ControllerViews("Frontend/remerciements");
         $view->generateFrontendViews(array());
     }
 }

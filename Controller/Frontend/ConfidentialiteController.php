@@ -6,16 +6,16 @@ require_once 'View/ControllerViews.php';
 
 use Projet4\View\ControllerViews;
 
-class AuthorController
+class ConfidentialiteController
 {
     /**
-     * display the author page
+     * display the confidentialité page
      *
      * @return void
      */
-    public function displayAuthor()
+    public function displayConfidentialite()
     {
-        $view = new ControllerViews("Frontend/author");
+        $view = new ControllerViews("Frontend/confidentialite");
         $view->generateFrontendViews(array());
     }
 }

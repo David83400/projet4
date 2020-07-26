@@ -5,9 +5,9 @@
 </ul>
 <footer>
     <ul>
-        <li><a href="#">Mentions légales</a></li>
-        <li><a href="#">politique de confidentialité</a></li>
-        <li><a href="#">Cookies</a></li>
+        <li><a href="index.php?action=mentionsLegales">Mentions légales</a></li>
+        <li><a href="index.php?action=confidentialite">Politique de confidentialité</a></li>
+        <li><a href="index.php?action=remerciements">Remerciements</a></li>
     </ul>
     <p>Site web fictif réalisé pour projet d'études.</p>
 </footer>

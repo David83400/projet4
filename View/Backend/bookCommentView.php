@@ -10,17 +10,18 @@
                     <h1>Commentaire de "<?= $bookComment['commentAuthor'] ?>" </h1>
                     <p>Publié le <?= $bookComment['commentFrDate'] ?></p>
                 </header>
-                <form method="post" action="">
-                    <label for="content">Contenu :</label>
-                    <div class="form-group">
-                        <textarea id="content" class="form-control" name="content" rows=15" cols="60"><?= htmlspecialchars($bookComment['comment']) ?></textarea>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="contentComment"><?= $bookComment['comment'] ?></p>
                     </div>
-                    <div class="form-group">
-                        <input type="hidden" name="id" value="<?= $bookComment['commentId'] ?>" />
-                        <input type="submit" class="btn btn-outline-primary" name="formAcceptComment" value="Accepter" />
-                        <input type="submit" class="btn btn-outline-primary" name="formDeleteComment" value="Supprimer" />
-                    </div>
-                </form>
+                    <form method="post">
+                        <div class="form-group">
+                            <input type="hidden" name="id" value="<?= $bookComment['commentId'] ?>" />
+                            <input type="submit" class="btn btn-outline-primary" name="formAcceptComment" value="Accepter" />
+                            <input type="submit" class="btn btn-outline-primary" name="formDeleteComment" value="Supprimer" />
+                        </div>
+                    </form>
+                </div>
                 <?php endforeach ?>
             </div>
         </div>

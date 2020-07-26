@@ -1,6 +1,6 @@
 <?php
 
-namespace David\Projet4\View;
+namespace Projet4\View;
 
 class ControllerViews
 {

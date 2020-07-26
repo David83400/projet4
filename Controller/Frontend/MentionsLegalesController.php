@@ -6,16 +6,16 @@ require_once 'View/ControllerViews.php';
 
 use Projet4\View\ControllerViews;
 
-class AuthorController
+class MentionsLegalesController
 {
     /**
-     * display the author page
+     * display the mentions légales page
      *
      * @return void
      */
-    public function displayAuthor()
+    public function displayMentionsLegales()
     {
-        $view = new ControllerViews("Frontend/author");
+        $view = new ControllerViews("Frontend/mentionsLegales");
         $view->generateFrontendViews(array());
     }
 }

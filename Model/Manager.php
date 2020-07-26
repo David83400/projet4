@@ -1,6 +1,6 @@
 <?php
 
-namespace David\Projet4\Model;
+namespace Projet4\Model;
 
 abstract class Manager
 

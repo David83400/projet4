@@ -1,14 +1,15 @@
 <?php
 
-namespace David\projet4\Controller\Frontend;
+/*namespace projet4\Controller\Frontend;*/
+namespace projet4\Controller\Frontend;
 
 require_once 'Model/Frontend/BooksManager.php';
 require_once 'Model/Frontend/CommentsManager.php';
 require_once 'View/ControllerViews.php';
 
-use David\projet4\Model\Frontend\BooksManager;
-use David\projet4\Model\Frontend\CommentsManager;
-use David\projet4\View\ControllerViews;
+use projet4\Model\Frontend\BooksManager;
+use projet4\Model\Frontend\CommentsManager;
+use projet4\View\ControllerViews;
 
 class BookController
 {
