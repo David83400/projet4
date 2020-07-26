@@ -28,4 +28,9 @@ class MessagingController
         $view = new ControllerViews("Backend/messaging");
         $view->generateBackendViews(array('messages' => $messages));
     }
+
+    public function removeMessage($id)
+    {
+        $this->messages->deleteMessage($id);
+    }
 }

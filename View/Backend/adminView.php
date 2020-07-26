@@ -36,7 +36,7 @@
                                 <td><?= $episode['modificationFrDate'] ?></td>
                                 <td>
                                     <a href="index.php?action=modifyEpisode&id=<?= $episode['id'] ?>">éditer</a>
-                                    <a onclick="return confirm('Voulez vous vraiment supprimer ce contenu ?');"href="index.php?action=deleteEpisode&id=<?= $episode['id'] ?>&episodeId=<?= $episode['episodeId'] ?>">supprimer</a>
+                                    <a onclick="return confirm('Voulez vous vraiment supprimer ce contenu ?');" href="index.php?action=deleteEpisode&id=<?= $episode['id'] ?>&episodeId=<?= $episode['episodeId'] ?>">supprimer</a>
                                 </td>
                             </tr>
                             <?php endforeach ?>

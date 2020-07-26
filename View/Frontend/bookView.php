@@ -51,7 +51,7 @@
                         </header>
                         <form method="post" action="index.php?action=bookComment">
                             <div class="form-group">
-                                <input id="pseudoBook" name="author" type="text" placeholder="Votre pseudo" required />
+                                <input id="pseudoBook" name="author" type="text" value="<?php if (isset($_COOKIE['pseudo'])) { echo $_COOKIE['pseudo']; } ?>" required />
                             </div>
                             <div class="form-group">
                                 <textarea id="textCommentBook" name="bookComment" placeholder="Votre commentaire"></textarea>
@@ -78,7 +78,7 @@
                         </header>
                         <?php foreach ($bookComments as $bookComment): ?>
                         <p><span><?= $bookComment['author'] ?> </span> le <?= $bookComment['commentFrDate'] ?> <a class="signale" href="index.php?action=signaleBookComment&id=<?= $bookComment['id'] ?>&bookId=<?= $bookComment['bookId'] ?>&flag=<?= $bookComment['flag'] ?>">Signaler</a></p>
-                        <p><?= $bookComment['bookComment'] ?></p>
+                        <p class="comment"><?= $bookComment['bookComment'] ?></p>
                         <hr />
                         <?php endforeach; ?>
                     </div>

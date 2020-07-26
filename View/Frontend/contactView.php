@@ -27,11 +27,11 @@
                 <form method="post" action="index.php?action=contact">
                     <label for="pseudoUser">Votre pseudo :</label>
                     <div class="form-group">
-                        <input id="pseudoUser" class="form-control" type="text" name="pseudo" />
+                        <input id="pseudoUser" class="form-control" type="text" name="pseudo" value="<?php if (isset($_COOKIE['pseudo'])) { echo $_COOKIE['pseudo']; } ?>" />
                     </div>
                     <label for="userEmail">Votre email :</label>
                     <div class="form-group">
-                        <input id="userEmail" class="form-control" type="email" name="email" />
+                        <input id="userEmail" class="form-control" type="email" name="email" value="<?php if (isset($_SESSION['userEmail'])) { echo $_SESSION['userEmail']; } ?>" />
                     </div>
                     <label for="userMessage">Votre message :</label>
                     <div class="form-group">

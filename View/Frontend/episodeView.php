@@ -46,7 +46,7 @@
                         </header>
                         <form method="post" action="index.php?action=episodeComment">
                             <div class="form-group">
-                                <input id="pseudoEpisode" name="author" type="text" placeholder="Votre pseudo" required />
+                                <input id="pseudoEpisode" name="author" type="text" value="<?php if (isset($_COOKIE['pseudo'])) { echo $_COOKIE['pseudo']; } ?>" required />
                             </div>
                             <div class="form-group">
                                 <textarea id="textCommentEpisode" name="episodeComment" placeholder="Votre commentaire"></textarea>
@@ -73,7 +73,7 @@
                         </header>
                         <?php foreach ($episodeComments as $episodeComment): ?>
                             <p><span><?= $episodeComment['author'] ?> </span> le <?= $episodeComment['commentFrDate'] ?> <a class="signale" href="index.php?action=signaleEpisodeComment&id=<?= $episodeComment['id'] ?>&episodeId=<?=$episodeComment['episodeId'] ?>&flag=<?= $episodeComment['flag'] ?>">Signaler</a></p>
-                            <p><?= $episodeComment['episodeComment'] ?></p>
+                            <p class="comment"><?= $episodeComment['episodeComment'] ?></p>
                             <hr />
                         <?php endforeach; ?>
                     </div>

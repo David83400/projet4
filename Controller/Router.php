@@ -209,6 +209,21 @@ class Router
                         header('Location:index.php?action=connexion');
                     }
                 }
+                elseif ($_GET['action'] == 'deleteMessage')
+                {
+                    $id = intval($this->getParameter($_GET, 'id'));
+
+                    if ($id > 0)
+                    {
+                        $this->messagingControl->removeMessage($id);
+                        header('Location:index.php?action=messaging');
+                        $_SESSION['flash']['success'] = 'Le message a bien été supprimé !';
+                    }
+                    else
+                    {
+                        throw new \Exception('Identifiant de message invalide');
+                    }
+                }
                 elseif (($_GET['action'] == 'editMessaging'))
                 {
                     if((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1)

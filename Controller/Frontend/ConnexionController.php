@@ -59,6 +59,7 @@ class ConnexionController
                 $_SESSION['userPass'] = $userInfo['pass'];
                 $_SESSION['userAdmin'] = $userInfo['isAdmin'];
                 $_SESSION['userInscriptionDate'] = $userInfo['inscriptionFrDate'];
+                setcookie('pseudo', $_SESSION['userPseudo'], time() + 365*24*3600, null, null, false, true);
                 if($_SESSION['userAdmin'] == 1)
                 {
                     header('Location:index.php?action=admin');
@@ -125,6 +126,9 @@ class ConnexionController
                                                 $_SESSION['userPass'] = $userInfo['pass'];
                                                 $_SESSION['userAdmin'] = $userInfo['isAdmin'];
                                                 $_SESSION['userInscriptionDate'] = $userInfo['inscriptionFrDate'];
+                                                setcookie('pseudo', $_SESSION['userPseudo'], time() + 365*24*3600, null, null, false, true);
+                                                setcookie('email', $_SESSION['userEmail'], time() + 365*24*3600, null, null, false, true);
+                                                var_dump($_SESSION['userEmail']);
                                                 header('location:index.php');
                                                 $_SESSION['flash']['success'] = 'Votre compte a bien été créé !';
                                             }

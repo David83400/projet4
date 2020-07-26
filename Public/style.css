@@ -62,6 +62,13 @@ li
     margin-left: 20px;
 }
 
+.comment
+{
+    max-width: 60%;
+    overflow-wrap: break-word;
+    line-height: 20px;
+}
+
 /*  header */
 .mainHeader
 {
@@ -901,10 +908,11 @@ footer p
 #editBookComment .contentComment, #editEpisodeComment .contentComment
 {
     margin: 20px 0;
+    padding: 20px;
+    overflow-wrap: break-word;
     background-color: #fcf2e8;
     border-radius: 20px;
     box-shadow:  0 1em 3em 0 rgba(0, 0, 0, .15);
-    padding: 20px;
 }
 
 #editBookComment form, #editEpisodeComment form
@@ -962,6 +970,11 @@ footer p
 #messaging .alert
 {
     padding: 5px;
+}
+
+#messaging .editer
+{
+    margin-right: 10px;
 }
 
 #editMessage .contentMessage

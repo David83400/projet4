@@ -16,9 +16,16 @@
             <div class="col-12">
                 <p class="contentMessage"><?= $messages['userMessage'] ?></p>
             </div>
+            <?php
+            if ($messages['flagMessage'] == 1)
+            {
+            ?>
             <form method="post">
                 <input type="submit" class="btn btn-outline-primary" name="formTreatMessage" value="Marquer comme traité" />
             </form>
+            <?php
+            }
+            ?>
         </div>
     </section>
 </div>

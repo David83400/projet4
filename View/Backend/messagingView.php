@@ -51,7 +51,8 @@
                                         <td><?= substr($message['userMessage'], 0, 25) ?></td>
                                         <td><?= $message['messageFrDate'] ?></td>
                                         <td>
-                                            <a href="index.php?action=editMessaging&id=<?= $message['idMessage'] ?>">éditer</a>
+                                            <a class="editer" href="index.php?action=editMessaging&id=<?= $message['idMessage'] ?>">éditer</a>
+                                            <a onclick="return confirm('Voulez vous vraiment supprimer ce contenu ?');" href="index.php?action=deleteMessage&id=<?= $message['idMessage'] ?>">supprimer</a>
                                         </td>
                                     </tr>
                                     <?php endforeach ?>

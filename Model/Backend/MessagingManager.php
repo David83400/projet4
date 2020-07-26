@@ -50,4 +50,10 @@ class MessagingManager extends Manager
         $sql = 'UPDATE contactMessages SET flag = 0 WHERE id = ?';
         $req = $this->executeRequest($sql, array($idMessage));
     }
+
+    public function deleteMessage($id)
+    {
+        $sql = 'DELETE contactMessages FROM contactMessages WHERE contactMessages.id = ?';
+        $req = $this->executeRequest($sql, array($id));
+    }
 }
