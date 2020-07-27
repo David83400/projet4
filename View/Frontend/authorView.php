@@ -6,7 +6,7 @@
         <div class="col-12">
           <div class="row">
             <div class="col-12">
-              <header>
+              <header class="text-center">
                 <h1>Jean Forteroche, écrivain et acteur.</h1>
               </header>
             </div>

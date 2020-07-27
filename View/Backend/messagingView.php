@@ -29,8 +29,8 @@
                                         ?>
                                         <?php
                                         } ?>
-                                        <th scope="col">Pseudo</th>
-                                        <th scope="col">Membre depuis</th>
+                                        <th class="table-responsive-sm" scope="col">Pseudo</th>
+                                        <th class="table-responsive-sm" scope="col">Membre depuis</th>
                                         <th scope="col">Message</th>
                                         <th scope="col">Envoyé le</th>
                                         <th scope="col">Action</th>
@@ -39,7 +39,7 @@
                                 <tbody>
                                     <?php foreach ($messages as $message): ?>
                                     <tr>
-                                        <th scope="col"><?= $message['userPseudo'] ?>
+                                        <th class="table-responsive-sm" scope="col"><?= $message['userPseudo'] ?>
                                         <?php
                                         if ((isset($message['flagMessage'])) && ($message['flagMessage'] == 1))
                                         {
@@ -47,7 +47,7 @@
                                         <?php
                                         } ?>
                                         </th>
-                                        <td><?= $message['inscriptionFrDate'] ?></td>
+                                        <td class="table-responsive-sm"><?= $message['inscriptionFrDate'] ?></td>
                                         <td><?= substr($message['userMessage'], 0, 25) ?></td>
                                         <td><?= $message['messageFrDate'] ?></td>
                                         <td>

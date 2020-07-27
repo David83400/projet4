@@ -22,8 +22,8 @@
                             <tr>
                                 <th scope="col">Id</th>
                                 <th scope="col">Titre</th>
-                                <th scope="col">Créé le</th>
-                                <th scope="col">Modifié le</th>
+                                <th class="table-responsive-sm" scope="col">Créé le</th>
+                                <th class="table-responsive-sm" scope="col">Modifié le</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
@@ -32,8 +32,8 @@
                             <tr>
                                 <th scope="col"><?= $episode['id'] ?></th>
                                 <td><?= $episode['title'] ?></td>
-                                <td><?= $episode['creationFrDate'] ?></td>
-                                <td><?= $episode['modificationFrDate'] ?></td>
+                                <td class="table-responsive-sm"><?= $episode['creationFrDate'] ?></td>
+                                <td class="table-responsive-sm"><?= $episode['modificationFrDate'] ?></td>
                                 <td>
                                     <a href="index.php?action=modifyEpisode&id=<?= $episode['id'] ?>">éditer</a>
                                     <a onclick="return confirm('Voulez vous vraiment supprimer ce contenu ?');" href="index.php?action=deleteEpisode&id=<?= $episode['id'] ?>&episodeId=<?= $episode['episodeId'] ?>">supprimer</a>
@@ -67,17 +67,17 @@
                             <tr>
                                 <th scope="col">Auteur</th>
                                 <th scope="col">Commentaire</th>
-                                <th scope="col">Posté le</th>
-                                <th scope="col">Article</th>
+                                <th class="table-responsive-sm" scope="col">Posté le</th>
+                                <th class="table-responsive-sm" scope="col">Article</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th scope="col"><?= $episodeComment['commentAuthor'] ?></th>
-                                <td><?= substr($episodeComment['comment'], 0, 20) ?></td>
-                                <td><?= $episodeComment['commentFrDate'] ?></td>
-                                <td><?= $episodeComment['title'] ?></td>
+                                <td class="comment"><?= substr($episodeComment['comment'], 0, 20) ?></td>
+                                <td class="table-responsive-sm"><?= $episodeComment['commentFrDate'] ?></td>
+                                <td class="table-responsive-sm"><?= $episodeComment['title'] ?></td>
                                 <?php
                                 if ($episodeComment['nbComments'] > 0)
                                 { ?>
@@ -119,8 +119,8 @@
                             <tr>
                                 <th scope="col">Auteur</th>
                                 <th scope="col">Commentaire</th>
-                                <th scope="col">Posté le</th>
-                                <th scope="col">Article</th>
+                                <th class="table-responsive-sm" scope="col">Posté le</th>
+                                <th class="table-responsive-sm" scope="col">Article</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
@@ -128,8 +128,8 @@
                             <tr>
                                 <th scope="col"><?= $bookComment['commentAuthor'] ?></th>
                                 <td><?= substr($bookComment['comment'], 0, 20) ?></td>
-                                <td><?= $bookComment['commentFrDate'] ?></td>
-                                <td><?= $bookComment['title'] ?></td>
+                                <td class="table-responsive-sm"><?= $bookComment['commentFrDate'] ?></td>
+                                <td class="table-responsive-sm"><?= $bookComment['title'] ?></td>
                                 <?php
                                 if ($bookComment['nbComments'] > 0)
                                 { ?>

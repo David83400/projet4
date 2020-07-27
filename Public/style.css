@@ -7,6 +7,11 @@ body
     color: #272727;
 }
 
+h1
+{
+    font-size: 3em;
+}
+
 h2
 {
     font-size: 2.5em;
@@ -79,7 +84,6 @@ li
 .logo h1
 {
     font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
-    font-size: 3em;
     font-weight: 700;
     color: #FF5483;
 }
@@ -111,7 +115,7 @@ li
     color: #FF5483;
 }
 
-/*  nav */
+/* nav */
 .navbar
 {
     background-color: #5477bc;
@@ -121,10 +125,16 @@ li
 {
     padding-top: 5px;
 }
-.navbar .nav-item a,.navbar .connexion a, .navbar .dropdown .btn
+.navbar .nav-item a,.navbar .connexion a
 {
     color: #ffffff !important;
     margin: 5px 10px 0 0;
+}
+
+.navbar .dropdown .btn
+{
+    color: #ffffff !important;
+    margin-left: 80px;
 }
 
 .navbar a:hover, .navbar .dropdown .btn:hover
@@ -689,6 +699,7 @@ footer p
 
 #episodesList h3
 {
+    width: 250px;
     color: #ffffff;
     position: relative;
     top: 215px;
@@ -698,6 +709,16 @@ footer p
 #episodesList .card-body
 {
     padding-top: 80px;
+}
+
+#episodesList h2
+{
+    font-weight: 500;
+}
+
+#episodesList span
+{
+    font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
 }
 
 #episodesList a
@@ -892,6 +913,18 @@ footer p
 #admin .listEpisodeComments h2, #admin .listBookComments h2
 {
     margin: 50px 0;
+    line-height: 50px;
+}
+
+#admin .listEpisodeComments span, #admin .listBookComments span
+{
+    padding: 8px 17px;
+    border-radius: 50%;
+}
+
+#admin .listEpisodeComments td, #admin .listBookComments td
+{
+    overflow-wrap: anywhere;
 }
 
 /* edit comment page */
@@ -976,9 +1009,14 @@ footer p
 {
     margin-right: 10px;
 }
+#messaging td
+{
+    overflow-wrap: anywhere;
+}
 
 #editMessage .contentMessage
 {
+    overflow-wrap: break-word;
     margin-bottom: 40px;
     background-color: #fcf2e8;
     border-radius: 20px;
@@ -991,7 +1029,7 @@ footer p
     margin-left: 20px;
 }
 
-/* mentions légales, politique de confidentialité */
+/* mentions légales, politique de confidentialité remerciements*/
 #mentions, #confidentialite, #remerciements
 {
     margin: 15px 0;
@@ -1109,6 +1147,11 @@ footer p
         text-align: center;
     }
 
+    .cover
+    {
+        margin-left: 20px;
+    }
+
     footer ul
     {
         justify-content: center;
@@ -1121,6 +1164,25 @@ footer p
 
 @media all and (max-width: 480px)
 {
+    h1
+    {
+        font-size: 2.5em;
+    }
+    h2
+    {
+        font-size: 2.3em;
+    }
+
+    h3
+    {
+        font-size: 2.1em;
+    }
+
+    p, a
+    {
+        font-size: 1em;
+    }
+    
     .blocBilletSimple
     {
         margin-left: 10px;
@@ -1148,7 +1210,17 @@ footer p
 
     #commentsBooks #textCommentBook, #commentsEpisodes #textCommentEpisode
     {
-        width: 280px;
-        height: 200px;
+        width: 240px;
+        height: 220px;
+    }
+
+    .cover
+    {
+        margin-left: 10px;
+    }
+
+    #admin .col-12
+    {
+        padding: 0 !important;
     }
 }

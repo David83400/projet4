@@ -17,7 +17,7 @@
                 <div class="col-12">
                     <div class="row">
                         <div class="col-12">
-                            <header>
+                            <header class="text-center">
                             <h1><?= $book['title'] ?></h1>
                             <p><span>Parution : </span><?= $book['parutionFrDate'] ?></p>
                             </header>

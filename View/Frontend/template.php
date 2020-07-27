@@ -58,7 +58,9 @@
                 </div>
             </div>
         </header>
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <?= $navbar ?>
+        </nav>
         <div class="container-fluid">
             <?= $content ?>
         </div>

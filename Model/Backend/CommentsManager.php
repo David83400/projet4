@@ -14,7 +14,7 @@ class CommentsManager extends Manager
      */
     public function getSignaledBookComments()
     {
-        $sql = 'SELECT bookComments.id AS commentId, bookComments.author AS commentAuthor, bookComments.bookComment AS comment, DATE_FORMAT(bookComments.commentDate, \'%d %M %Y\') AS commentFrDate, books.title AS title, COUNT(*) AS nbComments FROM bookComments INNER JOIN books ON bookComments.flag = 1 AND bookComments.bookId = books.id';
+        $sql = 'SELECT bookComments.id AS commentId, bookComments.author AS commentAuthor, bookComments.bookComment AS comment, DATE_FORMAT(bookComments.commentDate, \'%d/%m/%y\') AS commentFrDate, books.title AS title, COUNT(*) AS nbComments FROM bookComments INNER JOIN books ON bookComments.flag = 1 AND bookComments.bookId = books.id';
         $signaledComments = $this->executeRequest($sql);
         return $signaledComments;
     }
@@ -26,7 +26,7 @@ class CommentsManager extends Manager
      */
     public function getSignaledEpisodeComments()
     {
-        $sql = 'SELECT episodeComments.id AS commentId, episodeComments.author AS commentAuthor, episodeComments.episodeComment AS comment, DATE_FORMAT(episodeComments.commentDate, \'%d %M %Y\') AS commentFrDate, episodes.title AS title, COUNT(*) AS nbComments FROM episodeComments INNER JOIN episodes ON episodeComments.flag = 1 AND episodeComments.episodeId = episodes.id';
+        $sql = 'SELECT episodeComments.id AS commentId, episodeComments.author AS commentAuthor, episodeComments.episodeComment AS comment, DATE_FORMAT(episodeComments.commentDate, \'%d/%m/%y\') AS commentFrDate, episodes.title AS title, COUNT(*) AS nbComments FROM episodeComments INNER JOIN episodes ON episodeComments.flag = 1 AND episodeComments.episodeId = episodes.id';
         $signaledComments = $this->executeRequest($sql);
         return $signaledComments;
     }
@@ -39,7 +39,7 @@ class CommentsManager extends Manager
      */
     public function getSignaledEpisodeComment($commentId)
     {
-        $sql = 'SELECT episodeComments.id AS commentId, episodeComments.author AS commentAuthor, episodeComments.episodeComment AS comment, DATE_FORMAT(episodeComments.commentDate, \'%d %M %Y\') AS commentFrDate FROM episodeComments WHERE id = ?';
+        $sql = 'SELECT episodeComments.id AS commentId, episodeComments.author AS commentAuthor, episodeComments.episodeComment AS comment, DATE_FORMAT(episodeComments.commentDate, \'%d/%m/%y\') AS commentFrDate FROM episodeComments WHERE id = ?';
         $episodeComment = $this->executeRequest($sql, array($commentId));
         return $episodeComment;
     }
@@ -52,7 +52,7 @@ class CommentsManager extends Manager
      */
     public function getSignaledBookComment($commentId)
     {
-        $sql = 'SELECT bookComments.id AS commentId, bookComments.author AS commentAuthor, bookComments.bookComment AS comment, DATE_FORMAT(bookComments.commentDate, \'%d %M %Y\') AS commentFrDate FROM bookComments WHERE id = ?';
+        $sql = 'SELECT bookComments.id AS commentId, bookComments.author AS commentAuthor, bookComments.bookComment AS comment, DATE_FORMAT(bookComments.commentDate, \'%d/%m/%y\') AS commentFrDate FROM bookComments WHERE id = ?';
         $bookComments = $this->executeRequest($sql, array($commentId));
         return $bookComments;
     }
