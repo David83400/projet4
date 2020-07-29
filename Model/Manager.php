@@ -2,8 +2,13 @@
 
 namespace Projet4\Model;
 
+/**
+  * Manage calls to db
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 abstract class Manager
-
 {
     private $db;
 
@@ -12,7 +17,7 @@ abstract class Manager
      *
      * @param [string] $sql
      * @param [mixed] $params
-     * @return void
+     * @return [mixed]
      */
     protected function executeRequest($sql, $params = null)
     {
@@ -31,7 +36,7 @@ abstract class Manager
     /**
      * Database connexion
      *
-     * @return void
+     * @return [mixed]
      */
     protected function getDb()
     {

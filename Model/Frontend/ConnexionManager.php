@@ -6,13 +6,19 @@ require_once 'Model/Manager.php';
 
 use Projet4\Model\Manager;
 
+/**
+  * Manage calls to db for the info users
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class ConnexionManager extends Manager
 {
     /**
      * method to verify if the post pseudo is not in bdd
      *
      * @param [string] $pseudo
-     * @return void
+     * @return [int]
      */
     public function selectPseudoUser($pseudo)
     {
@@ -26,7 +32,7 @@ class ConnexionManager extends Manager
      *  method to verify if the post emeil is not in bdd
      *
      * @param [string] $email
-     * @return void
+     * @return [int]
      */
     public function selectMailUser($email)
     {
@@ -41,7 +47,7 @@ class ConnexionManager extends Manager
      *
      * @param [string] $pseudo
      * @param [string] $pass
-     * @return void
+     * @return [mixed]
      */
     public function compareUser($pseudo, $pass)
     {

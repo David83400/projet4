@@ -8,6 +8,12 @@ require_once 'View/ControllerViews.php';
 use Projet4\Model\Frontend\ProfilManager;
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the member profile page
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class ProfilController
 {
     private $dataUser;
@@ -19,7 +25,7 @@ class ProfilController
     /**
      * display the profil page
      *
-     * @param [int] $errors
+     * @param [string] $errors
      * @return void
      */
     public function displayProfil($errors)
@@ -35,8 +41,8 @@ class ProfilController
     /**
      * Method that make verifications in the form to change mdp
      *
-     * @param [int] $errors
-     * @return void
+     * @param [string] $errors
+     * @return [string]
      */
     public function verifyFormChangeMdp($errors)
     {
@@ -85,7 +91,7 @@ class ProfilController
      *
      * @param [string] $pseudo
      * @param [string] $pass
-     * @return void
+     * @return [string]
      */
     public function changeMdp($pseudo, $pass)
     {

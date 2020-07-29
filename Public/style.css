@@ -52,11 +52,7 @@ li
 
 .alert-flash h2
 {
-    padding: 20px;
-}
-
-.alert-flash h2
-{
+    padding: 15px;
     text-align: center;
     color: #FF5483;
     margin: 0;
@@ -125,6 +121,7 @@ li
 {
     padding-top: 5px;
 }
+
 .navbar .nav-item a,.navbar .connexion a
 {
     color: #ffffff !important;
@@ -144,7 +141,6 @@ li
 
 .navbar .btn, .navbar .dropdown .btn
 {
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 1.1em;
 }
 
@@ -193,7 +189,6 @@ li
     height: 435px;
 }
 
-
 blockquote .fas
 {
     color: #FF5483;
@@ -233,6 +228,7 @@ blockquote h2
     background-color: #fff7ef;
     margin: 80px 0;
 }
+
 .book
 {
     position: relative;
@@ -268,7 +264,7 @@ blockquote h2
     position: relative;
     top: -150px;
     margin: 0 10px;
-    font-size: 2.2em;
+    font-size: 2.3em;
     text-shadow: -3px 3px 4.5px rgb(0, 0, 0);
     text-align: center;
     color: #e8e8e8;
@@ -279,7 +275,7 @@ blockquote h2
     position: relative;
     top: -60px;
     margin: 0 10px;
-    font-size: 2.3em;
+    font-size: 2.2em;
     text-shadow: -3px 3px 4.5px rgb(0, 0, 0);
     text-align: center;
     color: #e8e8e8;
@@ -442,36 +438,6 @@ blockquote h2
 #lastEpisodeResponsive
 {
     display: none;
-}
-
-#lastEpisodeResponsive .couverture
-{
-    padding: 60px 0;
-}
-
-#lastEpisodeResponsive .no-gutters
-{
-    background-color: #fff7ef;
-    margin-right: -15px;
-    margin-left: -15px;
-}
-
-#lastEpisodeResponsive .card-body
-{
-    background-color: #ffffff;
-}
-
-#lastEpisodeResponsive .card-title
-{
-    margin: 15px 0 30px 0;
-    font-size: 1.8em;
-    font-weight: bold;
-    text-align: center;
-}
-
-#lastEpisodeResponsive .card-text
-{
-    text-align: justify;
 }
 
 /* section last novels*/
@@ -697,18 +663,23 @@ footer p
     margin-bottom: 40px;
 }
 
+#episodesList img
+{
+    margin-top: 0 !important;
+}
+
 #episodesList h3
 {
     width: 250px;
     color: #ffffff;
     position: relative;
-    top: 215px;
-    left: 40px;
+    top: 235px;
+    left: 23px;
 }
 
 #episodesList .card-body
 {
-    padding-top: 80px;
+    padding-top: 100px;
 }
 
 #episodesList h2
@@ -784,7 +755,6 @@ footer p
     font-weight: bold;
     margin: 10px 0 20px 0;
 }
-
 
 #commentsEpisodes h4
 {
@@ -1009,6 +979,7 @@ footer p
 {
     margin-right: 10px;
 }
+
 #messaging td
 {
     overflow-wrap: anywhere;
@@ -1134,6 +1105,37 @@ footer p
         display: initial;
     }
 
+    #lastEpisodeResponsive .couverture
+    {
+        padding: 60px 0;
+    }
+
+    #lastEpisodeResponsive .no-gutters
+    {
+        background-color: #fff7ef;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    #lastEpisodeResponsive .card-body
+    {
+        background-color: #ffffff;
+        padding: 10px;
+    }
+
+    #lastEpisodeResponsive .card-title
+    {
+        margin: 15px 0 30px 0;
+        font-size: 1.8em;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    #lastEpisodeResponsive .card-text
+    {
+        text-align: center;
+    }
+
     #lastNovels .imageResponsive
     {
         display: none;
@@ -1141,28 +1143,6 @@ footer p
 }
 
 @media all and (max-width: 576px)
-{
-    .logo h1 
-    {
-        text-align: center;
-    }
-
-    .cover
-    {
-        margin-left: 20px;
-    }
-
-    footer ul
-    {
-        justify-content: center;
-    }
-
-    footer p{
-        text-align: center;
-    }
-}
-
-@media all and (max-width: 480px)
 {
     h1
     {
@@ -1183,6 +1163,29 @@ footer p
         font-size: 1em;
     }
     
+    .logo h1 
+    {
+        text-align: center;
+    }
+
+    .cover
+    {
+        margin-left: 20px;
+    }
+
+    footer ul
+    {
+        justify-content: center;
+    }
+
+    footer p
+    {
+        text-align: center;
+    }
+}
+
+@media all and (max-width: 480px)
+{
     .blocBilletSimple
     {
         margin-left: 10px;
@@ -1191,8 +1194,13 @@ footer p
 
     .imgBilletSimple
     {
-        width: 300px;
+        width: 290px;
         height: 375px;
+    }
+
+    blockquote h2
+    {
+        font-size: 2em;
     }
 
     #book img

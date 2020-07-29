@@ -8,6 +8,12 @@ require_once 'View/ControllerViews.php';
 use Projet4\Model\Backend\EpisodesManager;
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the modify page in the back office
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class modifyEpisodeController
 {
     private $episode;
@@ -21,7 +27,7 @@ class modifyEpisodeController
      * Display the modify episode page
      *
      * @param [int] $episodeId
-     * @param [int] $errors
+     * @param [string] $errors
      * @return void
      */
     public function displayAdminEpisode($episodeId, $errors)

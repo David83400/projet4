@@ -10,6 +10,12 @@ use Projet4\Model\Frontend\EpisodesManager;
 use Projet4\Model\Frontend\CommentsManager;
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the episode page and the comments episode.
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class EpisodeController
 {
     private $episode;
@@ -24,6 +30,7 @@ class EpisodeController
     /**
      * display the episode details and comments
      *
+     * @param [string] $errors
      * @param [int] $episodeId
      * @return void
      */
@@ -54,7 +61,7 @@ class EpisodeController
      *
      * @param [int] $id
      * @param [int] $episodeId
-     * @return void
+     * @return [int]
      */
     public function signalEpisodeComment($id, $episodeId)
     {

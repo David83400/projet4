@@ -6,6 +6,12 @@ require_once 'Model/Manager.php';
 
 use Projet4\Model\Manager;
 
+/**
+  * Manage calls to db for the info users
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class ProfilManager extends Manager
 {
     /**
@@ -13,7 +19,7 @@ class ProfilManager extends Manager
      *
      * @param [string] $pseudo
      * @param [string] $pass
-     * @return void
+     * @return [string]
      */
     public function updateMdp($pseudo, $pass)
     {

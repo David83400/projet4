@@ -11,16 +11,16 @@
     </div>
     <?php } ?>
     <div class="row slider">
-        <div class="col-lg-4 blocImgAuthor">
+        <div class="col-lg-3 blocImgAuthor">
             <img src="Public/images/jeanForteroche.png" alt="Jean Forteroche auteur" class="imgAuthor">
         </div>
-        <div class="col-6 offset-3 col-sm-6 offset-sm-3 col-md-5 offset-md-1 col-lg-3 offset-lg-0 quoteNews">
+        <div class="col-6 offset-3 col-sm-6 offset-sm-3 col-md-5 offset-md-1 col-lg-4 offset-lg-0 quoteNews">
             <blockquote>
-                <h2><i class="fas fa-quote-left"></i><a href="http://localhost/blogJeanForteroche/projet4/index.php?action=episodes"><span> Un récit jubilatoire rempli d'amour et de partage </span></a><i class="fas fa-quote-right"></i></h2>
+                <h2><i class="fas fa-quote-left"></i><a href="http://localhost/blogJeanForteroche/projet4/index.php?action=episodes"><span> Découvrez les épisodes de mon tout nouveau roman </span></a><i class="fas fa-quote-right"></i></h2>
             </blockquote>
         </div>
-        <div class="col-6 offset-2 col-sm-4 offset-sm-3 col-md-4 offset-md-1 col-lg-4 offset-lg-0 blocBilletSimple">
-            <img src="Public/images/billetSimple.png" alt="livre de Jean Forteroche" class="imgBilletSimple">
+        <div class="col-6 offset-2 col-sm-4 offset-sm-3 col-md-4 offset-md-1 col-lg-3 offset-lg-0 blocBilletSimple">
+            <a href="http://localhost/blogJeanForteroche/projet4/index.php?action=episodes"><img src="Public/images/billetSimple.png" alt="livre de Jean Forteroche" class="imgBilletSimple"></a>
         </div>
     </div>
 </section>

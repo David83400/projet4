@@ -8,6 +8,12 @@ require_once 'View/ControllerViews.php';
 use Projet4\Model\Backend\CommentsManager;
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the edition of signaled comments episodes in the back office
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class EpisodeCommentController
 {
     private $editComment;

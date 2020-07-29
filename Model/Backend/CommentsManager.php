@@ -5,12 +5,18 @@ require_once 'Model/Manager.php';
 
 use Projet4\Model\Manager;
 
+/**
+  * Manage calls to db for the comments in the back office
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class CommentsManager extends Manager
 {
     /**
      * return a book comment signaled to the adminIndexController
      *
-     * @return void
+     * @return [mixed]
      */
     public function getSignaledBookComments()
     {
@@ -22,7 +28,7 @@ class CommentsManager extends Manager
     /**
      * return an episode comment signaled to the adminIndexController
      *
-     * @return void
+     * @return [mixed]
      */
     public function getSignaledEpisodeComments()
     {
@@ -35,7 +41,7 @@ class CommentsManager extends Manager
      * Display a signaled episode comment on the edit comment page
      *
      * @param [int] $commentId
-     * @return void
+     * @return [mixed]
      */
     public function getSignaledEpisodeComment($commentId)
     {
@@ -48,7 +54,7 @@ class CommentsManager extends Manager
      * return a signaled book comment on the edit comment page
      *
      * @param [int] $commentId
-     * @return void
+     * @return [mixed]
      */
     public function getSignaledBookComment($commentId)
     {

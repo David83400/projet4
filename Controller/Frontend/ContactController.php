@@ -8,6 +8,12 @@ require_once 'View/ControllerViews.php';
 use Projet4\Model\Frontend\ContactManager;
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the contact page ond the form to send message
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class ContactController
 {
     private $contactMessage;
@@ -20,6 +26,7 @@ class ContactController
     /**
      * display the contact page
      *
+     * @param [string] $errors
      * @return void
      */
     public function displayContact($errors)
@@ -35,7 +42,7 @@ class ContactController
     /**
      * Method to send a message
      *
-     * @return void
+     * @return [string]
      */
     public function sendMessage()
     {

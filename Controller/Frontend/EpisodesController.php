@@ -8,6 +8,12 @@ require_once 'View/ControllerViews.php';
 use Projet4\Model\Frontend\EpisodesManager;
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the list episodes page
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class EpisodesController
 {
     private $episodes;

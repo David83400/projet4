@@ -10,6 +10,12 @@ use Projet4\Model\Frontend\EpisodesManager;
 use Projet4\Model\Frontend\BooksManager;
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the home page
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class HomeController
 {
     private $lastEpisode;

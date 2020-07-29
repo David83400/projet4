@@ -8,6 +8,12 @@ require_once 'View/ControllerViews.php';
 use Projet4\Model\Frontend\ConnexionManager;
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the connexion page and the two forms to create an account or connect to is account
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class ConnexionController
 {
     private $users;
@@ -20,7 +26,7 @@ class ConnexionController
     /**
      * display the connexion page
      *
-     * @param [int] $errors
+     * @param [string] $errors
      * @return void
      */
     public function displayConnexion($errors)
@@ -40,7 +46,7 @@ class ConnexionController
     /**
      * Method that make verifications in the form connect
      *
-     * @return void
+     * @return [string]
      */
     public function verifyFormConnect()
     {
@@ -86,7 +92,7 @@ class ConnexionController
     /**
      * Method that make verifications in the form create
      *
-     * @return void
+     * @return [string]
      */
     public function verifyFormCreate()
     {
@@ -99,7 +105,7 @@ class ConnexionController
         {
             if ((strlen($_POST['pseudo']) >= 5) && (strlen($_POST['pseudo']) < 20))
             {
-                if (preg_match('/^[a-zA-Z0-9_]+$/', $_POST['pseudo']))
+                if (preg_match('/^[a-zA-Z0-9éèê_-]+$/', $_POST['pseudo']))
                 {
                     $userPseudo = $this->verifyPseudoUser($pseudo);
                     if ($userPseudo == false)
@@ -184,7 +190,7 @@ class ConnexionController
      * method that return the pseudo checked in bdd to compare with data post
      *
      * @param [string] $pseudo
-     * @return void
+     * @return [string]
      */
     public function verifyPseudoUser($pseudo)
     {
@@ -195,7 +201,7 @@ class ConnexionController
     /**
      * method that return the email checked in bdd to compare with data post
      *
-     * @return void
+     * @return [string]
      */
     public function verifyMailUser($email)
     {
@@ -206,9 +212,9 @@ class ConnexionController
     /**
      *  return the infos user selected in bdd to compare with data post
      *
-     * @param [type] $pseudo
-     * @param [type] $pass
-     * @return void
+     * @param [string] $pseudo
+     * @param [string] $pass
+     * @return [string]
      */
     public function confirmUser($pseudo, $pass)
     {

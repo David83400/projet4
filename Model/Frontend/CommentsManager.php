@@ -6,13 +6,19 @@ require_once 'Model/Manager.php';
 
 use Projet4\Model\Manager;
 
+/**
+  * Manage calls to db for the comments
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class CommentsManager extends Manager
 {
     /**
      * Return the list of comments associated with an episode
      *
      * @param [int] $episodeId
-     * @return void
+     * @return [mixed]
      */
     public function getEpisodeComments($episodeId)
     {

@@ -4,7 +4,7 @@
     <div class="card mb-3">
         <div class="row no-gutters">
             <div class="cover col-3 col-sm-3 offset-sm-3 col-md-3 offset-md-4 col-lg-3 offset-lg-1">
-                <h3>Episode n°<?= $episode['id'] ?></h3>
+                <h3 class="text-center"><?= $episode['title'] ?></h3>
                 <img src="<?= $episode['episodeImage'] ?>" class="card-img" alt="livre de Jean Forteroche">
             </div>
             <div class="col-md-7 offset-md-3 col-lg-6 offset-lg-1">

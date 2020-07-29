@@ -1,7 +1,6 @@
 <?php
 
-/*namespace projet4\Controller\Frontend;*/
-namespace projet4\Controller\Frontend;
+namespace Projet4\Controller\Frontend;
 
 require_once 'Model/Frontend/BooksManager.php';
 require_once 'Model/Frontend/CommentsManager.php';
@@ -11,6 +10,12 @@ use projet4\Model\Frontend\BooksManager;
 use projet4\Model\Frontend\CommentsManager;
 use projet4\View\ControllerViews;
 
+/**
+  * Manage the book page and the comments book.
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class BookController
 {
     private $book;
@@ -55,7 +60,7 @@ class BookController
      *
      * @param [int] $id
      * @param [int] $bookId
-     * @return void
+     * @return [int]
      */
     public function signalBookComment($id, $bookId)
     {

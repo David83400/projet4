@@ -6,10 +6,16 @@ require_once 'View/ControllerViews.php';
 
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the policy of confidentiality page
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class ConfidentialiteController
 {
     /**
-     * display the confidentialité page
+     * display the confidentiality page
      *
      * @return void
      */

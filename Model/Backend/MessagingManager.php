@@ -5,12 +5,18 @@ require_once 'Model/Manager.php';
 
 use Projet4\Model\Manager;
 
+/**
+  * Manage calls to db for the messages in the back office
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class MessagingManager extends Manager
 {
     /**
      * Method to get all messages
      *
-     * @return void
+     * @return [mixed]
      */
     public function getMessages()
     {
@@ -23,7 +29,7 @@ class MessagingManager extends Manager
      * Method to get a message associated with an id
      *
      * @param [int] $idMessage
-     * @return void
+     * @return [mixed]
      */
     public function getMessage($idMessage)
     {

@@ -8,6 +8,12 @@ require_once 'View/ControllerViews.php';
 use Projet4\Model\Backend\EpisodesManager;
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the episode edition page in the back office
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class EditEpisodeController
 {
     private $editEpisode;
@@ -20,7 +26,7 @@ class EditEpisodeController
     /**
      * display the edit episode page
      *
-     * @param [int] $errors
+     * @param [string] $errors
      * @return void
      */
     public function displayEditEpisode($errors)

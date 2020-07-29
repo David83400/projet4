@@ -10,6 +10,11 @@ use Projet4\Model\Backend\EpisodesManager;
 use Projet4\Model\Backend\CommentsManager;
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the episodes list and sigaled comments in the back office
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class AdminIndexController
 {
     private $episodes;
@@ -36,7 +41,7 @@ class AdminIndexController
     }
 
     /**
-     * Method to delete an episode and the comments associted
+     * Method to delete an episode and the comments associated
      *
      * @param [int] $id
      * @param [int] $commentId

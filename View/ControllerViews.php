@@ -2,6 +2,12 @@
 
 namespace Projet4\View;
 
+/**
+  * Manage the different views of the site
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class ControllerViews
 {
     private $file;
@@ -48,7 +54,7 @@ class ControllerViews
      *
      * @param [string] $file
      * @param [mixed] $data
-     * @return void
+     * @return [mixed]
      */
     private function generateFile($file, $data)
     {

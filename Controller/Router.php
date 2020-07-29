@@ -10,7 +10,7 @@ use Projet4\Controller\Frontend\HomeController;
 use Projet4\Controller\Frontend\ConnexionController;
 use Projet4\Controller\Frontend\ProfilController;
 use Projet4\Controller\Backend\AdminIndexController;
-use Projet4\Controller\Backend\modifyEpisodeController;
+use Projet4\Controller\Backend\ModifyEpisodeController;
 use Projet4\Controller\Backend\EpisodeCommentController;
 use Projet4\Controller\Backend\BookCommentController;
 use Projet4\Controller\Backend\EditEpisodeController;
@@ -28,6 +28,12 @@ use Projet4\Controller\Frontend\ConfidentialiteController;
 use Projet4\Controller\Frontend\RemerciementsController;
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the Router and the different requests
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class Router
 {
     private $homeControl;
@@ -209,7 +215,7 @@ class Router
                         header('Location:index.php?action=connexion');
                     }
                 }
-                elseif ($_GET['action'] == 'deleteMessage')
+                elseif (($_GET['action'] == 'deleteMessage') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
                 {
                     $id = intval($this->getParameter($_GET, 'id'));
 

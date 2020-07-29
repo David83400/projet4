@@ -5,12 +5,18 @@ require_once 'Model/Manager.php';
 
 use Projet4\Model\Manager;
 
+/**
+  * Manage calls to db for the episodes in the back office
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class EpisodesManager extends Manager
 {
     /**
      * Return the episodes list
      *
-     * @return void
+     * @return [mixed]
      */
     public function getEpisodes()
     {
@@ -23,7 +29,7 @@ class EpisodesManager extends Manager
      * Return the requested episode
      *
      * @param [int] $episodeId
-     * @return void
+     * @return [mixed]
      */
     public function getEpisode($episodeId)
     {

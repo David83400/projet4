@@ -6,6 +6,12 @@ require_once 'View/ControllerViews.php';
 
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the remerciements page
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class RemerciementsController
 {
     /**

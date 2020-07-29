@@ -8,6 +8,12 @@ require_once 'View/ControllerViews.php';
 use Projet4\Model\Backend\MessagingManager;
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the list of contact messages in the administration messaging page
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class MessagingController
 {
     private $messages;
@@ -29,6 +35,12 @@ class MessagingController
         $view->generateBackendViews(array('messages' => $messages));
     }
 
+    /**
+     * Mehod to delete a contact message
+     *
+     * @param [int] $id
+     * @return void
+     */
     public function removeMessage($id)
     {
         $this->messages->deleteMessage($id);

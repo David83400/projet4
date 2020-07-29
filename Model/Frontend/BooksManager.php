@@ -6,12 +6,18 @@ require_once 'Model/Manager.php';
 
 use Projet4\Model\Manager;
 
+/**
+  * Manage calls to db for the books
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class BooksManager extends Manager
 {
     /**
      * Return the books list
      *
-     * @return void
+     * @return [mixed]
      */
     public function getBooks()
     {
@@ -24,7 +30,7 @@ class BooksManager extends Manager
      * Return the requested book
      *
      * @param [int] $bookId
-     * @return void
+     * @return [mixed]
      */
     public function getBook($bookId)
     {
@@ -42,6 +48,8 @@ class BooksManager extends Manager
 
     /**
      * Return the last four books
+     * 
+     *  @return [mixed]
      */
     public function getLastBooks()
     {

@@ -8,6 +8,12 @@ require_once 'View/ControllerViews.php';
 use Projet4\Model\Frontend\ProfilManager;
 use Projet4\View\ControllerViews;
 
+/**
+  * Manage the profil admin page and the form to change password
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class ProfilAdminController
 {
     private $dataUser;
@@ -19,7 +25,7 @@ class ProfilAdminController
     /**
      * display the profil admin page
      *
-     * @param [int] $errors
+     * @param [string] $errors
      * @return void
      */
     public function displayProfilAdmin($errors)
@@ -33,9 +39,9 @@ class ProfilAdminController
     }
 
     /**
-     * Method that make verifications on the admin form to change mdp
+     * Method that make verifications on the admin form to change password
      *
-     * @param [int] $errors
+     * @param [string] $errors
      * @return void
      */
     public function verifyFormAdminChangeMdp($errors)
@@ -81,7 +87,7 @@ class ProfilAdminController
     }
 
     /**
-     * Method to change mdp
+     * Method to change password
      *
      * @param [string] $pseudo
      * @param [string] $pass

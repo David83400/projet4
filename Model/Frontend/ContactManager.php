@@ -6,6 +6,12 @@ require_once 'Model/Manager.php';
 
 use Projet4\Model\Manager;
 
+/**
+  * Manage calls to db for the messages
+  *
+  * @author  David Roche <davidroche83400@gmail.com
+  *
+*/
 class ContactManager extends Manager
 {
     /**
