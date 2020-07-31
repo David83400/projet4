@@ -20,7 +20,7 @@
         <!-- Open Graph -->
         <meta property="og:title" content="Jean Forteroche : blog officiel." />
         <meta property="og:type" content="Website" />
-        <meta property="og:url" content="https://www.jeanforteroche.com/" />
+        <meta property="og:url" content="http://www.jeanforteroche-projet4.fr" />
         <meta property="og:image" content="Public/images/billetSimple.png" />
         <meta property="og:description"
             content="Découvrez sur mon blog mon tout nouveau roman. J'ai voulu vous le faire découvrir en format numérique épisode après épisode. Nous pourrons ainsi voyager ensemble dans des contrées merveilleuses. Vous partagerez avec moi les aventures extraordinaires de Balthazar en Alaska." />

@@ -131,9 +131,8 @@ class Router
                     {
                         header('Location:index.php?action=connexion');
                     }
-                    
                 }
-                elseif ($_GET['action'] == 'deleteEpisode')
+                elseif (($_GET['action'] == 'deleteEpisode') && ((isset($_SESSION['userAdmin'])) && ($_SESSION['userAdmin']) == 1))
                 {
                     $id = intval($this->getParameter($_GET, 'id'));
                     $commentId = intval($this->getParameter($_GET, 'episodeId'));

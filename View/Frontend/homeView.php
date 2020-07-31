@@ -59,7 +59,7 @@
             </div>
             <div class="layer-text-2">
                 <div class="page-text-2">
-                    <p><?= substr($lastEpisode['content'], 0, 550) ?> ... <a href="<?= 'index.php?action=episode&id=' . $lastEpisode['id'] ?>">lire la suite</a></p>
+                    <div><?= substr($lastEpisode['content'], 0, 550) ?> ... <a href="<?= 'index.php?action=episode&id=' . $lastEpisode['id'] ?>">lire la suite</a><?= "</span>" . "</p>" ?></div>
                 </div>
             </div>
             <div class="layer5"></div>
@@ -77,7 +77,7 @@
                 <img src="Public/images/couvertureResponsive.jpg" class="card-img-top" alt="Livre de Jean Forteroche">
                 <div class="card-body">
                     <h3 class="card-title"><?= $lastEpisode['title'] ?></h3>
-                    <p class="card-text"><?= substr($lastEpisode['content'], 0, 550) ?> ... <a href="<?= 'index.php?action=episode&id=' . $lastEpisode['id'] ?>">lire la suite</a></p>
+                    <div class="card-text"><?= substr($lastEpisode['content'], 0, 550) ?> ... <a href="<?= 'index.php?action=episode&id=' . $lastEpisode['id'] ?>">lire la suite</a><?= "</span>" . "</p>" ?></div>
                     <p class="card-text"><small class="text-muted">Publié par Jean Forteroche le <?= $lastEpisode['creationFrDate'] ?></small></p>
                 </div>
             </div>

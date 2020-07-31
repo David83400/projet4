@@ -57,6 +57,12 @@ class MessagingManager extends Manager
         $req = $this->executeRequest($sql, array($idMessage));
     }
 
+    /**
+     * Method to delete a message
+     *
+     * @param [int] $id
+     * @return void
+     */
     public function deleteMessage($id)
     {
         $sql = 'DELETE contactMessages FROM contactMessages WHERE contactMessages.id = ?';

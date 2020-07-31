@@ -420,7 +420,7 @@ blockquote h2
 
 .page-text-2 p, .page-text-2 span
 {
-    word-break: break-word;
+    overflow-wrap: break-word;
     background: #efefef !important;
     font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
 }
@@ -467,7 +467,7 @@ blockquote h2
 {
     align-items: center;
     background-color: #8ba9e5;
-    border: 1px #8ba9e5 solid;
+    border: 0 #8ba9e6 solid;
 }
 
 #lastNovels img
